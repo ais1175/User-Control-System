@@ -5,6 +5,6 @@ Requirements:
 
 1. Webserver
 
-2. MySQL Server
+2. MySQL server with MySQLi
 
 3. Php 7.3
