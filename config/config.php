@@ -34,9 +34,9 @@ define("USERPROFILECHANGE","User Profil bearbeiten");
 
 // Language Footer Language
 // Discord
-define("DISCORD","https://discord.gg/cGf73tD");
+define("DISCORD","https://yoururl");
 // Teamspeak
-define("TEAMSPEAK","ts3server://ts3.destiny-life.ml?port=9987");
+define("TEAMSPEAK","ts3server://yoururl?port=9987");
 // Imprint
-define("IMPRINT","https://destiny-life.ml/impressum.html");
+define("IMPRINT","https://yoururl/impressum.html");
 ?>
