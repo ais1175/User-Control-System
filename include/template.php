@@ -23,7 +23,7 @@ function site_secure() {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -51,7 +51,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Team Account Control System - Spieler bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -70,7 +70,8 @@ site_footer();
 die();	  
 }
 
-function site_team_secure() {
+// This function is not done
+function site_team_secure() {	
 	$username    = htmlentities(trim($row["username"]));
 	$userid      = intval($row["id"]);
 	// $isTeam    = $row["isTeam"];
@@ -91,7 +92,7 @@ function site_team_secure() {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -121,7 +122,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -153,7 +154,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -183,7 +184,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -212,7 +213,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -242,7 +243,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -284,7 +285,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei Destiny-Life!</h5>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
