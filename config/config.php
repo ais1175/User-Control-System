@@ -33,9 +33,9 @@ define("USERPROFILECHANGE","User Profil bearbeiten");
 // ************************************************************************************//
 // * Default Language Section - Footer
 // ************************************************************************************//
-define("DISCORD","https://discord.gg/cGf73tD");
-define("TEAMSPEAK","ts3server://ts3.destiny-life.ml?port=9987");
-define("IMPRINT","https://destiny-life.ml/impressum.html"); 
+define("DISCORD","https://discord.gg/xxxxxx");
+define("TEAMSPEAK","ts3server://xxxxxx?port=9987");
+define("IMPRINT","https://xxxxxx/impressum.html"); 
 
 // MySQL Account Dats
 $conn = mysqli_connect(
