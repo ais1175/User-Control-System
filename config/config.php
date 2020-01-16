@@ -12,19 +12,17 @@
 // ************************************************************************************//
 session_start();
 
-// MySQL Account Dats
-$conn = mysqli_connect(
-			"localhost",
-			"dbuser",
-			"password",
-			"dbname");
-
-// MySQL Error Msg			
-if(!$conn){
-	die("Connection error: " . mysqli_connect_error());	
-}
-
-// Language System
+// ************************************************************************************//
+// * MySQL Database Connection
+// ************************************************************************************//
+define('MYSQL_USER', 'xxx');
+define('MYSQL_PASSWORD', 'xxx');
+define('MYSQL_HOST', 'localhost');
+define('MYSQL_DATABASE', 'xxx');
+ 
+// ************************************************************************************//
+// * Default Language Section - Main 
+// ************************************************************************************//
 define("SITETITLE","DESTINY-LIFE | UCP");
 define("PROJECTNAME","Destiny-Life");
 define("DASHBOARD","Dashboard");
@@ -32,11 +30,22 @@ define("RULES","Regelwerk");
 define("USERPROFILE","User Profil");
 define("USERPROFILECHANGE","User Profil bearbeiten");
 
-// Language Footer Language
-// Discord
-define("DISCORD","https://yoururl");
-// Teamspeak
-define("TEAMSPEAK","ts3server://yoururl?port=9987");
-// Imprint
-define("IMPRINT","https://yoururl/impressum.html");
+// ************************************************************************************//
+// * Default Language Section - Footer
+// ************************************************************************************//
+define("DISCORD","https://discord.gg/cGf73tD");
+define("TEAMSPEAK","ts3server://ts3.destiny-life.ml?port=9987");
+define("IMPRINT","https://destiny-life.ml/impressum.html"); 
+
+// MySQL Account Dats
+$conn = mysqli_connect(
+			"" . MYSQL_HOST . "",
+			"" . MYSQL_USER . "",
+			"" . MYSQL_PASSWORD . "",
+			"" . MYSQL_DATABASE . "");
+
+// MySQL Error Msg			
+if(!$conn){
+	die("Connection error: " . mysqli_connect_error());	
+}
 ?>
