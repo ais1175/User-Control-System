@@ -8,7 +8,7 @@
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
-// * License Typ: Creative Commons licenses
+// * License Typ: GNU GPLv3
 // ************************************************************************************//
 session_start();
 
