@@ -1,5 +1,7 @@
 # User Control System
  User Control System for all Roleplay Projects! Have fun!
+ 
+ The PDO Version is not finished!
 
 Requirements:
 
