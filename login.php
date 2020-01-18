@@ -1,59 +1,47 @@
 <?php 
 // ************************************************************************************//
-// * User Control Panel ( UCP )
+// * User Control Panel ( UCP ) >> PDO Edition <<
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.0
+// * Version: 1.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: Creative Commons licenses
-// ************************************************************************************// 
+// ************************************************************************************//
 require_once("include/features.php");
 
-if(isset($_POST['submit'])){
+if(isset($_POST['login'])){
 	
-	$username = trim($_POST['username']);
-	$password = trim($_POST['password']);
-	$securecode = $row["id"];
-	// Get the client ip address
-	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-	
-	session_start();
-	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from accounts where username = '".$username."'";
-	$rs = mysqli_query($conn,$sql);
-	$numRows = mysqli_num_rows($rs);
-	
-	if($numRows  == 1){
-		$row = mysqli_fetch_assoc($rs);
-		if(password_verify($password,$row['password'])){
+    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
+    $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
+    $sql = "SELECT id, username, password FROM accounts WHERE username = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':username', $username);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    //If $row is FALSE.
+    if($user === false){
+        site_login_user_notfound();
+    } else{
+        $validPassword = password_verify($passwordAttempt, $user['password']);
+
+        if($validPassword){
+            $_SESSION['secure'] = $user['id'];
+            $_SESSION['secure_logged_in'] = time()+2592000;
 			$_SESSION['secure'] = $securecode;
 			$expires = time()+2592000;
 			$securecode = $row["id"];
 			setcookie("secure", $securecode, $expires,  "/");
-			$timestamp = date('Y-m-d H:i:s');
-			// Get the client ip address
-			$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-			
-			$sql2 = "UPDATE characters SET accountId = ".$row["id"]." WHERE id = ".$_COOKIE["secure"]."";
-			$result2 = mysqli_query($conn, $sql2);
-			$sql2xz = "UPDATE accounts SET ip = '".$ipaddress."' WHERE id = '".$_COOKIE["secure"]."'";
-			$result2x = mysqli_query($conn, $sql2xz);
-			if($result)
-			{
-				//
-			}
-			header("Location:dashboard.php");
-		}
-		else{
-			site_login_password_none_correct();
-		}
-	}
-	else{
-		site_login_user_notfound();
-	}
+            header('Location: dashboard.php');
+            exit;
+            
+        } else{
+            site_login_password_none_correct();
+        }
+    }
 }
 
 site_header();
@@ -81,7 +69,7 @@ echo "
 					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='exampleInputPassword1'/>
 				</div>				
 			</div>				
-			<button type='submit' class='btn btn-primary' name='submit'>Login</submit>					
+			<button type='submit' class='btn btn-primary' name='login'>Login</submit>					
 			</form>				
               </div>
             </div>
