@@ -5,6 +5,6 @@ Requirements:
 
 1. Webserver
 
-2. MySQL server with MySQLi
+2. MySQL server with MySQLi from the master branch or pdo from the pdo version branch
 
 3. Php 7.3
