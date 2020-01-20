@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.0
+// * Version: 1.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -69,6 +69,37 @@ echo "
 site_footer();
 die();	  
 }
+
+// Tweet System MSG done
+function site_tweetings_done() {
+site_header();
+site_content_logged();
+site_navi_logged();
+echo "
+        <div class='content'>
+         <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | Tweet System</p>
+              </div>
+              <div class='card-body'>			  
+				<div class='row'>			
+					<div class='col-sm-8'>
+						<b>Dein Tweet wurde erfokgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+					</div>				
+				</div>										
+              </div>
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>";
+site_footer();
+die();	  
+}
+
 
 // This function is not done
 function site_team_secure() {	
@@ -324,7 +355,7 @@ echo "
 	
 	session_start();
 	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from accounts where username = '".$username."'";
+	$sql = "select * from accounts where username = :username";
 	$rs = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($rs);
 	
