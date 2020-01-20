@@ -102,13 +102,13 @@ echo "
 																				".$row["username"]."
 																		</div>
 													</div>
-													<div class='col-sm-2'>
+													<div class='col-sm-2' style='display:none;'>
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='Was gibt es Neues ?' value='' maxlength='10' id='border-right6'/>			
 													</div>";
 																}
 															}		
 													echo "
-													<div class='col-sm-8'>
+													<div class='col-sm-10'>
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='Was gibt es Neues ?' value='' maxlength='220' id='border-right6'/>			
 													</div>
 													<div class='col-sm-1'>
