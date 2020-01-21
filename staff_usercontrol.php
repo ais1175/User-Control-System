@@ -4,17 +4,16 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.0
+// * Version: 1.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
 require_once("include/features.php");
-	
-$cookie = $_COOKIE["username"]; 
 
 site_secure();
+secure_url();
 
 site_header();
 site_navi_logged();
@@ -58,7 +57,7 @@ echo "
                     </thead>
                     <tbody>";
 
-			$sql = "SELECT id, username, email, socialClub, isWhitelisted FROM accounts ORDER BY username";
+			$sql = "SELECT id, username, email, socialclubname, betaAcess FROM users ORDER BY username";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -73,13 +72,13 @@ echo "
                           " . $row["username"]. "
                         </td>						
                         <td>
-                          " . $row["socialClub"]. "
+                          " . $row["socialclubname"]. "
                         </td>
                         <td>
                           " . $row["email"]. "
                         </td>
                         <td>
-                          " . $row["isWhitelisted"]. "
+                          " . $row["betaAcess"]. "
                         </td>
                       </tr>";
 				}

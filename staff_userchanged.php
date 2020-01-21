@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.0
+// * Version: 1.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -12,9 +12,8 @@
 // ************************************************************************************//
 require_once("include/features.php");
 	
-$cookie = $_COOKIE["username"]; 
-
 site_secure();
+secure_url();
 
 site_header();
 site_navi_logged();
@@ -25,10 +24,10 @@ if(isset($_POST['submit'])){
 	$securecode = $row["id"];
 	$username = stripslashes($_POST['username']);
 	$email 	= stripslashes($_POST['email']);	
-	$socialClub = stripslashes($_POST['socialClub']);
-	$isWhitelisted = stripslashes($_POST['isWhitelisted']);
+	$socialclubname = stripslashes($_POST['socialclubname']);
+	$betaAcess = stripslashes($_POST['betaAcess']);
 		
-	$sql = "UPDATE accounts SET username='".$username."', email='".$email."', socialClub='".$socialClub."', isWhitelisted='".$isWhitelisted."' WHERE id = '".$row["id"]."'";
+	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', betaAcess='".$betaAcess."' ORDER BY id";
    
    if (mysqli_query($conn, $sql)) {
       site_userchanged_done();
@@ -79,7 +78,7 @@ echo "
                     </thead>
                     <tbody>";
 
-			$sql = "SELECT id, username, email, socialClub, isWhitelisted from accounts GROUP BY ID";
+			$sql = "SELECT id, username, email, socialclubname, betaAcess from accounts GROUP BY ID";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -95,13 +94,13 @@ echo "
                           <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["username"]. "' required>
                         </td>
                         <td>						
-                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialClub' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["socialClub"]. "' required>
+                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["socialclubname"]. "' required>
                         </td>						
                         <td>						
                           <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["email"]. "' required>
                         </td>
                         <td>
-						  <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='isWhitelisted' size='2' maxlength='2' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["isWhitelisted"]. "' required>
+						  <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='betaAcess' size='2' maxlength='2' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["betaAcess"]. "' required>
                         </td>
                         <td>
                           <button type='submit' class='btn btn-primary' name='submit'>ändern</submit>

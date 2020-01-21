@@ -26,7 +26,7 @@ if(isset($_POST['tweeting'])){
 		$msg 	= stripslashes(trim($_POST['msg']));	
 		$posted 	= date();
 		
-		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', '".$posted."')";
+		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
 		$result = mysqli_query($conn, $sql);
 		if($result)
 		{
@@ -36,9 +36,11 @@ if(isset($_POST['tweeting'])){
 }
 
 if(isset($_POST['like_msg'])){
-		$liked = stripslashes(trim($_POST['liked'] + 1));	
+		$liked = stripslashes(trim($_POST['liked'])) + 1;
+		$id = $_REQUEST['id'];
+		$msg = $_REQUEST['msg'];
 		
-		$sql2 = "UPDATE tweets SET liked='".$liked."' WHERE id = '".intval($_GET['id'])."'";
+		$sql2 = "UPDATE tweets SET liked='".$liked."' ORDER BY id LIMIT 10";
 		$result2 = mysqli_query($conn, $sql2);
 		if($result2)
 		{
@@ -161,7 +163,7 @@ echo "
 									</span>
 									<span>
 										<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
-											<button class='btn btn-fab btn-icon btn-round' name='like_msg' style='float: right;' value='" . $row["liked"]. "'><i class='now-ui-icons ui-2_like'></i></button>
+											<button class='btn btn-fab btn-icon btn-round' name='like_msg' style='float: right;'><i class='now-ui-icons ui-2_like'></i></button>
 										</form>
 									</span>
 									<span>
