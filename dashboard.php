@@ -13,22 +13,36 @@
 require_once("include/features.php");
 
 $username = trim($row["username"]);
-$sql = "select id from accounts where username = '".$username."'";
+$sql = "select id from users where username = '".$username."'";
 $rs = mysqli_query($conn,$sql);
 
 $cookie = $_COOKIE["username"]; 
 
 site_secure();
+secure_url();
 
 if(isset($_POST['tweeting'])){
-		$username = stripslashes($_POST['username']);
-		$msg 	= stripslashes($_POST['msg']);	
+		$username = stripslashes(trim($_POST['username']));
+		$msg 	= stripslashes(trim($_POST['msg']));	
+		$posted 	= date();
 		
-		$sql = "insert into tweets (username, msg) value('".$username."', '".$msg."')";
+		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', '".$posted."')";
 		$result = mysqli_query($conn, $sql);
 		if($result)
 		{
 			site_tweetings_done();
+		}
+		$conn->close();
+}
+
+if(isset($_POST['like_msg'])){
+		$liked = stripslashes(trim($_POST['liked'] + 1));	
+		
+		$sql2 = "UPDATE tweets SET liked='".$liked."' WHERE id = '".intval($_GET['id'])."'";
+		$result2 = mysqli_query($conn, $sql2);
+		if($result2)
+		{
+			site_tweetings_liked_done();
 		}
 		$conn->close();
 }
@@ -52,7 +66,7 @@ echo "
 					<b>Willkommen ";
 					$id = 0 + $_COOKIE["secure"];
 					$securecode = $row["id"];
-					$sql = "SELECT username FROM accounts WHERE id = ".$_COOKIE["secure"]."";
+					$sql = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {
@@ -89,30 +103,29 @@ echo "
 																</div>
 															</div>
 														</div>";
-															$id = 0 + $_COOKIE["secure"];
-															$securecode = $row["id"];
-															$sqlx = "SELECT username FROM accounts WHERE id = ".$_COOKIE["secure"]."";
-															$resultx = $conn->query($sqlx);
-
-															if ($resultx->num_rows > 0) {
-																// output data of each row
-																while($row = $resultx->fetch_assoc()) {
+												$id = 0 + $_COOKIE["secure"];
+												$securecode = $row["id"];
+												$sqlx = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
+												$resultx = $conn->query($sqlx);
+												if ($resultx->num_rows > 0) {
+													// output data of each row
+													while($row = $resultx->fetch_assoc()) {
 												echo"
-																		<div class='category'>
-																				".$row["username"]."
-																		</div>
+														<div class='category'>
+															".$row["username"]."
+														</div>
 													</div>
 													<div class='col-sm-2' style='display:none;'>
-														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='Was gibt es Neues ?' value='' maxlength='10' id='border-right6'/>			
+														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='' value='' maxlength='10' id='border-right6'/>			
 													</div>";
-																}
-															}		
+													}
+												}		
 													echo "
-													<div class='col-sm-10'>
+													<div class='col-sm-9'>
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='Was gibt es Neues ?' value='' maxlength='220' id='border-right6'/>			
 													</div>
-													<div class='col-sm-1'>
-														<button type='submit' class='form-control btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret' name='tweeting'><i class='now-ui-icons ui-1_check'></i></submit>			
+													<div class='col-sm-2'>
+														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> Twittern</button>		
 													</div>													
 												</div>				
 											</form>	
@@ -128,9 +141,8 @@ echo "
                 </div>
 				<div class='col-md-12'>
                 <div class='description'>";
-				
-				
-				$sql = "SELECT username, msg FROM tweets";
+
+				$sql = "SELECT username, msg, liked, posted FROM tweets";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -140,20 +152,28 @@ echo "
 						<br>
 						<div class='card'>
 							<div class='category'>
-								<div class='img img-raised'>
-									<h5>
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6'>
-											<i class='now-ui-icons users_single-02' style='float: left;'><p style='float: right;'>" . $row["username"]. "</p></i>
-										</div>								
-									</h5>
+								<br>
+								<div class='col-sm-12'>
+									<span>
+										<h5>
+											<i class='now-ui-icons users_single-02'> " . $row["username"]. " - " . $row["posted"]. "</i>
+										</h5>								
+									</span>
+									<span>
+										<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+											<button class='btn btn-fab btn-icon btn-round' name='like_msg' style='float: right;' value='" . $row["liked"]. "'><i class='now-ui-icons ui-2_like'></i></button>
+										</form>
+									</span>
+									<span>
+										<h5 class='btn-fab btn-icon btn-round' style='float: right;'>" . $row["liked"]. "</h5>
+									</span>										
 								</div>
 							</div>
 							<br>
-							<br>
-							<div class='category'>
-								<div class='col-sm-12'>
+							<div class='col-md-12'>							
+								<span>
 									<h5>" . $row["msg"]. "</h5>
-								</div>
+								</span>
 							</div>
 						</div>";
 					}

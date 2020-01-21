@@ -11,6 +11,7 @@
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
 require_once("include/features.php");
+secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();

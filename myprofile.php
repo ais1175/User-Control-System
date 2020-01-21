@@ -13,17 +13,18 @@
 require_once("include/features.php");
 
 site_secure();
+secure_url();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['myprofilechange'])){
 	
 	$securecode = $row["id"];
 	$email 	= stripslashes($_POST['email']);	
-	$socialClub = stripslashes($_POST['socialClub']);
+	$socialclubname = stripslashes($_POST['socialclubname']);
+	$username = $socialclubname;
 	$password = stripslashes($_POST['password']);
 	$hashPassword = password_hash($password,PASSWORD_BCRYPT);
-	
-		
-	$sql = "UPDATE accounts SET email='".$email."', socialClub='".$socialClub."', password='".$hashPassword."' WHERE id = '".$_COOKIE["secure"]."'";
+
+	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_COOKIE["secure"]."'";
    
    if (mysqli_query($conn, $sql)) {
       site_myprofile_done();
@@ -81,7 +82,7 @@ echo "
                       </th>						  
                     </thead>
                     <tbody>";
-				$sql = "SELECT socialClub, password, email FROM accounts WHERE id = ".$_COOKIE["secure"]."";
+				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_COOKIE["secure"]."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -97,7 +98,7 @@ echo "
 										<i class='now-ui-icons users_single-02'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialClub' size='50' maxlength='60' class='form-control' value='" . $row["socialClub"]. "' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control' value='" . $row["socialclubname"]. "' required>
 							</div>	
                         </td>					  
                         <td>
@@ -123,7 +124,7 @@ echo "
                         </tr>
                       <tr>					  
 						<td>						
-							<button type='submit' name='submit' class='btn btn-primary btn-round'>
+							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
 								<i class='now-ui-icons ui-1_check'></i> Speichern
 							</button>
 							</submit>

@@ -12,7 +12,8 @@
 // ************************************************************************************//
 
 function site_secure() {
-	if(!isset($_SESSION['secure'])) {
+	if(!isset($_SESSION['secure']) || $_SESSION['secure_granted'] !== 'granted') {
+		secure_url();
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -39,12 +40,13 @@ function site_secure() {
         </div>
       </div>";
 		site_footer();
+		header("Location:login.php");
 		die();
 	}  
 }
 
 function site_userchanged_done() {
-
+secure_url();
 echo "
         <div class='content'>
          <div class='row'>
@@ -72,6 +74,7 @@ die();
 
 // Tweet System MSG done
 function site_tweetings_done() {
+secure_url();	
 site_header();
 site_content_logged();
 site_navi_logged();
@@ -87,7 +90,38 @@ echo "
               <div class='card-body'>			  
 				<div class='row'>			
 					<div class='col-sm-8'>
-						<b>Dein Tweet wurde erfokgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+						<b>Dein Tweet wurde erfolgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+					</div>				
+				</div>										
+              </div>
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>";
+site_footer();
+die();	  
+}
+
+// Tweet System LIKED done
+function site_tweetings_liked_done() {
+secure_url();	
+site_header();
+site_content_logged();
+site_navi_logged();
+echo "
+        <div class='content'>
+         <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | Tweet System</p>
+              </div>
+              <div class='card-body'>			  
+				<div class='row'>			
+					<div class='col-sm-8'>
+						<b>Dein Like in den Tweet wurde erfolgreich gesetzt!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
 					</div>				
 				</div>										
               </div>
@@ -143,6 +177,7 @@ function site_team_secure() {
 }
 
 function site_myprofile_done_error() {
+secure_url();	
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -175,6 +210,7 @@ die();
 }
 
 function site_myprofile_done() {
+secure_url();	
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -205,6 +241,7 @@ die();
 }
 
 function site_register_done() {
+secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -234,6 +271,7 @@ site_footer();
 }
 
 function site_login_password_none_correct() {
+secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -264,6 +302,7 @@ die();
 }
 
 function site_login_user_notfound() {
+secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -294,9 +333,13 @@ die();
 }
 
 function site_logout() {
+secure_url();	
 site_header();
 setCookie("PHPSESSID", "", 0x7fffffff,  "/");
 setCookie("secure", "", 0x7fffffff,  "/");
+
+session_unset();
+session_destroy();
 	
 if (ini_get("session.use_cookies")) {
 	$params = session_get_cookie_params();
@@ -305,8 +348,7 @@ if (ini_get("session.use_cookies")) {
 	);
 } 	
 	
-session_unset();
-session_destroy();
+
 site_navi_nologged();
 site_content_nologged();
 
@@ -337,18 +379,22 @@ die();
 }
 
 function site_header() {
+secure_url();	
 echo "
 <!DOCTYPE html>
 <html lang='en'>
-
 <head>
-  <meta charset='utf-8' />
-  <link rel='apple-touch-icon' sizes='76x76' href='themes/destiny-life/assets/img/apple-icon.png'>
-  <link rel='icon' type='image/png' href='themes/destiny-life/assets/img/favicon.png'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-  <title>
-    ".SITETITLE."
-  </title>";
+	<!-- ####################################################### -->
+	<!-- #   Powered by User Control Panel Version 1.1.        # -->
+	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
+	<!-- #   All rights reserved.                              # -->
+	<!-- ####################################################### -->
+	<meta charset='utf-8' />
+	<link rel='apple-touch-icon' sizes='76x76' href='themes/destiny-life/assets/img/apple-icon.png'>
+	<link rel='icon' type='image/png' href='themes/destiny-life/assets/img/favicon.png'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	<title>".SITETITLE."</title>";
+	
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	$securecode = $row["id"];
@@ -371,18 +417,15 @@ echo "
 		} 			
 		header("Location:dashboard.php");
 	}
-	
-  
 
 echo " 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
-  <link href='themes/destiny-life/assets/css/bootstrap.min.css' rel='stylesheet' />
-  <link href='themes/destiny-life/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
-  <link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
+	<link href='themes/destiny-life/assets/css/bootstrap.min.css' rel='stylesheet' />
+	<link href='themes/destiny-life/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
+	<link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
 </head>
-
 <body class=''>
   <div class='wrapper '>";   
 }

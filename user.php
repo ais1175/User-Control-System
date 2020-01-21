@@ -15,7 +15,7 @@ require_once("include/features.php");
 $cookie = $_COOKIE["username"]; 
 
 site_secure();
-
+secure_url();
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -70,7 +70,7 @@ echo "
                   <a href='#'>
                     <img class='avatar border-gray' src='themes/destiny-life/assets/img/mike.jpg' alt='...'>
                     <h5 class='title'>";
-						$sql = "SELECT username FROM accounts WHERE id = ".$_COOKIE["secure"]."";
+						$sql = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
 						$result = $conn->query($sql);
 
 						if ($result->num_rows > 0) {
@@ -84,20 +84,20 @@ echo "
                   </a>
                 </div>
                 <p class='description text-center'>";
-				$sql = "SELECT username, socialClub, email, isWhitelisted, isBanned, isTeam, createdAt FROM accounts WHERE id = ".$_COOKIE["secure"]."";
+				$sql = "SELECT username, socialclubname, email, banAces, betaAcess, adminLevel, FirstLogin FROM users WHERE id = ".$_COOKIE["secure"]."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "
-								Spieler Nummer: ".$_COOKIE["secure"]." <br> 
-								Social Club: " . $row["socialClub"]. " <br>
+								ID: ".$_COOKIE["secure"]." <br> 
+								Social Club: " . $row["socialclubname"]. " <br>
 								E-Mail: " . $row["email"]. "<br>
-								Banned: " . $row["isBanned"]. "<br>
-								Team Member: " . $row["isTeam"]. "<br>
-								Whitelisted: " . $row["isWhitelisted"]. "<br>
-								Registrierungsdatum: " . $row["createdAt"]. "";
+								Banned: " . $row["banAces"]. "<br>
+								Admin Level: " . $row["adminLevel"]. "<br>
+								Whitelisted: " . $row["betaAcess"]. "<br>
+								Erster Login: " . $row["FirstLogin"]. "";
 					}
 				}
 							

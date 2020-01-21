@@ -12,6 +12,8 @@
 // ************************************************************************************// 
 require_once("include/features.php");
 
+secure_url();
+
 if(isset($_POST['submit'])){
 	
 	$username = trim($_POST['username']);
@@ -22,7 +24,7 @@ if(isset($_POST['submit'])){
 	
 	session_start();
 	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from accounts where username = '".$username."'";
+	$sql = "select * from users where username = '".$username."'";
 	$rs = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($rs);
 	
@@ -30,20 +32,14 @@ if(isset($_POST['submit'])){
 		$row = mysqli_fetch_assoc($rs);
 		if(password_verify($password,$row['password'])){
 			$_SESSION['secure'] = $securecode;
+			$_SESSION['secure_granted'] = "granted";
 			$expires = time()+2592000;
 			$securecode = $row["id"];
 			setcookie("secure", $securecode, $expires,  "/");
-			$timestamp = date('Y-m-d H:i:s');
-			// Get the client ip address
-			$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-			
-			$sql2 = "UPDATE characters SET accountId = ".$row["id"]." WHERE id = ".$_COOKIE["secure"]."";
-			$result2 = mysqli_query($conn, $sql2);
-			$sql2xz = "UPDATE accounts SET ip = '".$ipaddress."' WHERE id = '".$_COOKIE["secure"]."'";
-			$result2x = mysqli_query($conn, $sql2xz);
+
 			if($result)
 			{
-				//
+				// Platzhalter: redir to dashboard.php
 			}
 			header("Location:dashboard.php");
 		}

@@ -15,7 +15,7 @@ require_once("include/features.php");
 $cookie = $_COOKIE["username"]; 
 
 site_secure();
-
+secure_url();
 site_header();
 site_navi_logged();
 site_content_logged();
