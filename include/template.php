@@ -46,8 +46,6 @@ function site_secure() {
 }
 
 function site_secure_staff_check() {
-	var_dump($_SESSION);
-	
 	if(intval($_SESSION['secure_staff']) < 5) {
 		secure_url();
 		site_header();
@@ -82,7 +80,6 @@ function site_secure_staff_check() {
 
 
 function site_secure_staff() {
-	// var_dump($_SESSION);
 	if(intval($_SESSION['secure_staff']) >= 5) {
 		secure_url();
 		echo "
