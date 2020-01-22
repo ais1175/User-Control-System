@@ -14,15 +14,14 @@ require_once("include/features.php");
 
 secure_url();
 
-if(isset($_POST['submit'])){
-	
+if(isset($_POST['submit'])){	
+	session_start();
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
+	$staffmember = $row["adminLevel"];
 	$securecode = $row["id"];
 	// Get the client ip address
-	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-	
-	session_start();
+	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
 	$_SESSION["secure"] = sitehash($securecode);	
 	$sql = "select * from users where username = '".$username."'";
 	$rs = mysqli_query($conn,$sql);
@@ -33,10 +32,11 @@ if(isset($_POST['submit'])){
 		if(password_verify($password,$row['password'])){
 			$_SESSION['secure'] = $securecode;
 			$_SESSION['secure_granted'] = "granted";
+			$_SESSION['secure_staff'] = $row["adminLevel"];
 			$expires = time()+2592000;
 			$securecode = $row["id"];
+			$staffmember = $row["adminLevel"];
 			setcookie("secure", $securecode, $expires,  "/");
-
 			if($result)
 			{
 				// Platzhalter: redir to dashboard.php

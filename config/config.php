@@ -31,6 +31,12 @@ define("USERPROFILE","User Profil");
 define("USERPROFILECHANGE","User Profil bearbeiten");
 
 // ************************************************************************************//
+// * Default Language Section - Staff Member 
+// ************************************************************************************//
+define("STAFF_USERCAHNEGED","Control System - Spieler bearbeiten");
+define("STAFF_USERCONTROL","Control System - Spielerliste");
+
+// ************************************************************************************//
 // * Default Language Section - Footer
 // ************************************************************************************//
 define("DISCORD","https://discord.gg/xxxxxx");

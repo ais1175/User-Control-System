@@ -15,6 +15,8 @@ require_once("include/features.php");
 site_secure();
 secure_url();
 
+site_secure_staff_check();
+
 site_header();
 site_navi_logged();
 site_content_logged();

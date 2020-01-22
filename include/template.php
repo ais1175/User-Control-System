@@ -45,6 +45,62 @@ function site_secure() {
 	}  
 }
 
+function site_secure_staff_check() {
+	var_dump($_SESSION);
+	
+	if(intval($_SESSION['secure_staff']) < 5) {
+		secure_url();
+		site_header();
+		site_navi_nologged();
+		site_content_nologged();
+
+		echo "
+        <div class='content'>
+         <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | Secure System</p>
+              </div>
+              <div class='card-body'>			  
+				<div class='row'>			
+					<div class='col-sm-8'>
+						<b>Du bist kein Supporter!</b>				
+					</div>				
+				</div>										
+              </div>
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>";
+		site_footer();
+		die();		
+   }
+}   
+
+
+function site_secure_staff() {
+	// var_dump($_SESSION);
+	if(intval($_SESSION['secure_staff']) >= 5) {
+		secure_url();
+		echo "
+          <li>
+            <a href='./staff_userchanged.php'>
+              <i class='now-ui-icons ui-2_settings-90'></i>
+              <p>".STAFF_USERCAHNEGED."</p>
+            </a>
+          </li>	
+          <li>
+            <a href='./staff_usercontrol.php'>
+              <i class='now-ui-icons ui-2_settings-90'></i>
+              <p>".STAFF_USERCONTROL."</p>
+            </a>
+          </li>";
+	} 
+}
+
 function site_userchanged_done() {
 secure_url();
 echo "
@@ -398,10 +454,11 @@ echo "
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	$securecode = $row["id"];
+	$staffmember = $row["adminLevel"];
 	
 	session_start();
 	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from accounts where username = :username";
+	$sql = "select * from accounts where username = :username and adminLevel = :adminLevel";
 	$rs = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($rs);
 	
@@ -410,9 +467,12 @@ echo "
 		$_SESSION['secure'] = $securecode;
 		$expires = time()+2592000;
 		$securecode = $row["id"];
+		$staffmember = $row["adminLevel"];
+		$_SESSION['secure_staff'] = $staffmember;
 		setcookie("secure", $securecode, $expires,  "/");
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
+			$_SESSION['secure_staff'] = $staffmember;
 			setCookie("secure",$row["id"],time()+2592000);
 		} 			
 		header("Location:dashboard.php");
@@ -463,7 +523,9 @@ echo "
               <i class='now-ui-icons ui-2_settings-90'></i>
               <p>".USERPROFILECHANGE."</p>
             </a>
-          </li>	  
+          </li>";
+			site_secure_staff();
+echo "		  
         </ul>
       </div>
     </div>";   

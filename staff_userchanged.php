@@ -15,6 +15,8 @@ require_once("include/features.php");
 site_secure();
 secure_url();
 
+site_secure_staff_check();
+
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -78,14 +80,14 @@ echo "
                     </thead>
                     <tbody>";
 
-			$sql = "SELECT id, username, email, socialclubname, betaAcess from accounts GROUP BY ID";
+			$sql = "SELECT id, username, email, socialclubname, betaAcess from users";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
 						// output data of each row
 				while($row = $result->fetch_assoc()) {
 					echo "
-					<form method='post' action='".$_SERVER['PHP_SELF']."?id=" . $row["id"]. "' enctype='multipart/form-data'>
+					<form method='post' action='".$_SERVER['PHP_SELF']."' enctype='multipart/form-data'>
                       <tr>
                         <td>
                           <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='id' size='5' maxlength='5' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["id"]. "' required>
