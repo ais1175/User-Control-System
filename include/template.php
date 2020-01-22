@@ -421,13 +421,13 @@ echo "
 echo " 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />
-	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous' />
 	<link href='themes/destiny-life/assets/css/bootstrap.min.css' rel='stylesheet' />
 	<link href='themes/destiny-life/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
 	<link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
 </head>
 <body class=''>
-  <div class='wrapper '>";   
+  <div class='wrapper'>";   
 }
 
 function site_navi_logged() {
@@ -499,7 +499,6 @@ echo "
 function site_content_nologged() {
 echo "
     <div class='main-panel' id='main-panel'>
-      <!-- Navbar -->
       <nav class='navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute'>
         <div class='container-fluid'>
           <div class='navbar-wrapper'>
@@ -522,16 +521,12 @@ echo "
           </div>
         </div>
       </nav>
-      <!-- End Navbar -->
-      <div class='panel-header panel-header-sm'>
-
-      </div>";   
+      <div class='panel-header panel-header-sm'></div>";   
 }
 
 function site_content_logged() {
 echo "
     <div class='main-panel' id='main-panel'>
-      <!-- Navbar -->
       <nav class='navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute'>
         <div class='container-fluid'>
           <div class='navbar-wrapper'>
@@ -559,10 +554,7 @@ echo "
           </div>
         </div>
       </nav>
-      <!-- End Navbar -->
-      <div class='panel-header panel-header-sm'>
-
-      </div>";     
+      <div class='panel-header panel-header-sm'></div>";     
 }
 
 function site_footer() {
