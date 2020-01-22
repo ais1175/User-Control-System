@@ -13,7 +13,6 @@
 
 function site_secure() {
 	if(!isset($_SESSION['secure']) || $_SESSION['secure_granted'] !== 'granted') {
-		secure_url();
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -30,7 +29,9 @@ function site_secure() {
               <div class='card-body'>			  
 				<div class='row'>			
 					<div class='col-sm-8'>
-						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>
+						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>";
+						var_dump($_SESSION);
+		echo "				
 					</div>				
 				</div>										
               </div>
@@ -47,7 +48,6 @@ function site_secure() {
 
 function site_secure_staff_check() {
 	if(intval($_SESSION['secure_staff']) < 5) {
-		secure_url();
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -99,7 +99,6 @@ function site_secure_staff() {
 }
 
 function site_userchanged_done() {
-secure_url();
 echo "
         <div class='content'>
          <div class='row'>
@@ -126,8 +125,7 @@ die();
 }
 
 // Tweet System MSG done
-function site_tweetings_done() {
-secure_url();	
+function site_tweetings_done() {	
 site_header();
 site_content_logged();
 site_navi_logged();
@@ -157,8 +155,7 @@ die();
 }
 
 // Tweet System LIKED done
-function site_tweetings_liked_done() {
-secure_url();	
+function site_tweetings_liked_done() {	
 site_header();
 site_content_logged();
 site_navi_logged();
@@ -229,8 +226,7 @@ function site_team_secure() {
 	}
 }
 
-function site_myprofile_done_error() {
-secure_url();	
+function site_myprofile_done_error() {	
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -262,8 +258,7 @@ site_footer();
 die();
 }
 
-function site_myprofile_done() {
-secure_url();	
+function site_myprofile_done() {	
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -294,7 +289,6 @@ die();
 }
 
 function site_register_done() {
-secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -324,7 +318,6 @@ site_footer();
 }
 
 function site_login_password_none_correct() {
-secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -355,7 +348,6 @@ die();
 }
 
 function site_login_user_notfound() {
-secure_url();
 site_header();
 site_navi_nologged();
 site_content_nologged();
@@ -385,11 +377,11 @@ site_footer();
 die();
 }
 
-function site_logout() {
-secure_url();	
+function site_logout() {	
 site_header();
 setCookie("PHPSESSID", "", 0x7fffffff,  "/");
 setCookie("secure", "", 0x7fffffff,  "/");
+setCookie("secure_staff", "", 0x7fffffff,  "/");
 
 session_unset();
 session_destroy();
@@ -400,7 +392,6 @@ if (ini_get("session.use_cookies")) {
        $params["domain"], $params["secure"], $params["httponly"]
 	);
 } 	
-	
 
 site_navi_nologged();
 site_content_nologged();
@@ -451,11 +442,10 @@ echo "
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	$securecode = $row["id"];
-	$staffmember = $row["adminLevel"];
 	
 	session_start();
-	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from accounts where username = :username and adminLevel = :adminLevel";
+	$_SESSION["secure"] = sitehash($securecode);
+	$sql = "select * from accounts where username = '".$username."'";
 	$rs = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($rs);
 	
@@ -465,12 +455,16 @@ echo "
 		$expires = time()+2592000;
 		$securecode = $row["id"];
 		$staffmember = $row["adminLevel"];
-		$_SESSION['secure_staff'] = $staffmember;
+		$_SESSION['secure_staff'] = $row["adminLevel"];
+		$_SESSION['secure_granted'] = "granted";
 		setcookie("secure", $securecode, $expires,  "/");
+		setcookie("secure_staff", $row["adminLevel"], $expires,  "/");
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
-			$_SESSION['secure_staff'] = $staffmember;
+			$_SESSION['secure_staff'] = $row["adminLevel"];
+			$_SESSION['secure_granted'] = "granted";
 			setCookie("secure",$row["id"],time()+2592000);
+			setcookie("secure_staff", $staffmember, $expires,  "/");
 		} 			
 		header("Location:dashboard.php");
 	}

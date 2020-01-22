@@ -18,7 +18,6 @@ if(isset($_POST['submit'])){
 	session_start();
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
-	$staffmember = $row["adminLevel"];
 	$securecode = $row["id"];
 	// Get the client ip address
 	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
@@ -35,8 +34,8 @@ if(isset($_POST['submit'])){
 			$_SESSION['secure_staff'] = $row["adminLevel"];
 			$expires = time()+2592000;
 			$securecode = $row["id"];
-			$staffmember = $row["adminLevel"];
 			setcookie("secure", $securecode, $expires,  "/");
+			setcookie("secure_staff", $staffmember, $expires,  "/");
 			if($result)
 			{
 				// Platzhalter: redir to dashboard.php
