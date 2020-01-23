@@ -23,12 +23,15 @@ define('MYSQL_DATABASE', 'xxx');
 // ************************************************************************************//
 // * Default Language Section - Main 
 // ************************************************************************************//
-define("SITETITLE","DESTINY-LIFE | UCP");
-define("PROJECTNAME","Destiny-Life");
+define("SITETITLE","HIGH-LIFE | UCP");
+define("SITESTAFF","Staff Tools");
+define("PROJECTNAME","High-Life");
 define("DASHBOARD","Dashboard");
 define("RULES","Regelwerk");
 define("USERPROFILE","User Profil");
 define("USERPROFILECHANGE","User Profil bearbeiten");
+define("USERSUPPORT","Support");
+
 
 // ************************************************************************************//
 // * Default Language Section - Staff Member 
