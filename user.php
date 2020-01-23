@@ -70,7 +70,7 @@ echo "
                   <a href='#'>
                     <img class='avatar border-gray' src='themes/destiny-life/assets/img/mike.jpg' alt='...'>
                     <h5 class='title'>";
-						$sql = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
+						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
 						$result = $conn->query($sql);
 
 						if ($result->num_rows > 0) {
@@ -84,14 +84,14 @@ echo "
                   </a>
                 </div>
                 <p class='description text-center'>";
-				$sql = "SELECT username, socialclubname, email, banAces, betaAcess, adminLevel, FirstLogin FROM users WHERE id = ".$_COOKIE["secure"]."";
+				$sql = "SELECT username, socialclubname, email, banAces, betaAcess, adminLevel, FirstLogin FROM users WHERE id = ".$_SESSION['secure_first']."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "
-								ID: ".$_COOKIE["secure"]." <br> 
+								ID: ".$_SESSION['secure_first']." <br> 
 								Social Club: " . $row["socialclubname"]. " <br>
 								E-Mail: " . $row["email"]. "<br>
 								Banned: " . $row["banAces"]. "<br>

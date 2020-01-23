@@ -24,7 +24,7 @@ if(isset($_POST['myprofilechange'])){
 	$password = stripslashes($_POST['password']);
 	$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
-	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_COOKIE["secure"]."'";
+	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
    
    if (mysqli_query($conn, $sql)) {
       site_myprofile_done();
@@ -82,7 +82,7 @@ echo "
                       </th>						  
                     </thead>
                     <tbody>";
-				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_COOKIE["secure"]."";
+				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_SESSION['secure_first']."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {

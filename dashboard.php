@@ -68,7 +68,7 @@ echo "
 					<b>Willkommen ";
 					$id = 0 + $_COOKIE["secure"];
 					$securecode = $row["id"];
-					$sql = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
+					$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {
@@ -76,7 +76,7 @@ echo "
 						while($row = $result->fetch_assoc()) {
 							echo"".$row["username"]."";
 						}
-					}		
+					}
 echo "						
 					 im Dashboard!
 				</div>				
@@ -107,7 +107,7 @@ echo "
 														</div>";
 												$id = 0 + $_COOKIE["secure"];
 												$securecode = $row["id"];
-												$sqlx = "SELECT username FROM users WHERE id = ".$_COOKIE["secure"]."";
+												$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
 												$resultx = $conn->query($sqlx);
 												if ($resultx->num_rows > 0) {
 													// output data of each row

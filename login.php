@@ -16,8 +16,8 @@ secure_url();
 
 if(isset($_POST['submit'])){	
 	session_start();
-	$username = trim($_POST['username']);
-	$password = trim($_POST['password']);
+	$username = htmlentities(trim($_POST['username']));
+	$password = htmlentities(trim($_POST['password']));
 	$securecode = $row["id"];
 	// Get the client ip address
 	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
@@ -29,13 +29,9 @@ if(isset($_POST['submit'])){
 	if($numRows  == 1){
 		$row = mysqli_fetch_assoc($rs);
 		if(password_verify($password,$row['password'])){
-			$_SESSION['secure'] = $securecode;
+			$_SESSION['secure_first'] = $row["id"];
 			$_SESSION['secure_granted'] = "granted";
 			$_SESSION['secure_staff'] = $row["adminLevel"];
-			$expires = time()+2592000;
-			$securecode = $row["id"];
-			setcookie("secure", $securecode, $expires,  "/");
-			setcookie("secure_staff", $staffmember, $expires,  "/");
 			if($result)
 			{
 				// Platzhalter: redir to dashboard.php

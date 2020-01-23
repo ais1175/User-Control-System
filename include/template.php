@@ -12,7 +12,7 @@
 // ************************************************************************************//
 
 function site_secure() {
-	if(!isset($_SESSION['secure']) || $_SESSION['secure_granted'] !== 'granted') {
+	if(!isset($_SESSION['secure_first']) || $_SESSION['secure_granted'] !== 'granted') {
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -29,9 +29,7 @@ function site_secure() {
               <div class='card-body'>			  
 				<div class='row'>			
 					<div class='col-sm-8'>
-						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>";
-						var_dump($_SESSION);
-		echo "				
+						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>				
 					</div>				
 				</div>										
               </div>
@@ -82,7 +80,14 @@ function site_secure_staff_check() {
 function site_secure_staff() {
 	if(intval($_SESSION['secure_staff']) >= 5) {
 		secure_url();
-		echo "
+    echo "
+      <div class='logo'>
+        <a href='dashboard.php' class='simple-text logo-normal'>
+         <i class='now-ui-icons business_badge'></i> ".SITESTAFF."
+        </a>
+      </div>
+      <div class='sidebar-wrapper' id='sidebar-wrapper'>
+        <ul class='nav'>      
           <li>
             <a href='./staff_userchanged.php'>
               <i class='now-ui-icons ui-2_settings-90'></i>
@@ -91,10 +96,12 @@ function site_secure_staff() {
           </li>	
           <li>
             <a href='./staff_usercontrol.php'>
-              <i class='now-ui-icons ui-2_settings-90'></i>
+              <i class='now-ui-icons design_bullet-list-67'></i>
               <p>".STAFF_USERCONTROL."</p>
             </a>
-          </li>";
+          </li>
+        </ul>          
+      </div>";
 	} 
 }
 
@@ -112,6 +119,32 @@ echo "
 				<div class='row'>			
 					<div class='col-sm-8'>
 						<b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>
+					</div>				
+				</div>										
+              </div>
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>";
+site_footer();
+die();	  
+}
+
+function site_support_posted_done() {
+echo "
+        <div class='content'>
+         <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | Support - Dein Ticket</p>
+              </div>
+              <div class='card-body'>			  
+				<div class='row'>			
+					<div class='col-sm-8'>
+						<b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>
 					</div>				
 				</div>										
               </div>
@@ -182,48 +215,6 @@ echo "
       </div>";
 site_footer();
 die();	  
-}
-
-
-// This function is not done
-function site_team_secure() {	
-	$username    = htmlentities(trim($row["username"]));
-	$userid      = intval($row["id"]);
-	// $isTeam    = $row["isTeam"];
-	
-	$isTeam = isset($_GET['isTeam']) ? $_GET['isTeam'] : 'N';
-
-	$sql = "SELECT * FROM accounts WHERE isTeam = 'Y'";
-	$result = $conn->query($sql);
-
-	if($_GET['isTeam']=="N") 
-	{
-	site_header();
-	site_navi_logged();
-	site_content_logged();				
-	echo "
-        <div class='content'>
-         <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Secure System</p>
-              </div>
-              <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>
-					</div>				
-				</div>										
-              </div>
-            </div>
-			</form>
-          </div>
-        </div>
-      </div>";
-	site_footer();	  
-	}
 }
 
 function site_myprofile_done_error() {	
@@ -380,8 +371,6 @@ die();
 function site_logout() {	
 site_header();
 setCookie("PHPSESSID", "", 0x7fffffff,  "/");
-setCookie("secure", "", 0x7fffffff,  "/");
-setCookie("secure_staff", "", 0x7fffffff,  "/");
 
 session_unset();
 session_destroy();
@@ -450,21 +439,16 @@ echo "
 	$numRows = mysqli_num_rows($rs);
 	
 	if($numRows  > 0){
-		$row = mysqli_fetch_assoc($rs);
-		$_SESSION['secure'] = $securecode;
-		$expires = time()+2592000;
-		$securecode = $row["id"];
-		$staffmember = $row["adminLevel"];
+    $row = mysqli_fetch_assoc($rs);
+    $expires = time()+2592000;
+		$_SESSION['secure_first'] = $row["id"];
 		$_SESSION['secure_staff'] = $row["adminLevel"];
 		$_SESSION['secure_granted'] = "granted";
-		setcookie("secure", $securecode, $expires,  "/");
-		setcookie("secure_staff", $row["adminLevel"], $expires,  "/");
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
+      $_SESSION['secure_first'] = $row["id"];
 			$_SESSION['secure_staff'] = $row["adminLevel"];
 			$_SESSION['secure_granted'] = "granted";
-			setCookie("secure",$row["id"],time()+2592000);
-			setcookie("secure_staff", $staffmember, $expires,  "/");
 		} 			
 		header("Location:dashboard.php");
 	}
@@ -514,12 +498,18 @@ echo "
               <i class='now-ui-icons ui-2_settings-90'></i>
               <p>".USERPROFILECHANGE."</p>
             </a>
-          </li>";
-			site_secure_staff();
-echo "		  
-        </ul>
-      </div>
-    </div>";   
+          </li>
+          <li>
+            <a href='./support.php'>
+              <i class='now-ui-icons business_bulb-63'></i>
+              <p>".USERSUPPORT."</p>
+            </a>
+          </li>		  
+        </ul>";
+        site_secure_staff();
+echo "
+      </div>      
+    </div>"; 
 }
 
 function site_navi_nologged() {
