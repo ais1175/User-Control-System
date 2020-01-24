@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.1
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -306,6 +306,64 @@ echo "
       </div>";
 site_footer();
 }
+
+function site_login_notfound_done() {
+  site_header();
+  site_navi_nologged();
+  site_content_nologged();
+  
+  echo "
+          <div class='content'>
+           <div class='row'>
+            <div class='col-md-12'>
+              <div class='card'>
+                <div class='card-header'>
+                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <p class='category'>User Control Panel | Secure System</p>
+                </div>
+                <div class='card-body'>			  
+                  <div class='row'>			
+                    <div class='col-sm-8'>
+                      <b>Bitte füllen Sie sowohl den Benutzernamen als auch das Passwortfeld aus!</b>
+                    </div>				
+                  </div>										
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+  site_footer();
+  die();
+  }
+
+  function site_register_notfound_done() {
+    site_header();
+    site_navi_nologged();
+    site_content_nologged();
+    
+    echo "
+            <div class='content'>
+             <div class='row'>
+              <div class='col-md-12'>
+                <div class='card'>
+                  <div class='card-header'>
+                    <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                    <p class='category'>User Control Panel | Secure System</p>
+                  </div>
+                  <div class='card-body'>			  
+                    <div class='row'>			
+                      <div class='col-sm-8'>
+                        <b>Bitte füllen Sie sowohl den Benutzernamen als auch das Passwortfeld aus!</b>
+                      </div>				
+                    </div>										
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>";
+    site_footer();
+    die();
+    }
 
 function site_login_password_none_correct() {
 site_header();

@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.1
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -15,13 +15,17 @@ require_once("include/features.php");
 secure_url();
 
 if(isset($_POST['register'])){
-	
+	if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['socialclubname'])){
+		site_register_notfound_done();
+	}
+	else
+	{	
 		$username = stripslashes(trim($_POST['username']));
 		$email 	= stripslashes(trim($_POST['email']));	
 		$socialclubname = stripslashes(trim($_POST['socialclubname']));
-		$password = stripslashes(trim($_POST['password']));
-		$hashPassword = password_hash(trim($password,PASSWORD_BCRYPT));
-		
+		$password = stripslashes($_POST['password']);
+		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
+	
 		$sql = "insert into users (username, email, password, socialclubname) value('".$username."', '".$email."', '".$hashPassword."','".$socialclubname."')";
 		$result = mysqli_query($conn, $sql);
 		if($result)
@@ -29,6 +33,7 @@ if(isset($_POST['register'])){
 			site_register_done();
 		}
 		$conn->close();
+	}	
 }
 
 site_header();
@@ -59,7 +64,7 @@ echo "
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> E-Mail *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='E-Mail *' value='' maxlength='30' id='border-right6'/>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='E-Mail *' value='' maxlength='45' id='border-right6'/>
 				</div>
 				<div class='form-group col-md-4'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> Passwort *</label>

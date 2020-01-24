@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.1
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -16,22 +16,27 @@ site_secure();
 secure_url();
 
 if(isset($_POST['myprofilechange'])){
-	
-	$securecode = $row["id"];
-	$email 	= stripslashes($_POST['email']);	
-	$socialclubname = stripslashes($_POST['socialclubname']);
-	$username = $socialclubname;
-	$password = stripslashes($_POST['password']);
-	$hashPassword = password_hash($password,PASSWORD_BCRYPT);
+	if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])){
+		site_login_notfound_done();
+	}
+	else
+	{	
+		$securecode = $row["id"];
+		$email 	= stripslashes($_POST['email']);	
+		$socialclubname = stripslashes($_POST['socialclubname']);
+		$username = $socialclubname;
+		$password = stripslashes($_POST['password']);
+		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
-	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
+		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
    
-   if (mysqli_query($conn, $sql)) {
-      site_myprofile_done();
-   } else {
-      site_myprofile_done_error();
-   }
-   mysqli_close($conn);	
+   		if (mysqli_query($conn, $sql)) {
+      		site_myprofile_done();
+   		} else {
+      		site_myprofile_done_error();
+   		}
+		mysqli_close($conn);
+	}	
 }
 	
 site_header();

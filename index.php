@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.1
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -26,9 +26,9 @@ echo "
                 <p class='category'>User Control Panel</p>
               </div>
               <div class='card-body'>
-				<div class='category'>
-					Wir bringen das Roleplay auf ein neues Level, mit unserer Realistischen Handhabung, sind uns keine Grenzen gesetzt!
-				</div>	
+				        <div class='category'>
+					        Wir bringen das Roleplay auf ein neues Level, mit unserer Realistischen Handhabung, sind uns keine Grenzen gesetzt!
+				        </div>	
               </div>
             </div>
           </div>

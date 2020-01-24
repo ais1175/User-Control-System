@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.1
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -14,37 +14,42 @@ require_once("include/features.php");
 
 secure_url();
 
-if(isset($_POST['submit'])){	
-	session_start();
-	$username = htmlentities(trim($_POST['username']));
-	$password = htmlentities(trim($_POST['password']));
-	$securecode = $row["id"];
-	// Get the client ip address
-	$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
-	$_SESSION["secure"] = sitehash($securecode);	
-	$sql = "select * from users where username = '".$username."'";
-	$rs = mysqli_query($conn,$sql);
-	$numRows = mysqli_num_rows($rs);
+if(isset($_POST['submit'])){
+	if(empty($_POST['username']) || empty($_POST['password'])){
+		site_login_notfound_done();
+		}
+		else
+		{	
+		session_start();
+		$username = htmlentities(trim($_POST['username']));
+		$password = htmlentities(trim($_POST['password']));
+		$securecode = $row["id"];
+		// Get the client ip address
+		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
+		$_SESSION["secure"] = sitehash($securecode);	
+		$sql = "select * from users where username = '".$username."'";
+		$rs = mysqli_query($conn,$sql);
+		$numRows = mysqli_num_rows($rs);
 	
-	if($numRows  == 1){
-		$row = mysqli_fetch_assoc($rs);
-		if(password_verify($password,$row['password'])){
-			$_SESSION['secure_first'] = $row["id"];
-			$_SESSION['secure_granted'] = "granted";
-			$_SESSION['secure_staff'] = $row["adminLevel"];
-			if($result)
-			{
+		if($numRows  == 1){
+			$row = mysqli_fetch_assoc($rs);
+			if(password_verify($password,$row['password'])){
+				$_SESSION['secure_first'] = $row["id"];
+				$_SESSION['secure_granted'] = "granted";
+				$_SESSION['secure_staff'] = $row["adminLevel"];
+				if($result)
+				{
 				// Platzhalter: redir to dashboard.php
+				}
+				header("Location:dashboard.php");
+			}else{
+				site_login_password_none_correct();
 			}
-			header("Location:dashboard.php");
+		}else{
+			site_login_user_notfound();
 		}
-		else{
-			site_login_password_none_correct();
-		}
-	}
-	else{
-		site_login_user_notfound();
-	}
+		mysqli_close($conn);
+	}	
 }
 
 site_header();
