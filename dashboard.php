@@ -30,9 +30,18 @@ if(isset($_POST['tweeting'])){
 		$result = mysqli_query($conn, $sql);
 		if($result)
 		{
-			site_tweetings_done();
+		echo "
+		<div class='alert alert-info alert-with-icon' data-notify='container'>
+			<button type='button' aria-hidden='true' class='close'>
+				<i class='now-ui-icons ui-1_simple-remove'></i>
+			</button>
+			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
+			<span data-notify='message'><b>Dein Tweet wurde abgeschickt!</b></span>
+		</div>";
 		}
 		$conn->close();
+		header("Location:dashboard.php");
+		die();
 }
 
 if(isset($_POST['like_msg'])){
@@ -47,6 +56,25 @@ if(isset($_POST['like_msg'])){
 			site_tweetings_liked_done();
 		}
 		$conn->close();
+}
+
+if(isset($_POST['tweeting_del'])){
+	$sql3 = "DELETE FROM tweets";
+	$result3 = mysqli_query($conn, $sql3);
+	if($result3)
+	{
+		echo "
+		<div class='alert alert-info alert-with-icon' data-notify='container'>
+			<button type='button' aria-hidden='true' class='close'>
+				<i class='now-ui-icons ui-1_simple-remove'></i>
+			</button>
+			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
+			<span data-notify='message'><b>Du hast alle Tweets gelöscht</b></span>
+		</div>";
+	}
+	$conn->close();
+	header("Location:dashboard.php");
+	die();
 }
 
 site_header();
@@ -113,24 +141,34 @@ echo "
 													// output data of each row
 													while($row = $resultx->fetch_assoc()) {
 												echo"
-														<div class='category'>
+														<div class='category' style='float:left;'>
 															".$row["username"]."
-														</div>
+														</div>		
 													</div>
 													<div class='col-sm-2' style='display:none;'>
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='' value='' maxlength='10' id='border-right6'/>			
 													</div>";
 													}
 												}		
-													echo "
-													<div class='col-sm-9'>
+												echo "
+													<div class='col-sm-8'>
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='Was gibt es Neues ?' value='' maxlength='220' id='border-right6'/>			
 													</div>
 													<div class='col-sm-2'>
 														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> Twittern</button>		
-													</div>													
+													</div>
+												</form>";
+													
+											if(intval($_SESSION['secure_staff']) >= 7) {
+												echo "
+													<div class='col-sm-1'>
+														<form action='".$_SERVER['PHP_SELF']."?=tweeting_del' method='post' enctype='multipart/form-data'>
+															<button class='form-control btn-round btn-icon border-gray' name='tweeting_del' style='float: right;'><i class='now-ui-icons ui-1_simple-remove'></i></button>
+														</form>
+													</div>";
+											}
+											echo "		
 												</div>				
-											</form>	
 										</div>
 									</div>
 								</div>
@@ -140,10 +178,10 @@ echo "
 					</h5>
                   </a>
 				  </div>
-                </div>
+				</div>
 				<div class='col-md-12'>
-                <div class='description'>";
-
+				<div class='description'>";
+				
 				$sql = "SELECT username, msg, liked, posted FROM tweets";
 				$result = $conn->query($sql);
 
@@ -154,13 +192,12 @@ echo "
 						<br>
 						<div class='card'>
 							<div class='category'>
-								<br>
 								<div class='col-sm-12'>
 									<span>
-										<h5>
+										<h5 style=float:left>
 											<i class='now-ui-icons users_single-02'> " . $row["username"]. " - " . $row["posted"]. "</i>
-										</h5>								
-									</span>
+										</h5>												
+									</span>														
 									<span>
 										<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
 											<button class='btn btn-fab btn-icon btn-round' name='like_msg' style='float: right;'><i class='now-ui-icons ui-2_like'></i></button>
@@ -172,7 +209,7 @@ echo "
 								</div>
 							</div>
 							<br>
-							<div class='col-md-12'>							
+							<div class='col-md-12' style='float: left;'>							
 								<span>
 									<h5>" . $row["msg"]. "</h5>
 								</span>

@@ -69,7 +69,6 @@ function secure_url() {
   {
     $cremotead = $_SERVER['REMOTE_ADDR'];
     $cuseragent = $_SERVER['HTTP_USER_AGENT'];
-    write_log("ctracker", "Attack detected! $cremotead - $cuseragent");
     die( "Attack detected! <br /><br /><b>Dieser Angriff wurde erkannt und blockiert:</b><br />$cremotead - $cuseragent" );
   }
 }

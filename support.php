@@ -23,6 +23,45 @@ site_header();
 site_navi_logged();
 site_content_logged();
 
+if(isset($_POST['posted_del'])){
+	$sql3 = "DELETE FROM support";
+	$result3 = mysqli_query($conn, $sql3);
+	if($result3)
+	{
+		echo "
+		<div class='content'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | Dashboard</p>
+              </div>
+              <div class='card-body'>		  
+			<div class='row'>			
+				<div class='col-sm-12'>		
+					<div class='alert alert-info alert-with-icon' data-notify='container'>
+						<button type='button' aria-hidden='true' class='close'>
+							<i class='now-ui-icons ui-1_simple-remove'></i>
+						</button>
+						<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
+						<span data-notify='message'><b>Du hast alle Support Tickets gelöscht</b></span>
+					</div>
+					<br>
+					<b>Gehe nun zurück zu den <a href='support.php'>Support Tickets</a>!</b>	
+				</div>				
+			</div>										
+		  </div>
+		</div>
+		</div>
+		</div>
+		</div>";
+	}
+	site_footer();
+	$conn->close();
+	die();
+}
+
 if ($support == "addticket") {
 // } 
 	if(isset($_POST['posted_sup'])){
@@ -45,7 +84,7 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei <? echo PROJECTNAME; ?>!</h5>
+                <h5 class='title'>Willkommen bei <?php echo PROJECTNAME; ?>!</h5>
                 <p class='category'>User Control Panel | Support System</p>
               </div>
 			  <div class='card-body'>
@@ -147,7 +186,7 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei <?=PROJECTNAME?>!</h5>
+                <h5 class='title'>Willkommen bei <?php echo PROJECTNAME; ?>!</h5>
                 <p class='category'>User Control Panel | Support</p>
               </div>
               <div class='card-body'>		  
@@ -195,7 +234,19 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h4 class='card-title'> Support Control System - Ticket Liste</h4>
+                <h4 class='card-title' style='float: left;'> Support Control System - Ticket Liste</h4>
+					<?php
+						if(intval($_SESSION['secure_staff']) >= 10) {
+					?>
+						<h4 style='float: right;'>		
+							<form action='<?php echo $_SERVER['PHP_SELF'];?>?=posted_del' method='post' enctype='multipart/form-data'>
+								<button class='form-control btn-round btn-icon border-gray' name='posted_del'><i class='now-ui-icons ui-1_simple-remove'></i> Ticket löschen</button>
+							</form>
+						</h4>
+					<?php	
+						}
+					?>	 
+				
               </div>
               <div class='card-body'>
                 <div class='table-responsive'>

@@ -74,8 +74,7 @@ function site_secure_staff_check() {
 		site_footer();
 		die();		
    }
-}   
-
+}
 
 function site_secure_staff() {
 	if(intval($_SESSION['secure_staff']) >= 5) {
@@ -446,7 +445,7 @@ echo "
 		$_SESSION['secure_granted'] = "granted";
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
-      $_SESSION['secure_first'] = $row["id"];
+			$_SESSION['secure_first'] = $row["id"];
 			$_SESSION['secure_staff'] = $row["adminLevel"];
 			$_SESSION['secure_granted'] = "granted";
 		} 			
@@ -459,7 +458,7 @@ echo "
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous' />
 	<link href='themes/destiny-life/assets/css/bootstrap.min.css' rel='stylesheet' />
 	<link href='themes/destiny-life/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
-	<link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
+  <link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
 </head>
 <body class=''>
   <div class='wrapper'>";   
