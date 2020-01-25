@@ -475,7 +475,7 @@ echo "
 <html lang='en'>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.1.        # -->
+	<!-- #   Powered by User Control Panel Version 1.2.        # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
