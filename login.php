@@ -14,12 +14,12 @@ require_once("include/features.php");
 
 secure_url();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['login'])){
 	if(empty($_POST['username']) || empty($_POST['password'])){
 		site_login_notfound_done();
-		}
-		else
-		{	
+	}
+	else
+	{	
 		session_start();
 		$username = htmlentities(trim($_POST['username']));
 		$password = htmlentities(trim($_POST['password']));
@@ -58,7 +58,7 @@ site_content_nologged();
 
 echo "
       <div class='content'>
-                <div class='row'>
+        <div class='row'>
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
@@ -77,7 +77,7 @@ echo "
 					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='exampleInputPassword1'/>
 				</div>				
 			</div>				
-			<button type='submit' class='btn btn-primary' name='submit'>Login</submit>					
+			<button type='submit' class='btn btn-primary' name='login'>Login</submit>					
 			</form>				
               </div>
             </div>
