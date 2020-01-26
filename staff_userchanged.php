@@ -22,21 +22,26 @@ site_navi_logged();
 site_content_logged();
 
 if(isset($_POST['submit'])){
-
-	$securecode = $row["id"];
-	$username = stripslashes($_POST['username']);
-	$email 	= stripslashes($_POST['email']);	
-	$socialclubname = stripslashes($_POST['socialclubname']);
-	$betaAcess = stripslashes($_POST['betaAcess']);
+  if(empty($_POST['username']) || empty($_POST['email']) || empty($_POST['socialclubname'])){
+    site_login_notfound_done();
+  }
+  else
+  {
+	  $securecode = $row["id"];
+	  $username = stripslashes($_POST['username']);
+	  $email 	= stripslashes($_POST['email']);	
+	  $socialclubname = stripslashes($_POST['socialclubname']);
+	  $betaAcess = stripslashes($_POST['betaAcess']);
 		
-	$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', betaAcess='".$betaAcess."' ORDER BY id";
+	  $sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', betaAcess='".$betaAcess."' ORDER BY id";
    
-   if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $sql)) {
       site_userchanged_done();
-   } else {
+    } else {
       site_myprofile_done_error();
-   }
-   mysqli_close($conn);		
+    }
+    mysqli_close($conn);
+  }    		
 }
 
 echo "

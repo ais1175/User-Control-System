@@ -65,18 +65,24 @@ if(isset($_POST['posted_del'])){
 if ($support == "addticket") {
 // } 
 	if(isset($_POST['posted_sup'])){
-		$username = htmlentities(trim($_POST['username']));
-		$msg 	= htmlentities(trim($_POST['msg']));
-		$bug 	= htmlentities(trim($_POST['bug']));
-		$posted 	= time();
-
-		$sql = "insert into support (username, msg, bug, posted) value('".$username."', '".$msg."', '".$bug."', NOW())";
-		$result = mysqli_query($conn, $sql);
-		if($result)
-		{
-			site_support_posted_done();
+		if(empty($_POST['username']) || empty($_POST['msg']) || empty($_POST['bug'])){
+			site_login_notfound_done();
 		}
-		$conn->close();
+		else
+		{
+			$username = htmlentities(trim($_POST['username']));
+			$msg 	= htmlentities(trim($_POST['msg']));
+			$bug 	= htmlentities(trim($_POST['bug']));
+			$posted 	= time();
+
+			$sql = "insert into support (username, msg, bug, posted) value('".$username."', '".$msg."', '".$bug."', NOW())";
+			$result = mysqli_query($conn, $sql);
+			if($result)
+			{
+				site_support_posted_done();
+			}
+			$conn->close();
+		}
 	}
 ?>
       <div class='content'>
