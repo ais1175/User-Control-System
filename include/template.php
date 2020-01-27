@@ -27,14 +27,13 @@ function site_secure() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>				
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>				
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -60,14 +59,13 @@ function site_secure_staff_check() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Du bist kein Supporter!</b>				
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Du bist kein Supporter!</b>				
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -115,14 +113,13 @@ echo "
                 <p class='category'>User Control Panel | Team Account Control System - Spieler bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -141,14 +138,13 @@ echo "
                 <p class='category'>User Control Panel | Support - Dein Ticket</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -171,14 +167,13 @@ echo "
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Dein Tweet wurde erfolgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Dein Tweet wurde erfolgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -201,14 +196,13 @@ echo "
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Dein Like in den Tweet wurde erfolgreich gesetzt!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Dein Like in den Tweet wurde erfolgreich gesetzt!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -231,16 +225,15 @@ echo "
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Deine Änderungen konnten nicht gespeichert werden!</b>
-						<br>
-						" . mysqli_error($conn) . "
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Deine Änderungen konnten nicht gespeichert werden!</b>
+						        <br>
+						        " . mysqli_error($conn) . "
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -263,14 +256,13 @@ echo "
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Du hast dein Account erfolgreich bearbeitet!</b>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Du hast dein Account erfolgreich bearbeitet!</b>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -293,14 +285,13 @@ echo "
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Deine Registrierung ist abgeschlossen!</b>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Deine Registrierung ist abgeschlossen!</b>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -380,14 +371,13 @@ echo "
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Falsches Passwort!</b>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Falsches Passwort!</b>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -410,14 +400,13 @@ echo "
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Kein Benutzer gefunden!</b>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Kein Benutzer gefunden!</b>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -452,14 +441,13 @@ echo "
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-8'>
-						<b>Dein Logout war erfolgreich!</b>
-					</div>				
-				</div>										
+				        <div class='row'>			
+					        <div class='col-sm-8'>
+						        <b>Dein Logout war erfolgreich!</b>
+					        </div>				
+				        </div>										
               </div>
             </div>
-			</form>
           </div>
         </div>
       </div>";
@@ -599,7 +587,7 @@ echo "
 function site_content_nologged() {
 echo "
     <div class='main-panel' id='main-panel'>
-      <nav class='navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute'>
+      <nav class='navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute'>
         <div class='container-fluid'>
           <div class='navbar-wrapper'>
             <div class='navbar-toggle'>
@@ -616,9 +604,7 @@ echo "
             <span class='navbar-toggler-bar navbar-kebab'></span>
             <span class='navbar-toggler-bar navbar-kebab'></span>
           </button>
-          <div class='collapse navbar-collapse justify-content-end' id='navigation'>
-
-          </div>
+          <div class='collapse navbar-collapse justify-content-end' id='navigation'></div>
         </div>
       </nav>
       <div class='panel-header panel-header-sm'></div>";   
@@ -627,7 +613,7 @@ echo "
 function site_content_logged() {
 echo "
     <div class='main-panel' id='main-panel'>
-      <nav class='navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute'>
+      <nav class='navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute'>
         <div class='container-fluid'>
           <div class='navbar-wrapper'>
             <div class='navbar-toggle'>
@@ -645,12 +631,12 @@ echo "
             <span class='navbar-toggler-bar navbar-kebab'></span>
           </button>
           <div class='collapse navbar-collapse justify-content-end' id='navigation'>
-		  <form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
-            <button class='btn btn-primary' type='logout' name='logout'>
-              <i class='now-ui-icons ui-1_simple-remove'></i>
-              <p>Logout</p>
-            </submit>		  	
-		  </form>
+		        <form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+                <button class='btn btn-primary' type='logout' name='logout'>
+                  <i class='now-ui-icons ui-1_simple-remove'></i>
+                  <p>Logout</p>
+                </submit>		  	
+		        </form>
           </div>
         </div>
       </nav>
@@ -689,7 +675,6 @@ echo "
       </footer>
     </div>
   </div>
-  <!--   Core JS Files   -->
   <script src='themes/destiny-life/assets/js/core/jquery.min.js'></script>
   <script src='themes/destiny-life/assets/js/core/popper.min.js'></script>
   <script src='themes/destiny-life/assets/js/core/bootstrap.min.js'></script>

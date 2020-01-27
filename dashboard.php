@@ -106,7 +106,7 @@ echo "
 						}
 					}
 echo "						
-					 im Dashboard!
+					 im Dashboard!</b>
 				</div>				
 			</div>										
               </div>

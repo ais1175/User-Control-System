@@ -149,7 +149,8 @@ echo "
         </div>
       </div>
 	</div>
-  </div>";
+  </div>
+</div>";
 
 site_footer();	
 ?>
