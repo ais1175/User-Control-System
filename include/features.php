@@ -54,7 +54,7 @@ function secure_url() {
                    'bash_history', '.bash_history', '~nobody', 'server-info', 'server-status', 'reboot%20', 'halt%20',
                    'powerdown%20', '/home/ftp', '/home/www', 'secure_site, ok', 'chunked', 'org.apache', '/servlet/con',
                    '<script', '/robot.txt' ,'/perl' ,'mod_gzip_status', 'db_mysql.inc', '.inc', 'OR', 'select%20from',
-                   'select from', 'drop%20', 'insert', 'INSERT', 'FROM', 'from', 'users', 'tweets', 'convert(', '(SELECT', 'UPDATE', 'update', '.system', 'getenv', 'http_', '_php', 'php_', 'phpinfo()', '<?php', '?>', 'sql=');
+                   'select from', 'drop%20', 'insert', 'FROM', 'from', 'users', 'tweets', 'convert(', '(SELECT', 'UPDATE', '.system', 'getenv', 'http_', '_php', 'php_', 'phpinfo()', '<?php', '?>', 'sql=');
 
   $checkworm = str_replace($wormprotector, '*', $cracktrack);
 
