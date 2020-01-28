@@ -20,10 +20,10 @@ if(isset($_POST['register'])){
 	}
 	else
 	{	
-		$username = stripslashes(trim($_POST['username']));
-		$email 	= stripslashes(trim($_POST['email']));	
-		$socialclubname = stripslashes(trim($_POST['socialclubname']));
-		$password = stripslashes($_POST['password']);
+		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
+		$email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
+		$socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
+		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 	
 		$sql = "insert into users (username, email, password, socialclubname) value('".$username."', '".$email."', '".$hashPassword."','".$socialclubname."')";

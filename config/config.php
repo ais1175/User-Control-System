@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.0
+// * Version: 1.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -32,7 +32,6 @@ define("USERPROFILE","User Profil");
 define("USERPROFILECHANGE","User Profil bearbeiten");
 define("USERSUPPORT","Support");
 
-
 // ************************************************************************************//
 // * Default Language Section - Staff Member 
 // ************************************************************************************//
@@ -46,15 +45,19 @@ define("DISCORD","https://discord.gg/xxxxxx");
 define("TEAMSPEAK","ts3server://xxxxxx?port=9987");
 define("IMPRINT","https://xxxxxx/impressum.html"); 
 
-// MySQL Account Dats
+// ************************************************************************************//
+// * MySQL Account Data Connect
+// ************************************************************************************//
 $conn = mysqli_connect(
 			"" . MYSQL_HOST . "",
 			"" . MYSQL_USER . "",
 			"" . MYSQL_PASSWORD . "",
 			"" . MYSQL_DATABASE . "");
 
-// MySQL Error Msg			
+// ************************************************************************************//
+// * MySQL Connection error failed Msg
+// ************************************************************************************//		
 if(!$conn){
-	die("Connection error: " . mysqli_connect_error());	
+	die("Connection failed");	
 }
 ?>

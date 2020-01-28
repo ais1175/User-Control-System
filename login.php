@@ -21,8 +21,8 @@ if(isset($_POST['login'])){
 	else
 	{	
 		session_start();
-		$username = htmlentities(trim($_POST['username']));
-		$password = htmlentities(trim($_POST['password']));
+		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
+		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
 		$securecode = $row["id"];
 		// Get the client ip address
 		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	

@@ -22,8 +22,8 @@ site_secure();
 secure_url();
 
 if(isset($_POST['tweeting'])){
-		$username = stripslashes(trim($_POST['username']));
-		$msg 	= stripslashes(trim($_POST['msg']));	
+		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
+		$msg 	= strip_tags(trim(htmlspecialchars($_POST['msg'])));	
 		$posted 	= date();
 		
 		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
@@ -45,7 +45,7 @@ if(isset($_POST['tweeting'])){
 }
 
 if(isset($_POST['like_msg'])){
-		$liked = stripslashes(trim($_POST['liked'])) + 1;
+		$liked = strip_tags(trim(htmlspecialchars($_POST['liked']))) + 1;
 		$id = $_REQUEST['id'];
 		$msg = $_REQUEST['msg'];
 		

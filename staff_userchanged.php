@@ -28,10 +28,10 @@ if(isset($_POST['submit'])){
   else
   {
 	  $securecode = $row["id"];
-	  $username = stripslashes($_POST['username']);
-	  $email 	= stripslashes($_POST['email']);	
-	  $socialclubname = stripslashes($_POST['socialclubname']);
-	  $betaAcess = stripslashes($_POST['betaAcess']);
+	  $username = strip_tags(trim(htmlspecialchars($_POST['username']));
+	  $email 	= strip_tags(trim(htmlspecialchars($_POST['email']));	
+	  $socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname']));
+	  $betaAcess = strip_tags(trim(htmlspecialchars($_POST['betaAcess']));
 		
 	  $sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', betaAcess='".$betaAcess."' ORDER BY id";
    

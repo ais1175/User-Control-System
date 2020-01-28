@@ -70,9 +70,9 @@ if ($support == "addticket") {
 		}
 		else
 		{
-			$username = htmlentities(trim($_POST['username']));
-			$msg 	= htmlentities(trim($_POST['msg']));
-			$bug 	= htmlentities(trim($_POST['bug']));
+			$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
+			$msg 	= strip_tags(trim(htmlspecialchars($_POST['msg'])));
+			$bug 	= strip_tags(trim(htmlspecialchars($_POST['bug'])));
 			$posted 	= time();
 
 			$sql = "insert into support (username, msg, bug, posted) value('".$username."', '".$msg."', '".$bug."', NOW())";

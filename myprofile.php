@@ -22,10 +22,10 @@ if(isset($_POST['myprofilechange'])){
 	else
 	{	
 		$securecode = $row["id"];
-		$email 	= stripslashes($_POST['email']);	
-		$socialclubname = stripslashes($_POST['socialclubname']);
+		$email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
+		$socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
 		$username = $socialclubname;
-		$password = stripslashes($_POST['password']);
+		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
 		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
