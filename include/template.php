@@ -414,6 +414,36 @@ site_footer();
 die();
 }
 
+
+function site_login_user_already() {
+  site_header();
+  site_navi_nologged();
+  site_content_nologged();
+  
+  echo "
+          <div class='content'>
+           <div class='row'>
+            <div class='col-md-12'>
+              <div class='card'>
+                <div class='card-header'>
+                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <p class='category'>User Control Panel | Secure System</p>
+                </div>
+                <div class='card-body'>			  
+                  <div class='row'>			
+                    <div class='col-sm-8'>
+                      <b>Account schon vorhanden</b>
+                    </div>				
+                  </div>										
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+  site_footer();
+  die();
+  }
+
 function site_logout() {	
 site_header();
 setCookie("PHPSESSID", "", 0x7fffffff,  "/");

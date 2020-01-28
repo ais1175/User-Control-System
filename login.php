@@ -14,7 +14,7 @@ require_once("include/features.php");
 
 secure_url();
 
-if(isset($_POST['login'])){
+if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 	if(empty($_POST['username']) || empty($_POST['password'])){
 		site_login_notfound_done();
 	}

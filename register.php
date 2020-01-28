@@ -14,7 +14,7 @@ require_once("include/features.php");
 
 secure_url();
 
-if(isset($_POST['register'])){
+if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['register'])){
 	if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['socialclubname'])){
 		site_register_notfound_done();
 	}
@@ -29,12 +29,20 @@ if(isset($_POST['register'])){
 		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
 		$password = mysqli_real_escape_string($conn,$password);
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
-	
-		$sql = "insert into users (username, email, password, socialclubname) value('".$username."', '".$email."', '".$hashPassword."','".$socialclubname."')";
-		$result = mysqli_query($conn, $sql);
-		if($result)
-		{
-			site_register_done();
+
+		// CHECK IF USER IS ALREADY REGISTERED
+		$check_user = mysqli_query($conn, "SELECT `username` FROM `users` WHERE username = '$username'");
+
+		if(mysqli_num_rows($check_user) > 0){    
+			site_login_user_already();
+		}else{
+			$sql = "insert into users (username, email, password, socialclubname) value('".$username."', '".$email."', '".$hashPassword."','".$socialclubname."')";
+			$result = mysqli_query($conn, $sql);
+			if($result)
+			{
+				site_register_done();
+			}	
+			mysqli_close($conn);
 		}
 		mysqli_close($conn);
 	}	
