@@ -21,13 +21,15 @@ if(isset($_POST['login'])){
 	else
 	{	
 		session_start();
-		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
-		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
+		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
+		$username = mysqli_real_escape_string($conn,$username); 
+		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
+		$password = mysqli_real_escape_string($conn,$password);
 		$securecode = $row["id"];
 		// Get the client ip address
 		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
 		$_SESSION["secure"] = sitehash($securecode);	
-		$sql = "select * from users where username = '".$username."'";
+		$sql = "select * from users where username = '".$username."' LIMIT 1";
 		$rs = mysqli_query($conn,$sql);
 		$numRows = mysqli_num_rows($rs);
 	
@@ -66,15 +68,15 @@ echo "
                 <p class='category'>User Control Panel | Login</p>
               </div>
               <div class='card-body'>
-			<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+			<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
 					<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> Social Club Name</label>
-					<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='exampleInputEmail1'/>
+					<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
 					<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> Passwort</label>
-					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='exampleInputPassword1'/>
+					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
 				</div>				
 			</div>				
 			<button type='submit' class='btn btn-primary' name='login'>Login</submit>					

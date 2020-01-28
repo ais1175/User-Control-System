@@ -473,8 +473,10 @@ echo "
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
 	<title>".SITETITLE."</title>";
 	
-	$username = trim($_POST['username']);
-	$password = trim($_POST['password']);
+	$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
+	$username = mysqli_real_escape_string($conn,$username); 
+	$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
+	$password = mysqli_real_escape_string($conn,$password);
 	$securecode = $row["id"];
 	
 	session_start();

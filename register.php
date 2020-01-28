@@ -20,10 +20,14 @@ if(isset($_POST['register'])){
 	}
 	else
 	{	
-		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
-		$email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
-		$socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
-		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
+		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
+		$username = mysqli_real_escape_string($conn,$username); 
+		$email 	= xss_cleaner(trim(htmlspecialchars($_POST['email'])));
+		$email = mysqli_real_escape_string($conn,$email);
+		$socialclubname = xss_cleaner(trim(htmlspecialchars($_POST['socialclubname'])));
+		$socialclubname = mysqli_real_escape_string($conn,$socialclubname);
+		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
+		$password = mysqli_real_escape_string($conn,$password);
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 	
 		$sql = "insert into users (username, email, password, socialclubname) value('".$username."', '".$email."', '".$hashPassword."','".$socialclubname."')";
@@ -32,7 +36,7 @@ if(isset($_POST['register'])){
 		{
 			site_register_done();
 		}
-		$conn->close();
+		mysqli_close($conn);
 	}	
 }
 
@@ -50,25 +54,25 @@ echo "
                 <p class='category'>User Control Panel | Register</p>
               </div>
               <div class='card-body'>
-		<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+		<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> Username *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6'/>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> Social Club Name *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='socialclubname' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6'/>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='socialclubname' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>				
 			</div>		
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> E-Mail *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='E-Mail *' value='' maxlength='45' id='border-right6'/>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='E-Mail *' value='' maxlength='45' id='border-right6' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
 					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> Passwort *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='border-right6'/>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>				
 			</div>			
 			<hr style='height:0.10rem; border:none; color:#DADADA; background-color:#DADADA; margin-top:40px; margin-bottom:35px;' />

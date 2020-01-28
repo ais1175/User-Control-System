@@ -14,18 +14,6 @@ require_once("config/config.php");
 require_once("include/bcrypt_class.php");
 require_once("include/template.php");
 
-$isTeam = trim($_POST['isTeam']);
-$username = trim($_POST['username']);
-$sql = "select * from accounts where isTeam = 'Y', username = '".$username."'";
-$rs = mysqli_query($conn,$sql);
-
-$expires = time()+2592000;
-$cookie = $_COOKIE["username"]; 
-$securecode = hash($username,PASSWORD_BCRYPT);
-setcookie("PHPSESSID", sitehash($securecode,$securecode), $expires,  "/");	
-//Abfrage der Nutzer ID vom Login
-$securecode = $_SESSION['secure'];
-
 function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")
 {
     return hash('sha512','Destiny-Life ".$addtext.$var.$addtext."".$addsecure." is the new roleplay project!');
@@ -35,8 +23,13 @@ if(isset($_POST['logout'])){
 	site_logout();
 }
 
+function xss_cleaner($input_str) {
+  $return_str = str_replace( array('<',';','|','&','>',"'",'"',','/')','('), array('&lt;','&#58;','&#124;','&#38;','&gt;','&apos;','&#x22;','&#x29;','&#x28;',''), $input_str );
+  $return_str = str_ireplace( '%3Cscript', '', $return_str );
+  return $return_str;
+}
+
 function secure_url() {
- 
   global $_SERVER;
   $cracktrack = $_SERVER['QUERY_STRING'];
   $wormprotector = array('chr(', 'chr=', 'chr%20', '%20chr', 'wget%20', '%20wget', 'wget(',
