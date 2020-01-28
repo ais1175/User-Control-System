@@ -457,7 +457,7 @@ die();
 }
 
 function site_header() {
-secure_url();	
+secure_url();
 echo "
 <!DOCTYPE html>
 <html lang='en'>
