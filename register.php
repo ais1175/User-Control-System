@@ -31,7 +31,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['register'])){
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
 		// CHECK IF USER IS ALREADY REGISTERED
-		$check_user = mysqli_query($conn, "SELECT `username` FROM `users` WHERE username = '$username'");
+		$check_user = mysqli_query($conn, "SELECT `username` FROM `users` WHERE username = '$username' LIMIT 1");
 
 		if(mysqli_num_rows($check_user) > 0){    
 			site_login_user_already();
