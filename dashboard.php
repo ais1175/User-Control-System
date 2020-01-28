@@ -22,8 +22,10 @@ site_secure();
 secure_url();
 
 if(isset($_POST['tweeting'])){
-		$username = strip_tags(trim(htmlspecialchars($_POST['username'])));
-		$msg 	= strip_tags(trim(htmlspecialchars($_POST['msg'])));	
+		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
+		$username = mysqli_real_escape_string($conn,$username);
+		$msg 	= xss_cleaner(trim(htmlspecialchars($_POST['msg'])));
+		$msg 	= mysqli_real_escape_string($conn,$msg);	
 		$posted 	= date();
 		
 		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
