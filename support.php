@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -78,6 +78,21 @@ if ($support == "addticket") {
 			$bug 	= mysqli_real_escape_string($conn,$bug);
 			$posted 	= time();
 
+			// CHECK USERNAME FROM KEY
+			if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+				site_login_username_not_valid();
+			}
+
+			// CHECK USERNAME FROM KEY
+			if (preg_match('/[A-Za-z0-9]+/', $_POST['msg']) == 0) {
+				site_login_username_not_valid();
+			}
+
+			// CHECK USERNAME FROM KEY
+			if (preg_match('/[A-Za-z0-9]+/', $_POST['bug']) == 0) {
+				site_login_username_not_valid();
+			}
+			
 			$sql = "insert into support (username, msg, bug, posted) value('".$username."', '".$msg."', '".$bug."', NOW())";
 			$result = mysqli_query($conn, $sql);
 			if($result)

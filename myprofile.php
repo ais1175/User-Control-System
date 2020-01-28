@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -27,6 +27,21 @@ if(isset($_POST['myprofilechange'])){
 		$username = $socialclubname;
 		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
+
+		// CHECK USERNAME FROM KEY
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+			site_login_username_not_valid();
+		}
+
+		// CHECK MAX CARRACTERS LONG
+		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
+			site_login_max_pass_long();
+		}
+
+		// CHECK VALID USER EMAIL
+		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			site_login_user_no_valid_email();
+		}
 
 		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
    

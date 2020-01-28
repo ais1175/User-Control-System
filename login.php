@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -26,6 +26,17 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
 		$password = mysqli_real_escape_string($conn,$password);
 		$securecode = $row["id"];
+
+		// CHECK USERNAME FROM KEY
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+			site_login_username_not_valid();
+		}
+
+		// CHECK MAX CARRACTERS LONG
+		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
+			site_login_max_pass_long();
+		}
+
 		// Get the client ip address
 		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
 		$_SESSION["secure"] = sitehash($securecode);	

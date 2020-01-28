@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -414,6 +414,92 @@ site_footer();
 die();
 }
 
+function site_login_user_no_valid_email() {
+  site_header();
+  site_navi_nologged();
+  site_content_nologged();
+  
+  echo "
+          <div class='content'>
+           <div class='row'>
+            <div class='col-md-12'>
+              <div class='card'>
+                <div class='card-header'>
+                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <p class='category'>User Control Panel | Secure System</p>
+                </div>
+                <div class='card-body'>			  
+                  <div class='row'>			
+                    <div class='col-sm-8'>
+                      <b>E-Mail is not valid!</b>
+                    </div>				
+                  </div>										
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+  site_footer();
+  die();
+  }
+
+function site_login_username_not_valid() {
+  site_header();
+  site_navi_nologged();
+  site_content_nologged();
+  
+  echo "
+          <div class='content'>
+           <div class='row'>
+            <div class='col-md-12'>
+              <div class='card'>
+                <div class='card-header'>
+                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <p class='category'>User Control Panel | Secure System</p>
+                </div>
+                <div class='card-body'>			  
+                  <div class='row'>			
+                    <div class='col-sm-8'>
+                      <b>Username is not valid!</b>
+                    </div>				
+                  </div>										
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+  site_footer();
+  die();
+}
+
+function site_login_max_pass_long() {
+  site_header();
+  site_navi_nologged();
+  site_content_nologged();
+  
+  echo "
+          <div class='content'>
+           <div class='row'>
+            <div class='col-md-12'>
+              <div class='card'>
+                <div class='card-header'>
+                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <p class='category'>User Control Panel | Secure System</p>
+                </div>
+                <div class='card-body'>			  
+                  <div class='row'>			
+                    <div class='col-sm-8'>
+                      <b>Password must be between 5 and 20 characters long!</b>
+                    </div>				
+                  </div>										
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+  site_footer();
+  die();
+}
 
 function site_login_user_already() {
   site_header();
@@ -493,7 +579,7 @@ echo "
 <html lang='en'>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.2.        # -->
+	<!-- #   Powered by User Control Panel Version 1.3.        # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -501,8 +587,16 @@ echo "
 	<link rel='apple-touch-icon' sizes='76x76' href='themes/destiny-life/assets/img/apple-icon.png'>
 	<link rel='icon' type='image/png' href='themes/destiny-life/assets/img/favicon.png'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-	<title>".SITETITLE."</title>";
-	
+  <title>".SITETITLE."</title>";
+  
+  header("X-Frame-Options: sameorigin");
+  header("X-XSS-Protection: 1; mode=block");
+  header("X-Content-Type-Options: nosniff");
+  header("Strict-Transport-Security: max-age=31536000");
+  header("Referrer-Policy: origin-when-cross-origin");
+  header("Expect-CT: max-age=7776000, enforce");
+  header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
+
 	$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
 	$username = mysqli_real_escape_string($conn,$username); 
 	$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));

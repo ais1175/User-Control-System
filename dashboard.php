@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -27,6 +27,15 @@ if(isset($_POST['tweeting'])){
 		$msg 	= xss_cleaner(trim(htmlspecialchars($_POST['msg'])));
 		$msg 	= mysqli_real_escape_string($conn,$msg);	
 		$posted 	= date();
+
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+			site_login_username_not_valid();
+		}
+
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['msg']) == 0) {
+			site_login_username_not_valid();
+		}
+
 		
 		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
 		$result = mysqli_query($conn, $sql);

@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.2
+// * Version: 1.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -32,7 +32,29 @@ if(isset($_POST['submit'])){
 	  $email 	= strip_tags(trim(htmlspecialchars($_POST['email']));	
 	  $socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname']));
 	  $betaAcess = strip_tags(trim(htmlspecialchars($_POST['betaAcess']));
-		
+    
+    // CHECK USERNAME FROM KEY
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+			site_login_username_not_valid();
+		}
+
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['email']) == 0) {
+			site_login_username_not_valid();
+    }
+    
+    if (preg_match('/[A-Za-z0-9]+/', $_POST['socialclubname']) == 0) {
+			site_login_username_not_valid();
+    }
+    
+    if (preg_match('/[A-Za-z0-9]+/', $_POST['betaAcess']) == 0) {
+			site_login_username_not_valid();
+    }
+    
+    // CHECK VALID USER EMAIL
+		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			site_login_user_no_valid_email();
+		}
+
 	  $sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', betaAcess='".$betaAcess."' ORDER BY id";
    
     if (mysqli_query($conn, $sql)) {
