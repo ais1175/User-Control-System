@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -34,7 +34,7 @@ if(isset($_POST['posted_del'])){
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Dashboard</p>
               </div>
               <div class='card-body'>		  
@@ -45,10 +45,10 @@ if(isset($_POST['posted_del'])){
 							<i class='now-ui-icons ui-1_simple-remove'></i>
 						</button>
 						<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-						<span data-notify='message'><b>Du hast alle Support Tickets gelöscht</b></span>
+						<span data-notify='message'><b>".SUPPORTDELETEINFO."</b></span>
 					</div>
 					<br>
-					<b>Gehe nun zurück zu den <a href='support.php'>Support Tickets</a>!</b>	
+					".SUPPORTDELETE."	
 				</div>				
 			</div>										
 		  </div>
@@ -108,13 +108,13 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei <?php echo PROJECTNAME; ?>!</h5>
+                <h5 class='title'><?php echo WELCOMETO; ?> <?php echo PROJECTNAME; ?>!</h5>
                 <p class='category'>User Control Panel | Support System</p>
               </div>
 			  <div class='card-body'>
 				<div class='row'>			
 					<div class='col-sm-12'>
-						<b>Dein Support Ticket sollte möglichst genau beschrieben werden.</b>
+						<b><?php echo SUPPORTINFO; ?></b>
 					</div>
 				</div>
 			  </div>
@@ -133,8 +133,8 @@ if ($support == "addticket") {
                       <tr>				  
                         <td>
 							<h6>
-								Username
-								<small class='text-muted'>Gebe dein Username ein</small>
+								<?php echo SUPPORTUSERNAME; ?>
+								<small class='text-muted'><?php echo SUPPORTUSERINFO1; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -149,8 +149,8 @@ if ($support == "addticket") {
                       <tr>				  
                         <td>
 							<h6>
-								Betreff
-								<small class='text-muted'>Welchen Bug hast du gefunden?</small>
+								<?php echo SUPPORTSUBJECT; ?>
+								<small class='text-muted'><?php echo SUPPORTUSERINFO2; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -165,8 +165,8 @@ if ($support == "addticket") {
                       <tr>					  
                         <td>
 							<h6>
-								Nachricht
-								<small class='text-muted'>Deine Beschreibung sollte möglichst genau beschrieben sein</small>
+								<?php echo SUPPORTMSG; ?>
+								<small class='text-muted'><?php echo SUPPORTUSERINFO3; ?></small>
 							</h6>
 							<div class='textarea-group'>
 								<div class='textarea-group-prepend'>
@@ -181,7 +181,7 @@ if ($support == "addticket") {
                       <tr>					  
 						<td>						
 							<button type='submit' name='posted_sup' class='btn btn-primary btn-round'>
-								<i class='now-ui-icons ui-1_check'></i> Senden
+								<i class='now-ui-icons ui-1_check'></i> <?php echo SUPPORTSAVE; ?>
 							</button>
 							</submit>
                         </td>							
@@ -210,13 +210,13 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei <?php echo PROJECTNAME; ?>!</h5>
+                <h5 class='title'><?php echo WELCOMETO; ?> <?php echo PROJECTNAME; ?>!</h5>
                 <p class='category'>User Control Panel | Support</p>
               </div>
               <div class='card-body'>		  
 				<div class='row'>			
 					<div class='col-sm-12'>
-						<b>Willkommen
+						<b><?php echo WELCOMETO; ?>
 					<?php
 						$id = 0 + $_COOKIE["secure"];
 						$securecode = $row["id"];
@@ -230,7 +230,7 @@ if ($support == "addticket") {
 							}
 						}
 					?>						
-						im Support System!</b>
+						Support System!</b>
 					</div>
 				</div>				
 			  </div>										
@@ -239,12 +239,12 @@ if ($support == "addticket") {
 				<div class='col-sm-12'>
 					<div class='card'>
 						<div class='card-header'>
-							<h4 class='card-title'> Support Control System - Ticket erstellen</h4>
+							<h4 class='card-title'> Support Control System - <?php echo SUPPORTADDTICKET1; ?></h4>
 						</div>
 						<div class='card-body'>
 							<h6>
-								Erstelle nun dein Ticket!
-								<small class='text-muted'><a href="<?php echo $_SERVER["PHP_SELF"]; ?>?support=addticket">Klick mich</a></small>
+								<?php echo SUPPORTADDTICKET1; ?>
+								<small class='text-muted'><a href="<?php echo $_SERVER["PHP_SELF"]; ?>?support=addticket"><?php echo SUPPORTADDTICKET2; ?></a></small>
 							</h6>
 						</div>
 					</div>				
@@ -258,13 +258,13 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h4 class='card-title' style='float: left;'> Support Control System - Ticket Liste</h4>
+                <h4 class='card-title' style='float: left;'> Support Control System - <?php echo SUPPORTDELETE2; ?></h4>
 					<?php
 						if(intval($_SESSION['secure_staff']) >= 10) {
 					?>
 						<h4 style='float: right;'>		
 							<form action='<?php echo $_SERVER['PHP_SELF'];?>?=posted_del' method='post' enctype='multipart/form-data'>
-								<button class='form-control btn-round btn-icon border-gray' name='posted_del'><i class='now-ui-icons ui-1_simple-remove'></i> Ticket löschen</button>
+								<button class='form-control btn-round btn-icon border-gray' name='posted_del'><i class='now-ui-icons ui-1_simple-remove'></i> <?php echo SUPPORTDELETE2; ?></button>
 							</form>
 						</h4>
 					<?php	
@@ -277,19 +277,19 @@ if ($support == "addticket") {
                   <table class='table'>
                     <thead class=' text-primary'>
                       <th>
-                        Support ID
+                        <?php echo SUPPORTUSERID; ?>
                       </th>
                       <th>
-                        Username
+					  	<?php echo SUPPORTUSERNAME; ?>
                       </th>					  
                       <th>
-                        Betreff
+					  	<?php echo SUPPORTSUBJECT; ?>
                       </th>
                       <th>
-                        Nachricht
+					  	<?php echo SUPPORTMSG; ?>
                       </th>				  
                       <th>
-                        Datum
+					  	<?php echo SUPPORTDATE; ?>
                       </th>
                     </thead>
                     <tbody>

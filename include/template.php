@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -23,13 +23,13 @@ function site_secure() {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Sie sollten sich zuerst <a href='login.php'>einloggen</a>!</b>				
+						        <b>Sie sollten sich zuerst <a href='login.php'>".LOGIN."</a>!</b>				
 					        </div>				
 				        </div>										
               </div>
@@ -55,7 +55,7 @@ function site_secure_staff_check() {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -109,7 +109,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Team Account Control System - Spieler bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -134,7 +134,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Support - Dein Ticket</p>
               </div>
               <div class='card-body'>			  
@@ -163,7 +163,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
@@ -192,7 +192,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
@@ -221,7 +221,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -252,7 +252,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
@@ -281,7 +281,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -309,7 +309,7 @@ function site_login_notfound_done() {
             <div class='col-md-12'>
               <div class='card'>
                 <div class='card-header'>
-                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                   <p class='category'>User Control Panel | Secure System</p>
                 </div>
                 <div class='card-body'>			  
@@ -338,7 +338,7 @@ function site_login_notfound_done() {
               <div class='col-md-12'>
                 <div class='card'>
                   <div class='card-header'>
-                    <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                    <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                     <p class='category'>User Control Panel | Secure System</p>
                   </div>
                   <div class='card-body'>			  
@@ -367,7 +367,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -396,7 +396,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -425,7 +425,7 @@ function site_login_user_no_valid_email() {
             <div class='col-md-12'>
               <div class='card'>
                 <div class='card-header'>
-                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                   <p class='category'>User Control Panel | Secure System</p>
                 </div>
                 <div class='card-body'>			  
@@ -454,7 +454,7 @@ function site_login_username_not_valid() {
             <div class='col-md-12'>
               <div class='card'>
                 <div class='card-header'>
-                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                   <p class='category'>User Control Panel | Secure System</p>
                 </div>
                 <div class='card-body'>			  
@@ -483,7 +483,7 @@ function site_login_max_pass_long() {
             <div class='col-md-12'>
               <div class='card'>
                 <div class='card-header'>
-                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                   <p class='category'>User Control Panel | Secure System</p>
                 </div>
                 <div class='card-body'>			  
@@ -512,7 +512,7 @@ function site_login_user_already() {
             <div class='col-md-12'>
               <div class='card'>
                 <div class='card-header'>
-                  <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                  <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                   <p class='category'>User Control Panel | Secure System</p>
                 </div>
                 <div class='card-body'>			  
@@ -553,7 +553,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
@@ -579,7 +579,7 @@ echo "
 <html lang='en'>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.3.        # -->
+	<!-- #   Powered by User Control Panel Version 1.4.        # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -633,6 +633,11 @@ echo "
   <link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
 </head>
 <body class=''>
+  <script>
+    function changeLang(){
+      document.getElementById('changer_lang').submit();
+    }
+  </script>
   <div class='wrapper'>";   
 }
 
@@ -645,7 +650,7 @@ echo "
         </a>
       </div>
       <div class='sidebar-wrapper' id='sidebar-wrapper'>
-        <ul class='nav'>
+        <ul class='nav'>       
           <li>
             <a href='./dashboard.php'>
               <i class='now-ui-icons design_app'></i>
@@ -692,17 +697,17 @@ echo "
         </a>
       </div>
       <div class='sidebar-wrapper' id='sidebar-wrapper'>
-        <ul class='nav'>
+        <ul class='nav'>        
           <li>
             <a href='./login.php'>
               <i class='now-ui-icons design_app'></i>
-              <p>Login</p>
+              <p>".LOGIN."</p>
             </a>
           </li>
           <li>
             <a href='./register.php'>
               <i class='now-ui-icons education_atom'></i>
-              <p>Register</p>
+              <p>".REGISTER."</p>
             </a>
           </li>
         </ul>
@@ -730,10 +735,19 @@ echo "
             <span class='navbar-toggler-bar navbar-kebab'></span>
             <span class='navbar-toggler-bar navbar-kebab'></span>
           </button>
-          <div class='collapse navbar-collapse justify-content-end' id='navigation'></div>
+          <div class='collapse navbar-collapse justify-content-end' id='navigation'>
+            <form method='get' action='' id='changer_lang'>
+              <p> 
+                <select name='lang' onchange='changeLang();' id='inputState' class='btn btn-*'>
+                  <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
+                  <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
+                </select>
+              </p>
+            </form>
+          </div>
         </div>
       </nav>
-      <div class='panel-header panel-header-sm'></div>";   
+      <div class='panel-header panel-header-sm'></div>";  
 }
 
 function site_content_logged() {
@@ -749,7 +763,7 @@ echo "
                 <span class='navbar-toggler-bar bar3'></span>
               </button>
             </div>
-            <a class='navbar-brand' href='dashboard.php'>Dashboard</a>
+            <a class='navbar-brand' href='dashboard.php'>".DASHBOARD."</a>
           </div>
           <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navigation' aria-controls='navigation-index' aria-expanded='false' aria-label='Toggle navigation'>
             <span class='navbar-toggler-bar navbar-kebab'></span>
@@ -762,8 +776,16 @@ echo "
                   <i class='now-ui-icons ui-1_simple-remove'></i>
                   <p>Logout</p>
                 </submit>		  	
-		        </form>
+            </form>
           </div>
+          <form method='get' action='' id='changer_lang'>
+          <p>
+            <select name='lang' onchange='changeLang();' id='inputState' class='btn btn-*'>
+              <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
+              <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
+            </select>
+          </p>
+        </form>
         </div>
       </nav>
       <div class='panel-header panel-header-sm'></div>";     

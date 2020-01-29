@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -26,7 +26,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | User Profile</p>
               </div>
               <div class='card-body'>
@@ -41,8 +41,8 @@ echo "
                   <a href='#'>
                     <img class='avatar border-gray' src='themes/destiny-life/assets/img/mike.jpg' alt='...'>
                     <h5 class='title'>
-						Unser Motto
-					</h5>
+                    ".PLAYERNOTE2."
+					          </h5>
                   </a>
                 </div>
                 <p class='description text-center'>
@@ -50,7 +50,7 @@ echo "
 					<div class='rules-item mb-6'>
 						<div class='ti-content'>
 							<div class='ti-text'>
-								<span><b>Auf ".PROJECTNAME." wird jede Whitelist in unseren Teamspeak Server abgehalten.</span></b><br />
+								<span><b>".PLAYERNOTE1."</span></b><br />
 							</div>
 						</div>
 					</div>
@@ -91,13 +91,13 @@ echo "
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "
-								ID: ".$_SESSION['secure_first']." <br> 
-								Social Club: " . $row["socialclubname"]. " <br>
-								E-Mail: " . $row["email"]. "<br>
-								Banned: " . $row["banAces"]. "<br>
-								Admin Level: " . $row["adminLevel"]. "<br>
-								Whitelisted: " . $row["betaAcess"]. "<br>
-								Erster Login: " . $row["FirstLogin"]. "";
+                ".PLAYERID.": ".$_SESSION['secure_first']." <br> 
+								".PLAYERSOCIALCLUB.": " . $row["socialclubname"]. " <br>
+								".PLAYEREMAIL.": " . $row["email"]. "<br>
+								".PLAYERBANNED.": " . $row["banAces"]. "<br>
+								".PLAYERADMIN.": " . $row["adminLevel"]. "<br>
+								".PLAYERWHITELISTED.": " . $row["betaAcess"]. "<br>
+								".PLAYERFIRSTLOGIN.": " . $row["FirstLogin"]. "";
 					}
 				}
 							

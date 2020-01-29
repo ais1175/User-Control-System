@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -64,7 +64,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Account bearbeiten</p>
               </div>
               <div class='card-body'>
@@ -75,7 +75,7 @@ echo "
                         	<i class='now-ui-icons ui-1_simple-remove'></i>
                     	</button>
                     	<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-                    	<span data-notify='message'>Du musst bei jeder Änderung alle Felder ausfühlen!</span>
+                    	<span data-notify='message'>".MYPROFILENOTE."</span>
 					</div>
                 </div>
 			  <div class='card-body'>
@@ -84,20 +84,20 @@ echo "
                     <thead class=' text-primary'>			  
                       <th>
 						<h6>
-							Social Club
-							<small class='text-muted'>Für die Whitelist</small>
+							".SOCIALCLUBNAME."
+							<small class='text-muted'>".WHITELIST."</small>
 						</h6>
                       </th>
                       <th>
 						<h6>
-							E-Mail
-							<small class='text-muted'>Für das kommende Twitter Modul</small>
+							".EMAIL."
+							<small class='text-muted'>".TWITTER."</small>
 						</h6>
                       </th>
                       <th>
 						<h6>
-							Passwort
-							<small class='text-muted'>UCP sowie für den Game Server</small>
+							".PASSWORD."
+							<small class='text-muted'>".RPSERVER."</small>
 						</h6>
                       </th>						  
                     </thead>
@@ -145,7 +145,7 @@ echo "
                       <tr>					  
 						<td>						
 							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
-								<i class='now-ui-icons ui-1_check'></i> Speichern
+								<i class='now-ui-icons ui-1_check'></i> ".MYPROFILESAVE."
 							</button>
 							</submit>
                         </td>							

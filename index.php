@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -27,7 +27,7 @@ echo "
               </div>
               <div class='card-body'>
 				        <div class='category'>
-					        Wir bringen das Roleplay auf ein neues Level, mit unserer Realistischen Handhabung, sind uns keine Grenzen gesetzt!
+					        ".INDEXTEXT."
 				        </div>	
               </div>
             </div>

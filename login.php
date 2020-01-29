@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -75,22 +75,22 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Login</p>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | ".LOGIN."</p>
               </div>
               <div class='card-body'>
 			<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
-					<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> Social Club Name</label>
-					<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
+					<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> ".SOCIALCLUBNAME."</label>
+					<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
-					<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> Passwort</label>
-					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
+					<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> ".PASSWORD."</label>
+					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
 				</div>				
 			</div>				
-			<button type='submit' class='btn btn-primary' name='login'>Login</submit>					
+			<button type='submit' class='btn btn-primary' name='login'>".LOGIN."</submit>					
 			</form>				
               </div>
             </div>

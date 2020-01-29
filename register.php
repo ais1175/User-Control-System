@@ -73,38 +73,38 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Register</p>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | ".REGISTER."</p>
               </div>
               <div class='card-body'>
 		<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
-					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> Username *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> ".USERNAME." *</label>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".USERNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
-					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> Social Club Name *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='socialclubname' class='form-control' placeholder='Social Club Name *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+					<label class='control-label' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> ".SOCIALCLUBNAME." *</label>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='socialclubname' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>				
 			</div>		
 			<div class='form-row'>
 				<div class='form-group col-md-6'>
-					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> E-Mail *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='E-Mail *' value='' maxlength='45' id='border-right6' autocomplete='off'/>
+					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> ".EMAIL." *</label>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='".EMAIL." *' value='' maxlength='45' id='border-right6' autocomplete='off'/>
 				</div>
 				<div class='form-group col-md-4'>
-					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> Passwort *</label>
-					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Password' type='password' name='password' class='form-control' placeholder='Passwort *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+					<label class='control-label' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> ".PASSWORD." *</label>
+					<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 				</div>				
 			</div>			
 			<hr style='height:0.10rem; border:none; color:#DADADA; background-color:#DADADA; margin-top:40px; margin-bottom:35px;' />
 			<div class='form-row'>
 				<div class='col-sm-8'>
-					<b>Hinweis:</b> Felder mit <span class='pflichtfeld'>*</span> müssen ausgefüllt werden.
+					".NOTE."
 					<br />
 					<br />
-					<button type='submit' class='btn btn-primary' name='register'>Registrieren</submit>			
+					<button type='submit' class='btn btn-primary' name='register'>".REGISTER."</submit>			
 				</div>
 			</div>			
 			

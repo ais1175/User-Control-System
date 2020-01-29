@@ -28,10 +28,10 @@ if(isset($_POST['submit'])){
   else
   {
 	  $securecode = $row["id"];
-	  $username = strip_tags(trim(htmlspecialchars($_POST['username']));
-	  $email 	= strip_tags(trim(htmlspecialchars($_POST['email']));	
-	  $socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname']));
-	  $betaAcess = strip_tags(trim(htmlspecialchars($_POST['betaAcess']));
+	  $username = strip_tags(trim(htmlspecialchars($_POST['username'])));
+	  $email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
+	  $socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
+	  $betaAcess = strip_tags(trim(htmlspecialchars($_POST['betaAcess'])));
     
     // CHECK USERNAME FROM KEY
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
@@ -72,7 +72,7 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Team Account Control System - Spielerliste</p>
               </div>
               <div class='card-body'>

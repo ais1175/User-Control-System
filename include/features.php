@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -13,6 +13,22 @@
 require_once("config/config.php");
 require_once("include/bcrypt_class.php");
 require_once("include/template.php");
+
+// Set Language variable
+if(isset($_GET['lang']) && !empty($_GET['lang'])){
+        $_SESSION['lang'] = $_GET['lang'];
+       
+        if(isset($_SESSION['lang']) && $_SESSION['lang'] != $_GET['lang']){
+         echo "<script type='text/javascript'> location.reload(); </script>";
+        }
+}
+       
+// Include Language file
+if(isset($_SESSION['lang'])){
+        include "./language/lang_".$_SESSION['lang'].".php";
+}else{
+        include "./language/lang_en.php";
+}
 
 function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")
 {

@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -20,31 +20,6 @@ define('MYSQL_PASSWORD', 'xxx');
 define('MYSQL_HOST', 'localhost');
 define('MYSQL_DATABASE', 'xxx');
  
-// ************************************************************************************//
-// * Default Language Section - Main 
-// ************************************************************************************//
-define("SITETITLE","HIGH-LIFE | UCP");
-define("SITESTAFF","Staff Tools");
-define("PROJECTNAME","High-Life");
-define("DASHBOARD","Dashboard");
-define("RULES","Regelwerk");
-define("USERPROFILE","User Profil");
-define("USERPROFILECHANGE","User Profil bearbeiten");
-define("USERSUPPORT","Support");
-
-// ************************************************************************************//
-// * Default Language Section - Staff Member 
-// ************************************************************************************//
-define("STAFF_USERCAHNEGED","Control System - Spieler bearbeiten");
-define("STAFF_USERCONTROL","Control System - Spielerliste");
-
-// ************************************************************************************//
-// * Default Language Section - Footer
-// ************************************************************************************//
-define("DISCORD","https://discord.gg/xxxxxx");
-define("TEAMSPEAK","ts3server://xxxxxx?port=9987");
-define("IMPRINT","https://xxxxxx/impressum.html"); 
-
 // ************************************************************************************//
 // * MySQL Account Data Connect
 // ************************************************************************************//

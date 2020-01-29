@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -47,7 +47,7 @@ if(isset($_POST['tweeting'])){
 				<i class='now-ui-icons ui-1_simple-remove'></i>
 			</button>
 			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-			<span data-notify='message'><b>Dein Tweet wurde abgeschickt!</b></span>
+			<span data-notify='message'><b>".DASHBOARDTWITTERNOTE1."</b></span>
 		</div>";
 		}
 		$conn->close();
@@ -80,7 +80,7 @@ if(isset($_POST['tweeting_del'])){
 				<i class='now-ui-icons ui-1_simple-remove'></i>
 			</button>
 			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-			<span data-notify='message'><b>Du hast alle Tweets gelöscht</b></span>
+			<span data-notify='message'><b>".DASHBOARDTWITTERNOTE2."</b></span>
 		</div>";
 	}
 	$conn->close();
@@ -98,13 +98,13 @@ echo "
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h5 class='title'>Willkommen bei ".PROJECTNAME."!</h5>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
                 <p class='category'>User Control Panel | Dashboard</p>
               </div>
               <div class='card-body'>		  
 			<div class='row'>			
 				<div class='col-sm-12'>
-					<b>Willkommen ";
+					<b>".WELCOMETO." Dashboard! ";
 					$id = 0 + $_COOKIE["secure"];
 					$securecode = $row["id"];
 					$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
@@ -117,7 +117,7 @@ echo "
 						}
 					}
 echo "						
-					 im Dashboard!</b>
+					  </b>
 				</div>				
 			</div>										
               </div>
@@ -166,7 +166,7 @@ echo "
 														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='Was gibt es Neues ?' value='' maxlength='220' id='border-right6'/>			
 													</div>
 													<div class='col-sm-2'>
-														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> Twittern</button>		
+														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> ".DASHBOARDTWITTER."</button>		
 													</div>
 												</form>";
 													
