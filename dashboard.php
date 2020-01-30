@@ -95,33 +95,68 @@ site_content_logged();
 echo "
     <div class='content'>
         <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Dashboard</p>
-              </div>
-              <div class='card-body'>		  
-			<div class='row'>			
-				<div class='col-sm-12'>
-					<b>".WELCOMETO." Dashboard! ";
-					$id = 0 + $_COOKIE["secure"];
-					$securecode = $row["id"];
-					$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
-					$result = $conn->query($sql);
+			<div class='col-md-12'>
+				<div class='card'>
+					<div class='card-header'>
+                		<h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                		<p class='category'>User Control Panel | Dashboard</p>
+			  		</div>
+					<div class='card-body'>		  
+						<div class='row'>			
+							<div class='col-sm-12'>
+								<b>".WELCOMETO." Dashboard! ";
+								$id = 0 + $_COOKIE["secure"];
+								$securecode = $row["id"];
+								$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
+								$result = $conn->query($sql);
 
-					if ($result->num_rows > 0) {
-						// output data of each row
-						while($row = $result->fetch_assoc()) {
-							echo"".$row["username"]."";
-						}
-					}
+								if ($result->num_rows > 0) {
+									// output data of each row
+									while($row = $result->fetch_assoc()) {
+										echo"".$row["username"]."";
+									}
+								}
 echo "						
-					  </b>
-				</div>				
-			</div>										
-              </div>
-            </div>
+					  			</b>
+							</div>				
+						</div>
+					</div>										
+				</div>
+			</div>													
+		</div>
+		<div class='row'>
+			<div class='col-md-12'>
+			<div class='card'>";
+				$query = "select * from news_lang";
+				$result = mysqli_query($conn,$query);
+
+				while($row = mysqli_fetch_array($result)){
+
+					$title_field = "title";
+					$content_field = "content";
+					if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){
+						$title_field = "title_de";
+						$content_field = "content_de";
+					}
+					$id = $row['id'];
+					$title = $row[$title_field];
+					$content = $row[$content_field];
+					$shortcontent = substr($content, 0, 220)."...";					
+				echo "
+				<div class='card' id='post_".$id."'>		
+					<div class='card-header'>
+						<h5 class='title'>".$title."</h5>
+						<p class='category'>User Control Panel | Dashboard - News</p>
+		  			</div>
+			  		<div class='col-md-12'>			 			  
+						$shortcontent
+					</div>
+				</div>";
+				}
+echo "									
+			</div>
+			</div>				
+		</div>				
 		<div class='row'>
 		  <div class='col-md-12'>
               <div class='card'>
@@ -230,13 +265,12 @@ echo "
 				}
 							
 echo "
-                </div>
 				</div>
               </div>
             </div>
           </div>		  
 	</div>
-	</div>
-</div>";
+</div>";			  
+	
 site_footer();	
 ?>

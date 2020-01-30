@@ -26,6 +26,32 @@ define("USERPROFILE","User Profile");
 define("USERPROFILECHANGE","User Profile Change");
 define("USERSUPPORT","Support");
 define("WELCOMETO","Welcome to");
+define("STAFF_NEWSACP","News System");
+
+// ************************************************************************************//
+// * English Language Section - Message System 
+// ************************************************************************************//
+define("MSG_1","You should look first <a href='login.php'>".LOGIN."</a>!");
+define("MSG_2","You are not a supporter!");
+define("MSG_3","<b>You have successfully edited the account!</b><br><br><a href='staff_userchanged.php'>go back</a>");
+define("MSG_4","<b>Your ticket has been sent!</b><br><br><a href='support.php'>go back</a>");
+define("MSG_5","<b>Your tweet was sent successfully!</b><br><br><a href='dashboard.php'>Back to the dashboard</a>");
+define("MSG_6","<b>Your like in the tweet was successfully set!</b><br><br><a href='dashboard.php'>Back to the dashboard</a>");
+define("MSG_7","<b>Your changes could not be saved!</b>");
+define("MSG_8","<b>You have successfully edited your account!</b>");
+define("MSG_9","<b>Your registration is complete!</b>");
+define("MSG_10","<b>Please fill in both the username and the password field!</b>");
+define("MSG_11","<b>Wrong password!</b>");
+define("MSG_12","<b>No user found!</b>");
+define("MSG_13","<b>E-Mail is not valid!</b>");
+define("MSG_14","<b>Username is not valid!</b>");
+define("MSG_15","<b>Password must be between 5 and 20 characters long!</b>");
+define("MSG_16","<b>Account already exists</b>");
+define("MSG_17","<b>Your logout was successful!</b>");
+define("MSG_18","<b>Your news entry was not successful!</b>");
+define("MSG_19","<b>Please fill in both the German title and the English title!</b>");
+define("MSG_20","<b>Please fill in both the German content and the English content!</b>");
+define("MSG_21","<b>Your news entry was successful!</b>");
 
 // ************************************************************************************//
 // * English Language Section - My Profile Change
@@ -55,6 +81,25 @@ define("PLAYERNOTE2","Our statement");
 define("DASHBOARDTWITTER","Tweet");
 define("DASHBOARDTWITTERNOTE1","Your tweet has been sent!");
 define("DASHBOARDTWITTERNOTE2","You deleted all tweets!");
+define("DASHBOARDTWITTERNOTE3","Whats new ?");
+define("DASHBOARDTWITTERNOTE4","Your Username");
+define("DASHBOARDTWITTERNOTE5","Your tweet message");
+define("READMORE","read more");
+
+// ************************************************************************************//
+// * English Language Section - News System
+// ************************************************************************************//
+define("NEWS_HEADER","News System");
+define("NEWS_INFO","You have to fill in all fields!");
+define("NEWS_TITLE_EN","Title English");
+define("NEWS_TITLE_EN_TEXT","The English Title");
+define("NEWS_TITLE_DE","Title German");
+define("NEWS_TITLE_DE_TEXT","The German Title");
+define("NEWS_CONTENT_EN","Content Englisch");
+define("NEWS_CONTENT_EN_TEXT","The English Content");
+define("NEWS_CONTENT_DE","Content German");
+define("NEWS_CONTENT_DE_TEXT","The German Content");
+define("NEWS_SAVE","Save");
 
 // ************************************************************************************//
 // * English Language Section - Support
@@ -95,12 +140,21 @@ define("INDEXTEXT", "We bring the roleplay to a new level, with our realistic ha
 // ************************************************************************************//
 define("STAFF_USERCAHNEGED","Player Changer");
 define("STAFF_USERCONTROL","Playerlist");
+define("STAFF_USERCONTROLUSERID","Player ID");
+define("STAFF_USERCONTROLUSERNAME","Player Username");
+define("STAFF_USERCONTROLSOCIALCLUB","Player Social Club");
+define("STAFF_USERCONTROLEMAIL","Player E-Mail");
+define("STAFF_USERCONTROLACCOUNTWHITELIST","Player Whitelisted");
+define("STAFF_USERCONTROLSAVE","Save");
 
 // ************************************************************************************//
 // * English Language Section - Footer
 // ************************************************************************************//
-define("DISCORD","https://discord.gg/xxxxxx");
-define("TEAMSPEAK","ts3server://xxxxxx?port=9987");
-define("IMPRINT","https://xxxxxx/impressum.html"); 
+define("DISCORD","Join to Discord");
+define("DISCORDURL","https://discord.gg/xxxxxx");
+define("TEAMSPEAK","Join to Teamspeak");
+define("TEAMSPEAKURL","ts3server://xxxxxx?port=9987");
+define("IMPRINT","Impressum");
+define("IMPRINTURL","https://xxxxxx/impressum.html");
 
 ?>

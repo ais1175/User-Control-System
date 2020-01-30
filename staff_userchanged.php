@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -73,33 +73,33 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Team Account Control System - Spielerliste</p>
+                <p class='category'>User Control Panel | Team Account Control System - ".STAFF_USERCAHNEGED."</p>
               </div>
               <div class='card-body'>
 			<div class='row'>	
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h4 class='card-title'> Team Account Control System - Spieler bearbeiten</h4>
+                <h4 class='card-title'> Team Account Control System - ".STAFF_USERCAHNEGED."</h4>
               </div>
               <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
                     <thead class=' text-primary'>
                       <th>
-                        ID
+                        ".STAFF_USERCONTROLUSERID."
                       </th>
                       <th>
-                        Username
+                        ".STAFF_USERCONTROLUSERNAME."
                       </th>					  
                       <th>
-                        Social Club
+                        ".STAFF_USERCONTROLSOCIALCLUB."
                       </th>
                       <th>
-                        E-Mail
+                        ".STAFF_USERCONTROLEMAIL."
                       </th>				  
                       <th>
-                        Whitelisten
+                        ".STAFF_USERCONTROLACCOUNTWHITELIST."
                       </th>
                       <th>
                         Option
@@ -132,7 +132,7 @@ echo "
 						  <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='betaAcess' size='2' maxlength='2' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["betaAcess"]. "' required>
                         </td>
                         <td>
-                          <button type='submit' class='btn btn-primary' name='submit'>ändern</submit>
+                          <button type='submit' class='btn btn-primary' name='submit'>".STAFF_USERCONTROLSAVE."</submit>
                         </td>						
 					</form>";
 				}

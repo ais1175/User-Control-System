@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.3
+// * Version: 1.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -28,33 +28,33 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Team Account Control System - Spielerliste</p>
+                <p class='category'>User Control Panel | Team Account Control System - ".STAFF_USERCONTROL."</p>
               </div>
               <div class='card-body'>
 			<div class='row'>
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h4 class='card-title'> Team Account Control System - Spielerliste</h4>
+                <h4 class='card-title'> Team Account Control System - ".STAFF_USERCONTROL."</h4>
               </div>
               <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
                     <thead class=' text-primary'>
                       <th>
-                        Spieler Nummer
+                        ".STAFF_USERCONTROLUSERID."
                       </th>
                       <th>
-                        Username
+                        ".STAFF_USERCONTROLUSERNAME."
                       </th>					  
                       <th>
-                        Social Club
+                        ".STAFF_USERCONTROLSOCIALCLUB."
                       </th>
                       <th>
-                        E-Mail
+                        ".STAFF_USERCONTROLEMAIL."
                       </th>				  
                       <th>
-                        Account Whitelist
+                        ".STAFF_USERCONTROLACCOUNTWHITELIST."
                       </th>
                     </thead>
                     <tbody>";

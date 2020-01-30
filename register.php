@@ -69,7 +69,7 @@ site_content_nologged();
 
 echo "
       <div class='content'>
-                <div class='row'>
+        <div class='row'>
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
@@ -107,7 +107,6 @@ echo "
 					<button type='submit' class='btn btn-primary' name='register'>".REGISTER."</submit>			
 				</div>
 			</div>			
-			
 		</form>			
               </div>
             </div>

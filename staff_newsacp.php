@@ -1,0 +1,180 @@
+<?php
+// ************************************************************************************//
+// * User Control Panel ( UCP )
+// ************************************************************************************//
+// * Author: DerStr1k3r
+// ************************************************************************************//
+// * Version: 1.4
+// * 
+// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// ************************************************************************************//
+// * License Typ: GNU GPLv3
+// ************************************************************************************//
+require_once("include/features.php");
+
+site_secure();
+secure_url();
+
+site_secure_staff_check();
+
+site_header();
+site_navi_logged();
+site_content_logged();
+
+if(isset($_POST['news_sup'])){
+    if(empty($_POST['title']) || empty($_POST['title_de']) || empty($_POST['content']) || empty($_POST['content_de'])){
+        site_news_not_done();
+    }
+    else
+    {
+        $title = xss_cleaner(trim(htmlspecialchars($_POST['title'])));
+        $title = mysqli_real_escape_string($conn,$title);
+        $title_de 	= xss_cleaner(trim(htmlspecialchars($_POST['title_de'])));
+        $title_de 	= mysqli_real_escape_string($conn,$title_de);
+        $content 	= xss_cleaner(trim(htmlspecialchars($_POST['content'])));
+        $content 	= mysqli_real_escape_string($conn,$content);
+        $content_de 	= xss_cleaner(trim(htmlspecialchars($_POST['content_de'])));
+        $content_de 	= mysqli_real_escape_string($conn,$content_de);
+
+        if (preg_match('/[A-Za-z0-9]+/', $_POST['title']) == 0) {
+            site_title_not_valid();
+        }
+
+        if (preg_match('/[A-Za-z0-9]+/', $_POST['title_de']) == 0) {
+            site_title_not_valid();
+        }
+        
+        if (preg_match('/[A-Za-z0-9]+/', $_POST['content']) == 0) {
+            site_content_not_valid();
+        }
+        
+        if (preg_match('/[A-Za-z0-9]+/', $_POST['content_de']) == 0) {
+            site_content_not_valid();
+        }
+        
+        $sql = "UPDATE news_lang SET title='".$title."', title_de='".$title_de."', content='".$content."', content_de='".$content_de."' WHERE id = '1'";
+        $result = mysqli_query($conn, $sql);
+        if($result)
+        {
+            site_news_done();
+        }
+        $conn->close();
+    }
+}
+?>
+<div class='content'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'><?php echo WELCOMETO; ?> <?php echo PROJECTNAME; ?>!</h5>
+                <p class='category'>User Control Panel | <?php echo NEWS_HEADER; ?></p>
+              </div>
+			  <div class='card-body'>
+				<div class='row'>			
+					<div class='col-sm-12'>
+						<b><?php echo NEWS_INFO; ?></b>
+					</div>
+				</div>
+			  </div>
+			  <div class='card-body'>			  
+				<div class='row'>			
+					<div class='col-sm-12'>
+			<?php	
+				$sql = "SELECT title, title_de, content, content_de FROM news_lang WHERE id = 1";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+			?>
+					<form action="<?php echo $_SERVER["PHP_SELF"]; ?>?support=addticket" method='post' enctype='multipart/form-data'>
+                      <tr>				  
+                        <td>
+							<h6>
+								<?php echo NEWS_TITLE_EN; ?>
+								<small class='text-muted'><?php echo NEWS_TITLE_EN_TEXT; ?></small>
+							</h6>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
+										<i class='now-ui-icons ui-2_settings-90'></i>
+									</div>      
+								</div>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title' size='50' maxlength='100' class='form-control' value='<?=$row["title"]?>' required>
+							</div>	
+                        </td>
+					  </tr>
+                      <tr>				  
+                        <td>
+							<h6>
+								<?php echo NEWS_TITLE_DE; ?>
+								<small class='text-muted'><?php echo NEWS_TITLE_DE_TEXT; ?></small>
+							</h6>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
+										<i class='now-ui-icons ui-2_settings-90'></i>
+									</div>      
+								</div>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title_de' size='50' maxlength='100' class='form-control' value='<?=$row["title_de"]?>' required>
+							</div>	
+                        </td>
+					  </tr>
+                      <tr>					  
+                        <td>
+							<h6>
+								<?php echo NEWS_CONTENT_EN; ?>
+								<small class='text-muted'><?php echo NEWS_CONTENT_EN_TEXT; ?></small>
+							</h6>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
+										<i class='now-ui-icons ui-1_settings-gear-63'></i>
+									</div>      
+								</div>						
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='60' class='form-control' value='<?=$row["content"]?>' required>
+							</div>	
+                        </td>						
+                      </tr>
+                      <tr>					  
+                        <td>
+							<h6>
+								<?php echo NEWS_CONTENT_DE; ?>
+								<small class='text-muted'><?php echo NEWS_CONTENT_DE_TEXT; ?></small>
+							</h6>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
+										<i class='now-ui-icons ui-1_settings-gear-63'></i>
+									</div>      
+								</div>						
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='60' class='form-control' value='<?=$row["content_de"]?>' required>
+							</div>	
+                        </td>						
+                      </tr>                      					  
+                      <tr>					  
+						<td>						
+							<button type='submit' name='news_sup' class='btn btn-primary btn-round'>
+								<i class='now-ui-icons ui-1_check'></i> <?php echo NEWS_SAVE; ?>
+							</button>
+							</submit>
+                        </td>							
+                      </tr>						
+					</form>
+
+		<?php
+				}
+				mysqli_close($conn);
+			}
+		?>						 
+              </div>
+            </div>
+          </div>
+        </div>
+		</div>
+	</div>
+</div>
+<?php
+site_footer();
+?>

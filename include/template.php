@@ -29,7 +29,7 @@ function site_secure() {
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Sie sollten sich zuerst <a href='login.php'>".LOGIN."</a>!</b>				
+						        <b>".MSG_1."</b>				
 					        </div>				
 				        </div>										
               </div>
@@ -61,7 +61,7 @@ function site_secure_staff_check() {
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Du bist kein Supporter!</b>				
+						        <b>".MSG_2."</b>				
 					        </div>				
 				        </div>										
               </div>
@@ -97,6 +97,12 @@ function site_secure_staff() {
               <p>".STAFF_USERCONTROL."</p>
             </a>
           </li>
+          <li>
+            <a href='./staff_newsacp.php'>
+              <i class='now-ui-icons education_paper'></i>
+              <p>".STAFF_NEWSACP."</p>
+            </a>
+          </li>          
         </ul>          
       </div>";
 	} 
@@ -115,7 +121,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>
+                  ".MSG_3."
 					        </div>				
 				        </div>										
               </div>
@@ -140,7 +146,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>
+                    ".MSG_4."
 					        </div>				
 				        </div>										
               </div>
@@ -169,7 +175,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Dein Tweet wurde erfolgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+                    ".MSG_5."
 					        </div>				
 				        </div>										
               </div>
@@ -198,7 +204,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Dein Like in den Tweet wurde erfolgreich gesetzt!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>
+                    ".MSG_6."
 					        </div>				
 				        </div>										
               </div>
@@ -227,7 +233,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Deine Änderungen konnten nicht gespeichert werden!</b>
+                    ".MSG_7."
 						        <br>
 						        " . mysqli_error($conn) . "
 					        </div>				
@@ -258,7 +264,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Du hast dein Account erfolgreich bearbeitet!</b>
+                    ".MSG_8."
 					        </div>				
 				        </div>										
               </div>
@@ -287,7 +293,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Deine Registrierung ist abgeschlossen!</b>
+                    ".MSG_9."
 					        </div>				
 				        </div>										
               </div>
@@ -315,7 +321,7 @@ function site_login_notfound_done() {
                 <div class='card-body'>			  
                   <div class='row'>			
                     <div class='col-sm-8'>
-                      <b>Bitte füllen Sie sowohl den Benutzernamen als auch das Passwortfeld aus!</b>
+                      ".MSG_10."
                     </div>				
                   </div>										
                 </div>
@@ -344,7 +350,7 @@ function site_login_notfound_done() {
                   <div class='card-body'>			  
                     <div class='row'>			
                       <div class='col-sm-8'>
-                        <b>Bitte füllen Sie sowohl den Benutzernamen als auch das Passwortfeld aus!</b>
+                        ".MSG_10."
                       </div>				
                     </div>										
                   </div>
@@ -373,7 +379,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Falsches Passwort!</b>
+                    ".MSG_11."
 					        </div>				
 				        </div>										
               </div>
@@ -402,7 +408,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Kein Benutzer gefunden!</b>
+                    ".MSG_12."
 					        </div>				
 				        </div>										
               </div>
@@ -431,7 +437,7 @@ function site_login_user_no_valid_email() {
                 <div class='card-body'>			  
                   <div class='row'>			
                     <div class='col-sm-8'>
-                      <b>E-Mail is not valid!</b>
+                      ".MSG_13."
                     </div>				
                   </div>										
                 </div>
@@ -460,7 +466,7 @@ function site_login_username_not_valid() {
                 <div class='card-body'>			  
                   <div class='row'>			
                     <div class='col-sm-8'>
-                      <b>Username is not valid!</b>
+                      ".MSG_14."
                     </div>				
                   </div>										
                 </div>
@@ -489,7 +495,7 @@ function site_login_max_pass_long() {
                 <div class='card-body'>			  
                   <div class='row'>			
                     <div class='col-sm-8'>
-                      <b>Password must be between 5 and 20 characters long!</b>
+                      ".MSG_15."
                     </div>				
                   </div>										
                 </div>
@@ -502,9 +508,9 @@ function site_login_max_pass_long() {
 }
 
 function site_login_user_already() {
-  site_header();
-  site_navi_nologged();
-  site_content_nologged();
+site_header();
+site_navi_nologged();
+site_content_nologged();
   
   echo "
           <div class='content'>
@@ -518,7 +524,7 @@ function site_login_user_already() {
                 <div class='card-body'>			  
                   <div class='row'>			
                     <div class='col-sm-8'>
-                      <b>Account schon vorhanden</b>
+                      ".MSG_16."
                     </div>				
                   </div>										
                 </div>
@@ -526,9 +532,9 @@ function site_login_user_already() {
             </div>
           </div>
         </div>";
-  site_footer();
-  die();
-  }
+site_footer();
+die();
+}
 
 function site_logout() {	
 site_header();
@@ -559,7 +565,7 @@ echo "
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-						        <b>Dein Logout war erfolgreich!</b>
+                    ".MSG_17."
 					        </div>				
 				        </div>										
               </div>
@@ -570,6 +576,106 @@ echo "
 site_footer();
 header("Location: index.php");  
 die();   
+}
+
+function site_news_not_done() {  
+echo "
+            <div class='content'>
+             <div class='row'>
+              <div class='col-md-12'>
+                <div class='card'>
+                  <div class='card-header'>
+                    <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                    <p class='category'>User Control Panel | News System</p>
+                  </div>
+                  <div class='card-body'>			  
+                    <div class='row'>			
+                      <div class='col-sm-8'>
+                        ".MSG_18."
+                      </div>				
+                    </div>										
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>";
+site_footer();
+die();
+}
+
+function site_title_not_valid() {   
+echo "
+              <div class='content'>
+               <div class='row'>
+                <div class='col-md-12'>
+                  <div class='card'>
+                    <div class='card-header'>
+                      <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                      <p class='category'>User Control Panel | News System</p>
+                    </div>
+                    <div class='card-body'>			  
+                      <div class='row'>			
+                        <div class='col-sm-8'>
+                          ".MSG_19."
+                        </div>				
+                      </div>										
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>";
+site_footer();
+die();
+}
+
+function site_content_not_valid() {  
+echo "
+                <div class='content'>
+                 <div class='row'>
+                  <div class='col-md-12'>
+                    <div class='card'>
+                      <div class='card-header'>
+                        <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                        <p class='category'>User Control Panel | News System</p>
+                      </div>
+                      <div class='card-body'>			  
+                        <div class='row'>			
+                          <div class='col-sm-8'>
+                            ".MSG_20."
+                          </div>				
+                        </div>										
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>";
+site_footer();
+die();
+}
+
+function site_news_done() {
+echo "
+                  <div class='content'>
+                   <div class='row'>
+                    <div class='col-md-12'>
+                      <div class='card'>
+                        <div class='card-header'>
+                          <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                          <p class='category'>User Control Panel | News System</p>
+                        </div>
+                        <div class='card-body'>			  
+                          <div class='row'>			
+                            <div class='col-sm-8'>
+                              ".MSG_21."
+                            </div>				
+                          </div>										
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+site_footer();
+die();
 }
 
 function site_header() {
@@ -798,18 +904,18 @@ echo "
           <nav>
             <ul>
               <li>
-                <a href='".DISCORD."'>
-                  Join to Discord
+                <a href='".DISCORDURL."'>
+                  ".DISCORD."
                 </a>
               </li>
               <li>
-                <a href='".TEAMSPEAK."'>
-                  Join to Teamspeak
+                <a href='".TEAMSPEAKURL."'>
+                  ".TEAMSPEAK."
                 </a>
               </li>
               <li>
-                <a href='".IMPRINT."'>
-                  Impressum
+                <a href='".IMPRINTURL."'>
+                  ".IMPRINT."
                 </a>
               </li>
             </ul>
