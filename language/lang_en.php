@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -17,21 +17,22 @@ secure_url();
 // ************************************************************************************//
 // * English Language Section - Main 
 // ************************************************************************************//
-define("SITETITLE","HIGH-LIFE | UCP");
 define("SITESTAFF","Staff Tools");
-define("PROJECTNAME","High-Life");
 define("DASHBOARD","Dashboard");
+define("HOME_NOLOGGED","Home");
 define("RULES","Rules");
 define("USERPROFILE","User Profile");
 define("USERPROFILECHANGE","User Profile Change");
 define("USERSUPPORT","Support");
 define("WELCOMETO","Welcome to");
 define("STAFF_NEWSACP","News System");
+define("STAFF_RULESACP","Rules System");
+define("SITE_LOGOUT","Logout");
 
 // ************************************************************************************//
 // * English Language Section - Message System 
 // ************************************************************************************//
-define("MSG_1","You should look first <a href='login.php'>".LOGIN."</a>!");
+define("MSG_1","You should look first <a href='login.php'>login</a>!");
 define("MSG_2","You are not a supporter!");
 define("MSG_3","<b>You have successfully edited the account!</b><br><br><a href='staff_userchanged.php'>go back</a>");
 define("MSG_4","<b>Your ticket has been sent!</b><br><br><a href='support.php'>go back</a>");
@@ -52,6 +53,8 @@ define("MSG_18","<b>Your news entry was not successful!</b>");
 define("MSG_19","<b>Please fill in both the German title and the English title!</b>");
 define("MSG_20","<b>Please fill in both the German content and the English content!</b>");
 define("MSG_21","<b>Your news entry was successful!</b>");
+define("MSG_22","<b>Your rules entry was successful!</b>");
+define("MSG_23","<b>Your rules entry was not successful!</b>");
 
 // ************************************************************************************//
 // * English Language Section - My Profile Change
@@ -100,6 +103,21 @@ define("NEWS_CONTENT_EN_TEXT","The English Content");
 define("NEWS_CONTENT_DE","Content German");
 define("NEWS_CONTENT_DE_TEXT","The German Content");
 define("NEWS_SAVE","Save");
+
+// ************************************************************************************//
+// * English Language Section - News System
+// ************************************************************************************//
+define("RULES_HEADER","Rules System");
+define("RULES_INFO","You have to fill in all fields!");
+define("RULES_TITLE_EN","Title English");
+define("RULES_TITLE_EN_TEXT","The English Title");
+define("RULES_TITLE_DE","Title German");
+define("RULES_TITLE_DE_TEXT","The German Title");
+define("RULES_CONTENT_EN","Content Englisch");
+define("RULES_CONTENT_EN_TEXT","The English Content");
+define("RULES_CONTENT_DE","Content German");
+define("RULES_CONTENT_DE_TEXT","The German Content");
+define("RULES_SAVE","Save");
 
 // ************************************************************************************//
 // * English Language Section - Support

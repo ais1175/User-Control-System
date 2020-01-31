@@ -34,12 +34,12 @@ echo "
 		  <div class='col-md-4'>
             <div class='card card-user'>
               <div class='image'>
-                <img src='themes/destiny-life/assets/img/bg5.jpg' alt='...'>
+                <img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
               </div>
               <div class='card-body'>
                 <div class='author'>
                   <a href='#'>
-                    <img class='avatar border-gray' src='themes/destiny-life/assets/img/mike.jpg' alt='...'>
+                    <img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/mike.jpg' alt='...'>
                     <h5 class='title'>
                     ".PLAYERNOTE2."
 					          </h5>
@@ -63,12 +63,12 @@ echo "
 		  <div class='col-md-8'>
             <div class='card card-user'>
               <div class='image'>
-                <img src='themes/destiny-life/assets/img/bg5.jpg' alt='...'>
+                <img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
               </div>
               <div class='card-body'>
                 <div class='author'>
                   <a href='#'>
-                    <img class='avatar border-gray' src='themes/destiny-life/assets/img/mike.jpg' alt='...'>
+                    <img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/mike.jpg' alt='...'>
                     <h5 class='title'>";
 						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
 						$result = $conn->query($sql);

@@ -4,13 +4,14 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
-require_once("config/config.php");
+require_once("settings/database_mysql.php");
+require_once("settings/settings.php");
 require_once("include/bcrypt_class.php");
 require_once("include/template.php");
 

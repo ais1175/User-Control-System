@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -17,21 +17,22 @@ secure_url();
 // ************************************************************************************//
 // * German Language Section - Main 
 // ************************************************************************************//
-define("SITETITLE","HIGH-LIFE | UCP");
 define("SITESTAFF","Staff Tools");
-define("PROJECTNAME","High-Life");
 define("DASHBOARD","Dashboard");
+define("HOME_NOLOGGED","Startseite");
 define("RULES","Regelwerk");
 define("USERPROFILE","User Profil");
 define("USERPROFILECHANGE","User Profil bearbeiten");
 define("USERSUPPORT","Support");
 define("WELCOMETO","Willkommen bei");
 define("STAFF_NEWSACP","News System");
+define("STAFF_RULESACP","Regelwerk System");
+define("SITE_LOGOUT","Abmelden");
 
 // ************************************************************************************//
 // * German Language Section - Message System 
 // ************************************************************************************//
-define("MSG_1","Sie sollten sich zuerst <a href='login.php'>".LOGIN."</a>!");
+define("MSG_1","Sie sollten sich zuerst <a href='login.php'>einloggen</a>!");
 define("MSG_2","Du bist kein Supporter!");
 define("MSG_3","<b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>");
 define("MSG_4","<b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>");
@@ -52,6 +53,8 @@ define("MSG_18","<b>Dein News Eintrag war nicht erfolgreich!</b>");
 define("MSG_19","<b>Bitte geben Sie sowohl den deutschen als auch den englischen Titel ein!</b>");
 define("MSG_20","<b>Bitte füllen Sie sowohl den deutschen als auch den englischen Kontent aus!</b>");
 define("MSG_21","<b>Dein News Eintrag war erfolgreich!</b>");
+define("MSG_22","<b>Dein Regelwerk Eintrag war erfolgreich!</b>");
+define("MSG_23","<b>Dein regelwerk Eintrag war nicht erfolgreich!</b>");
 
 // ************************************************************************************//
 // * German Language Section - My Profile Change
@@ -95,11 +98,26 @@ define("NEWS_TITLE_EN","Titel Englisch");
 define("NEWS_TITLE_EN_TEXT","Der Englische Titel");
 define("NEWS_TITLE_DE","Titel Deutsch");
 define("NEWS_TITLE_DE_TEXT","Der Deutsche Titel");
-define("NEWS_CONTENT_EN","Content Englisch");
+define("NEWS_CONTENT_EN","Kontent Englisch");
 define("NEWS_CONTENT_EN_TEXT","Der Englische Content");
-define("NEWS_CONTENT_DE","Content Deutsch");
-define("NEWS_CONTENT_DE_TEXT","Der Deutsche Content");
+define("NEWS_CONTENT_DE","Kontent Deutsch");
+define("NEWS_CONTENT_DE_TEXT","Der Deutsche Kontent");
 define("NEWS_SAVE","Speichern");
+
+// ************************************************************************************//
+// * German Language Section - Rules System
+// ************************************************************************************//
+define("RULES_HEADER","Regelwerk System");
+define("RULES_INFO","Du musst alle Felder ausfühlen!");
+define("RULES_TITLE_EN","Titel Englisch");
+define("RULES_TITLE_EN_TEXT","Der Englische Titel");
+define("RULES_TITLE_DE","Titel Deutsch");
+define("RULES_TITLE_DE_TEXT","Der Deutsche Titel");
+define("RULES_CONTENT_EN","Kontent Englisch");
+define("RULES_CONTENT_EN_TEXT","Der Englische Kontent");
+define("RULES_CONTENT_DE","Kontent Deutsch");
+define("RULES_CONTENT_DE_TEXT","Der Deutsche Kontent");
+define("RULES_SAVE","Speichern");
 
 // ************************************************************************************//
 // * German Language Section - Support

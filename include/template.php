@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -102,7 +102,13 @@ function site_secure_staff() {
               <i class='now-ui-icons education_paper'></i>
               <p>".STAFF_NEWSACP."</p>
             </a>
-          </li>          
+          </li>
+          <li>
+            <a href='./staff_rulesacp.php'>
+              <i class='now-ui-icons shopping_tag-content'></i>
+              <p>".STAFF_RULESACP."</p>
+            </a>
+          </li>                    
         </ul>          
       </div>";
 	} 
@@ -678,6 +684,56 @@ site_footer();
 die();
 }
 
+function site_rules_done() {
+echo "
+                    <div class='content'>
+                     <div class='row'>
+                      <div class='col-md-12'>
+                        <div class='card'>
+                          <div class='card-header'>
+                            <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                            <p class='category'>User Control Panel | Rules System</p>
+                          </div>
+                          <div class='card-body'>			  
+                            <div class='row'>			
+                              <div class='col-sm-8'>
+                                ".MSG_22."
+                              </div>				
+                            </div>										
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>";
+  site_footer();
+  die();
+}
+
+function site_rules_not_done() {
+echo "
+                    <div class='content'>
+                     <div class='row'>
+                      <div class='col-md-12'>
+                        <div class='card'>
+                          <div class='card-header'>
+                            <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                            <p class='category'>User Control Panel | News System</p>
+                          </div>
+                          <div class='card-body'>			  
+                            <div class='row'>			
+                              <div class='col-sm-8'>
+                                ".MSG_23."
+                              </div>				
+                            </div>										
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>";
+  site_footer();
+  die();
+}
+
 function site_header() {
 secure_url();
 echo "
@@ -685,7 +741,7 @@ echo "
 <html lang='en'>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.4.        # -->
+	<!-- #   Powered by User Control Panel Version 1.4.1.      # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -734,17 +790,12 @@ echo "
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous' />
-	<link href='themes/destiny-life/assets/css/bootstrap.min.css' rel='stylesheet' />
-	<link href='themes/destiny-life/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
-  <link href='themes/destiny-life/assets/site/site.php' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/assets/css/bootstrap.min.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
+  <link href='themes/".SITE_THEMES."/assets/site/site.php' rel='stylesheet' />
 </head>
-<body class=''>
-  <script>
-    function changeLang(){
-      document.getElementById('changer_lang').submit();
-    }
-  </script>
-  <div class='wrapper'>";   
+<body class='' style='overflow: hidden;'>
+  <div class='wrapper' data-color='black'>";   
 }
 
 function site_navi_logged() {
@@ -834,7 +885,7 @@ echo "
                 <span class='navbar-toggler-bar bar3'></span>
               </button>
             </div>
-            <a class='navbar-brand' href='index.php'>Home</a>
+            <a class='navbar-brand' href='index.php'>".HOME_NOLOGGED."</a>
           </div>
           <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navigation' aria-controls='navigation-index' aria-expanded='false' aria-label='Toggle navigation'>
             <span class='navbar-toggler-bar navbar-kebab'></span>
@@ -844,9 +895,9 @@ echo "
           <div class='collapse navbar-collapse justify-content-end' id='navigation'>
             <form method='get' action='' id='changer_lang'>
               <p> 
-                <select name='lang' onchange='changeLang();' id='inputState' class='btn btn-*'>
-                  <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
-                  <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
+                <select name='lang' onchange='changeLang();' class='btn btn-*'>
+                  <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/en.svg'> English</option>
+                  <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/de.svg'> German</option>
                 </select>
               </p>
             </form>
@@ -858,8 +909,8 @@ echo "
 
 function site_content_logged() {
 echo "
-    <div class='main-panel' id='main-panel'>
-      <nav class='navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute'>
+    <div class='main-panel' id='main-panel' data-color='black'>
+      <nav class='navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute' data-color='black'>
         <div class='container-fluid'>
           <div class='navbar-wrapper'>
             <div class='navbar-toggle'>
@@ -880,7 +931,7 @@ echo "
 		        <form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
                 <button class='btn btn-primary' type='logout' name='logout'>
                   <i class='now-ui-icons ui-1_simple-remove'></i>
-                  <p>Logout</p>
+                  <p>".SITE_LOGOUT."</p>
                 </submit>		  	
             </form>
           </div>
@@ -929,14 +980,15 @@ echo "
       </footer>
     </div>
   </div>
-  <script src='themes/destiny-life/assets/js/core/jquery.min.js'></script>
-  <script src='themes/destiny-life/assets/js/core/popper.min.js'></script>
-  <script src='themes/destiny-life/assets/js/core/bootstrap.min.js'></script>
-  <script src='themes/destiny-life/assets/js/plugins/perfect-scrollbar.jquery.min.js'></script>
-  <script src='themes/destiny-life/assets/js/plugins/chartjs.min.js'></script>
-  <script src='themes/destiny-life/assets/js/plugins/bootstrap-notify.js'></script>
-  <script src='themes/destiny-life/assets/js/now-ui-dashboard.min.js?v=1.5.0' type='text/javascript'></script>
-  <script src='themes/destiny-life/assets/site/site.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/core/jquery.min.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/core/popper.min.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/core/bootstrap.min.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/plugins/perfect-scrollbar.jquery.min.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/plugins/chartjs.min.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/plugins/bootstrap-notify.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/js/now-ui-dashboard.min.js?v=1.5.0' type='text/javascript'></script>
+  <script src='themes/".SITE_THEMES."/assets/site/site.js'></script>
+  <script src='themes/".SITE_THEMES."/assets/framework/lang.js'></script>
 </body>
 </html>";   
 }

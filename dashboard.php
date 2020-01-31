@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -141,7 +141,7 @@ echo "
 					$id = $row['id'];
 					$title = $row[$title_field];
 					$content = $row[$content_field];
-					$shortcontent = substr($content, 0, 220)."...";					
+					$shortcontent = substr($content, 0, 260)."...";					
 				echo "
 				<div class='card' id='post_".$id."'>		
 					<div class='card-header'>
@@ -175,7 +175,7 @@ echo "
 														<div class='avatar' style='float: left;'>
 															<div class='author'>
 																<div class='title'>
-																	<img class='avatar border-gray' src='../themes/destiny-life/assets/img/mike.jpg' alt='...'>
+																	<img class='avatar border-gray' src='../themes/".SITE_THEMES."/assets/img/mike.jpg' alt='...'>
 																</div>
 															</div>
 														</div>";

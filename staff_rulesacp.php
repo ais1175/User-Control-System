@@ -21,9 +21,9 @@ site_header();
 site_navi_logged();
 site_content_logged();
 
-if(isset($_POST['news_sup'])){
+if(isset($_POST['rules_sup'])){
     if(empty($_POST['title']) || empty($_POST['title_de']) || empty($_POST['content']) || empty($_POST['content_de'])){
-        site_news_not_done();
+        site_rules_not_done();
     }
     else
     {
@@ -43,8 +43,8 @@ if(isset($_POST['news_sup'])){
         if (preg_match('/[A-Za-z0-9]+/', $_POST['title_de']) == 0) {
             site_title_not_valid();
         }
-        
-        if (preg_match('/[A-Za-z0-9]+/', $_POST['content']) == 0) {
+		
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['content']) == 0) {
             site_content_not_valid();
         }
         
@@ -52,11 +52,11 @@ if(isset($_POST['news_sup'])){
             site_content_not_valid();
         }
         
-        $sql = "UPDATE news_lang SET title='".$title."', title_de='".$title_de."', content='".$content."', content_de='".$content_de."' WHERE id = '1'";
+        $sql = "UPDATE rules_lang SET title='".$title."', title_de='".$title_de."', content='".$content."', content_de='".$content_de."' WHERE id = '1'";
         $result = mysqli_query($conn, $sql);
         if($result)
         {
-            site_news_done();
+            site_rules_done();
         }
         $conn->close();
     }
@@ -68,12 +68,12 @@ if(isset($_POST['news_sup'])){
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'><?php echo WELCOMETO; ?> <?php echo PROJECTNAME; ?>!</h5>
-                <p class='category'>User Control Panel | <?php echo NEWS_HEADER; ?></p>
+                <p class='category'>User Control Panel | <?php echo RULES_HEADER; ?></p>
               </div>
 			  <div class='card-body'>
 				<div class='row'>			
 					<div class='col-sm-12'>
-						<b><?php echo NEWS_INFO; ?></b>
+						<b><?php echo RULES_INFO; ?></b>
 					</div>
 				</div>
 			  </div>
@@ -81,7 +81,7 @@ if(isset($_POST['news_sup'])){
 				<div class='row'>			
 					<div class='col-sm-12'>
 			<?php	
-				$sql = "SELECT title, title_de, content, content_de FROM news_lang WHERE id = 1";
+				$sql = "SELECT title, title_de, content, content_de FROM rules_lang WHERE id = 1";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -92,8 +92,8 @@ if(isset($_POST['news_sup'])){
                       <tr>				  
                         <td>
 							<h6>
-								<?php echo NEWS_TITLE_EN; ?>
-								<small class='text-muted'><?php echo NEWS_TITLE_EN_TEXT; ?></small>
+								<?php echo RULES_TITLE_EN; ?>
+								<small class='text-muted'><?php echo RULES_TITLE_EN_TEXT; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -108,8 +108,8 @@ if(isset($_POST['news_sup'])){
                       <tr>				  
                         <td>
 							<h6>
-								<?php echo NEWS_TITLE_DE; ?>
-								<small class='text-muted'><?php echo NEWS_TITLE_DE_TEXT; ?></small>
+								<?php echo RULES_TITLE_DE; ?>
+								<small class='text-muted'><?php echo RULES_TITLE_DE_TEXT; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -124,8 +124,8 @@ if(isset($_POST['news_sup'])){
                       <tr>					  
                         <td>
 							<h6>
-								<?php echo NEWS_CONTENT_EN; ?>
-								<small class='text-muted'><?php echo NEWS_CONTENT_EN_TEXT; ?></small>
+								<?php echo RULES_CONTENT_EN; ?>
+								<small class='text-muted'><?php echo RULES_CONTENT_EN_TEXT; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -133,15 +133,15 @@ if(isset($_POST['news_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='660' class='form-control' value='<?=$row["content"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='<?=$row["content"]?>' required>
 							</div>	
                         </td>						
                       </tr>
                       <tr>					  
                         <td>
 							<h6>
-								<?php echo NEWS_CONTENT_DE; ?>
-								<small class='text-muted'><?php echo NEWS_CONTENT_DE_TEXT; ?></small>
+								<?php echo RULES_CONTENT_DE; ?>
+								<small class='text-muted'><?php echo RULES_CONTENT_DE_TEXT; ?></small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -149,14 +149,14 @@ if(isset($_POST['news_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='660' class='form-control' value='<?=$row["content_de"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='<?=$row["content_de"]?>' required>
 							</div>	
                         </td>						
                       </tr>                      					  
                       <tr>					  
 						<td>						
-							<button type='submit' name='news_sup' class='btn btn-primary btn-round'>
-								<i class='now-ui-icons ui-1_check'></i> <?php echo NEWS_SAVE; ?>
+							<button type='submit' name='rules_sup' class='btn btn-primary btn-round'>
+								<i class='now-ui-icons ui-1_check'></i> <?php echo RULES_SAVE; ?>
 							</button>
 							</submit>
                         </td>							
