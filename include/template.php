@@ -746,8 +746,8 @@ echo "
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
 	<meta charset='utf-8' />
-	<link rel='apple-touch-icon' sizes='76x76' href='themes/destiny-life/assets/img/apple-icon.png'>
-	<link rel='icon' type='image/png' href='themes/destiny-life/assets/img/favicon.png'>
+	<link rel='apple-touch-icon' sizes='76x76' href='themes/".SITE_THEMES."/assets/img/apple-icon.png'>
+	<link rel='icon' type='image/png' href='themes/".SITE_THEMES."/assets/img/favicon.png'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
   <title>".SITETITLE."</title>";
   
