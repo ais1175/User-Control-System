@@ -88,7 +88,7 @@ if(isset($_POST['news_sup'])){
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 			?>
-					<form action="<?php echo $_SERVER["PHP_SELF"]; ?>?support=addticket" method='post' enctype='multipart/form-data'>
+					<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method='post' enctype='multipart/form-data'>
                       <tr>				  
                         <td>
 							<h6>
@@ -133,7 +133,7 @@ if(isset($_POST['news_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='60' class='form-control' value='<?=$row["content"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='660' class='form-control' value='<?=$row["content"]?>' required>
 							</div>	
                         </td>						
                       </tr>
@@ -149,7 +149,7 @@ if(isset($_POST['news_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='60' class='form-control' value='<?=$row["content_de"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='660' class='form-control' value='<?=$row["content_de"]?>' required>
 							</div>	
                         </td>						
                       </tr>                      					  
