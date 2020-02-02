@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -22,12 +22,12 @@ site_secure();
 secure_url();
 
 if(isset($_POST['tweeting'])){
-		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
-		$username = mysqli_real_escape_string($conn,$username);
-		$msg 	= xss_cleaner(trim(htmlspecialchars($_POST['msg'])));
-		$msg 	= mysqli_real_escape_string($conn,$msg);	
-		$posted 	= date();
-
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
+		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+		$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
+		$posted 	= date('Y-m-d H:i:s');	
+		// The 2nd check to make sure that nothing bad can happen. 	
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 			site_login_username_not_valid();
 		}
@@ -36,7 +36,6 @@ if(isset($_POST['tweeting'])){
 			site_login_username_not_valid();
 		}
 
-		
 		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
 		$result = mysqli_query($conn, $sql);
 		if($result)
@@ -56,7 +55,7 @@ if(isset($_POST['tweeting'])){
 }
 
 if(isset($_POST['like_msg'])){
-		$liked = strip_tags(trim(htmlspecialchars($_POST['liked']))) + 1;
+		$liked = filter_input(INPUT_POST, 'liked', FILTER_SANITIZE_STRING) + 1;
 		$id = $_REQUEST['id'];
 		$msg = $_REQUEST['msg'];
 		
@@ -107,7 +106,7 @@ echo "
 								<b>".WELCOMETO." Dashboard! ";
 								$id = 0 + $_COOKIE["secure"];
 								$securecode = $row["id"];
-								$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
+								$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -134,7 +133,7 @@ echo "
 
 					$title_field = "title";
 					$content_field = "content";
-					if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){
+					if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){
 						$title_field = "title_de";
 						$content_field = "content_de";
 					}
@@ -181,7 +180,7 @@ echo "
 														</div>";
 												$id = 0 + $_COOKIE["secure"];
 												$securecode = $row["id"];
-												$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
+												$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 												$resultx = $conn->query($sqlx);
 												if ($resultx->num_rows > 0) {
 													// output data of each row

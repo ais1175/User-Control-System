@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -21,29 +21,27 @@ if(isset($_POST['myprofilechange'])){
 	}
 	else
 	{	
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
 		$securecode = $row["id"];
-		$email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
-		$socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
 		$username = $socialclubname;
-		$password = strip_tags(trim(htmlspecialchars($_POST['password'])));
+		$email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+		$socialclubname = filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);
+		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
-		// CHECK USERNAME FROM KEY
+		// The 2nd check to make sure that nothing bad can happen.
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 			site_login_username_not_valid();
 		}
-
-		// CHECK MAX CARRACTERS LONG
 		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 			site_login_max_pass_long();
 		}
-
-		// CHECK VALID USER EMAIL
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 			site_login_user_no_valid_email();
 		}
 
-		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['secure_first']."'";
+		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['username']['secure_first']."'";
    
    		if (mysqli_query($conn, $sql)) {
       		site_myprofile_done();
@@ -102,7 +100,7 @@ echo "
                       </th>						  
                     </thead>
                     <tbody>";
-				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_SESSION['secure_first']."";
+				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {

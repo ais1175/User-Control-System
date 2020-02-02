@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -20,27 +20,21 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['register'])){
 	}
 	else
 	{	
-		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
-		$username = mysqli_real_escape_string($conn,$username); 
-		$email 	= xss_cleaner(trim(htmlspecialchars($_POST['email'])));
-		$email = mysqli_real_escape_string($conn,$email);
-		$socialclubname = xss_cleaner(trim(htmlspecialchars($_POST['socialclubname'])));
-		$socialclubname = mysqli_real_escape_string($conn,$socialclubname);
-		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
-		$password = mysqli_real_escape_string($conn,$password);
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
+		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+		$email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+		$socialclubname = filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);
+		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
-		// CHECK USERNAME FROM KEY
+		// The 2nd check to make sure that nothing bad can happen.
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 			site_login_username_not_valid();
 		}
-
-		// CHECK MAX CARRACTERS LONG
 		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 			site_login_max_pass_long();
 		}
-
-		// CHECK VALID USER EMAIL
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 			site_login_user_no_valid_email();
 		}

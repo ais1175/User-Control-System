@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -38,12 +38,6 @@ function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zuf
 
 if(isset($_POST['logout'])){
 	site_logout();
-}
-
-function xss_cleaner($input_str) {
-  $return_str = str_replace( array('<',';','|','&','>',"'",'"',')','('), array('&lt;','&#58;','&#124;','&#38;','&gt;','&apos;','&#x22;','&#x29;','&#x28;'), $input_str );
-  $return_str = str_ireplace( '%3Cscript', '', $return_str );
-  return $return_str;
 }
 
 function secure_url() {

@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -12,7 +12,7 @@
 // ************************************************************************************//
 
 function site_secure() {
-	if(!isset($_SESSION['secure_first']) || $_SESSION['secure_granted'] !== 'granted') {
+	if(!isset($_SESSION['username']['secure_first']) || $_SESSION['username']['secure_granted'] !== 'granted') {
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -44,7 +44,7 @@ function site_secure() {
 }
 
 function site_secure_staff_check() {
-	if(intval($_SESSION['secure_staff']) < 5) {
+	if(intval($_SESSION['username']['secure_staff']) < 5) {
 		site_header();
 		site_navi_nologged();
 		site_content_nologged();
@@ -75,7 +75,7 @@ function site_secure_staff_check() {
 }
 
 function site_secure_staff() {
-	if(intval($_SESSION['secure_staff']) >= 5) {
+	if(intval($_SESSION['username']['secure_staff']) >= 5) {
 		secure_url();
     echo "
       <div class='logo'>
@@ -741,7 +741,7 @@ echo "
 <html lang='en'>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.4.1.      # -->
+	<!-- #   Powered by User Control Panel Version 1.4.2.      # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -759,10 +759,8 @@ echo "
   header("Expect-CT: max-age=7776000, enforce");
   header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
 
-	$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
-	$username = mysqli_real_escape_string($conn,$username); 
-	$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
-	$password = mysqli_real_escape_string($conn,$password);
+	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+	$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 	$securecode = $row["id"];
 	
 	session_start();
@@ -774,14 +772,14 @@ echo "
 	if($numRows  > 0){
     $row = mysqli_fetch_assoc($rs);
     $expires = time()+2592000;
-		$_SESSION['secure_first'] = $row["id"];
-		$_SESSION['secure_staff'] = $row["adminLevel"];
-		$_SESSION['secure_granted'] = "granted";
+		$_SESSION['username']['secure_first'] = $row["id"];
+		$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+		$_SESSION['username']['secure_granted'] = "granted";
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
-			$_SESSION['secure_first'] = $row["id"];
-			$_SESSION['secure_staff'] = $row["adminLevel"];
-			$_SESSION['secure_granted'] = "granted";
+			$_SESSION['username']['secure_first'] = $row["id"];
+			$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+			$_SESSION['username']['secure_granted'] = "granted";
 		} 			
 		header("Location:dashboard.php");
 	}
@@ -896,8 +894,8 @@ echo "
             <form method='get' action='' id='changer_lang'>
               <p> 
                 <select name='lang' onchange='changeLang();' class='btn btn-*'>
-                  <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/en.svg'> English</option>
-                  <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/de.svg'> German</option>
+                  <option value='en'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'en'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/en.svg'> English</option>
+                  <option value='de'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/de.svg'> German</option>
                 </select>
               </p>
             </form>
@@ -938,8 +936,8 @@ echo "
           <form method='get' action='' id='changer_lang'>
           <p>
             <select name='lang' onchange='changeLang();' id='inputState' class='btn btn-*'>
-              <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
-              <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
+              <option value='en'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
+              <option value='de'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
             </select>
           </p>
         </form>

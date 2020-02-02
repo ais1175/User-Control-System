@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -27,30 +27,28 @@ if(isset($_POST['submit'])){
   }
   else
   {
-	  $securecode = $row["id"];
-	  $username = strip_tags(trim(htmlspecialchars($_POST['username'])));
-	  $email 	= strip_tags(trim(htmlspecialchars($_POST['email'])));	
-	  $socialclubname = strip_tags(trim(htmlspecialchars($_POST['socialclubname'])));
-	  $betaAcess = strip_tags(trim(htmlspecialchars($_POST['betaAcess'])));
+    $securecode = $row["id"];
     
-    // CHECK USERNAME FROM KEY
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $socialclubname 	= filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);
+    $betaAcess 	= filter_input(INPUT_POST, 'betaAcess', FILTER_SANITIZE_STRING);
+
+    // The 2nd check to make sure that nothing bad can happen.    
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 			site_login_username_not_valid();
 		}
-
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['email']) == 0) {
 			site_login_username_not_valid();
     }
-    
     if (preg_match('/[A-Za-z0-9]+/', $_POST['socialclubname']) == 0) {
 			site_login_username_not_valid();
     }
-    
     if (preg_match('/[A-Za-z0-9]+/', $_POST['betaAcess']) == 0) {
 			site_login_username_not_valid();
     }
-    
-    // CHECK VALID USER EMAIL
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 			site_login_user_no_valid_email();
 		}

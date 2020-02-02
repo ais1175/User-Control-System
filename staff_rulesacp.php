@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -27,27 +27,23 @@ if(isset($_POST['rules_sup'])){
     }
     else
     {
-        $title = xss_cleaner(trim(htmlspecialchars($_POST['title'])));
-        $title = mysqli_real_escape_string($conn,$title);
-        $title_de 	= xss_cleaner(trim(htmlspecialchars($_POST['title_de'])));
-        $title_de 	= mysqli_real_escape_string($conn,$title_de);
-        $content 	= xss_cleaner(trim(htmlspecialchars($_POST['content'])));
-        $content 	= mysqli_real_escape_string($conn,$content);
-        $content_de 	= xss_cleaner(trim(htmlspecialchars($_POST['content_de'])));
-        $content_de 	= mysqli_real_escape_string($conn,$content_de);
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+        $title_de 	= filter_input(INPUT_POST, 'title_de', FILTER_SANITIZE_STRING);
+        $content 	= filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
+        $content_de 	= filter_input(INPUT_POST, 'content_de', FILTER_SANITIZE_STRING);
 
+		// The 2nd check to make sure that nothing bad can happen.
         if (preg_match('/[A-Za-z0-9]+/', $_POST['title']) == 0) {
             site_title_not_valid();
         }
-
         if (preg_match('/[A-Za-z0-9]+/', $_POST['title_de']) == 0) {
             site_title_not_valid();
         }
-		
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['content']) == 0) {
             site_content_not_valid();
         }
-        
         if (preg_match('/[A-Za-z0-9]+/', $_POST['content_de']) == 0) {
             site_content_not_valid();
         }

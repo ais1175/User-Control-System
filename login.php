@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4
+// * Version: 1.4.2
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -20,19 +20,17 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 	}
 	else
 	{	
-		session_start();
-		$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
-		$username = mysqli_real_escape_string($conn,$username); 
-		$password = xss_cleaner(trim(htmlspecialchars($_POST['password'])));
-		$password = mysqli_real_escape_string($conn,$password);
+		// New Filter System from PHP7
+		// Thanks to Tenchuu for the food for thought!
+		session_regenerate_id();
+		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 		$securecode = $row["id"];
 
-		// CHECK USERNAME FROM KEY
+		// The 2nd check to make sure that nothing bad can happen.
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 			site_login_username_not_valid();
 		}
-
-		// CHECK MAX CARRACTERS LONG
 		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 			site_login_max_pass_long();
 		}
@@ -47,9 +45,9 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 		if($numRows  == 1){
 			$row = mysqli_fetch_assoc($rs);
 			if(password_verify($password,$row['password'])){
-				$_SESSION['secure_first'] = $row["id"];
-				$_SESSION['secure_granted'] = "granted";
-				$_SESSION['secure_staff'] = $row["adminLevel"];
+				$_SESSION['username']['secure_first'] = $row["id"];
+				$_SESSION['username']['secure_granted'] = "granted";
+				$_SESSION['username']['secure_staff'] = $row["adminLevel"];
 				if($result)
 				{
 				// Platzhalter: redir to dashboard.php
