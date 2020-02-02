@@ -894,8 +894,8 @@ echo "
             <form method='get' action='' id='changer_lang'>
               <p> 
                 <select name='lang' onchange='changeLang();' class='btn btn-*'>
-                  <option value='en'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'en'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/en.svg'> English</option>
-                  <option value='de'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/de.svg'> German</option>
+                  <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/en.svg'> English</option>
+                  <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='./themes/destiny-life/assets/flags/de.svg'> German</option>
                 </select>
               </p>
             </form>
@@ -936,8 +936,8 @@ echo "
           <form method='get' action='' id='changer_lang'>
           <p>
             <select name='lang' onchange='changeLang();' id='inputState' class='btn btn-*'>
-              <option value='en'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
-              <option value='de'"; if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
+              <option value='en'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/en.svg'> English</option>
+              <option value='de'"; if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){ echo "selected"; } echo"><img src='../themes/destiny-life/assets/flags/de.svg'> German</option>
             </select>
           </p>
         </form>

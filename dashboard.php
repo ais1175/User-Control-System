@@ -133,7 +133,7 @@ echo "
 
 					$title_field = "title";
 					$content_field = "content";
-					if(isset($_SESSION['username']['lang']) && $_SESSION['username']['lang'] == 'de'){
+					if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){
 						$title_field = "title_de";
 						$content_field = "content_de";
 					}
