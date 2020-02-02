@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -22,6 +22,7 @@ define("DASHBOARD","Dashboard");
 define("HOME_NOLOGGED","Home");
 define("RULES","Rules");
 define("USERPROFILE","User Profile");
+define("USERACCOUNT","Account Tools");
 define("USERPROFILECHANGE","User Profile Change");
 define("USERSUPPORT","Support");
 define("WELCOMETO","Welcome to");

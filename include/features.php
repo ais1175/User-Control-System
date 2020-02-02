@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.2
+// * Version: 1.4.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -31,13 +31,13 @@ if(isset($_SESSION['lang'])){
         include "./language/lang_en.php";
 }
 
-function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")
-{
-    return hash('sha512','Destiny-Life ".$addtext.$var.$addtext."".$addsecure." is the new roleplay project!');
-}
-
 if(isset($_POST['logout'])){
 	site_logout();
+}
+
+function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")
+{
+    return hash('sha512','This UCP ".$addtext.$var.$addtext."".$addsecure." is the new user control panel system for all roleplay projects!');
 }
 
 function secure_url() {
@@ -209,7 +209,7 @@ $ct_userspm_def = array(
       $manipulated = str_replace($delete , "'" ,$manipulated); 
       $cremotead = $_SERVER['REMOTE_ADDR'];
       $cuseragent = $_SERVER['HTTP_USER_AGENT'];
-	  die( "<font color=red>Attack detected! <br /><br /><b>has detected a potential attack on this site with a worm or exploit script so the Security System stopped the script.:</b><br />$cremotead - $cuseragent" );
+        die( "<font color=red>Attack detected! <br /><br /><b>has detected a potential attack on this site with a worm or exploit script so the Security System stopped the script.:</b><br />$cremotead - $cuseragent" );
   }
 }
 ?>

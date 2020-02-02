@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.2
+// * Version: 1.4.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -16,56 +16,51 @@ $username = trim($row["username"]);
 $sql = "select id from users where username = '".$username."'";
 $rs = mysqli_query($conn,$sql);
 
-$cookie = $_COOKIE["username"]; 
-
 site_secure();
 secure_url();
 
 if(isset($_POST['tweeting'])){
-		// New Filter System from PHP7
-		// Thanks to Tenchuu for the food for thought!
-		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-		$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
-		$posted 	= date('Y-m-d H:i:s');	
-		// The 2nd check to make sure that nothing bad can happen. 	
-		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
-			site_login_username_not_valid();
-		}
-
-		if (preg_match('/[A-Za-z0-9]+/', $_POST['msg']) == 0) {
-			site_login_username_not_valid();
-		}
-
-		$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
-		$result = mysqli_query($conn, $sql);
-		if($result)
-		{
-		echo "
-		<div class='alert alert-info alert-with-icon' data-notify='container'>
-			<button type='button' aria-hidden='true' class='close'>
-				<i class='now-ui-icons ui-1_simple-remove'></i>
-			</button>
-			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-			<span data-notify='message'><b>".DASHBOARDTWITTERNOTE1."</b></span>
-		</div>";
-		}
-		$conn->close();
-		header("Location:dashboard.php");
-		die();
+	// New Filter System from PHP7
+	// Thanks to Tenchuu for the food for thought!
+	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+	$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
+	$posted 	= date('Y-m-d H:i:s');	
+	// The 2nd check to make sure that nothing bad can happen. 	
+	if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+		site_login_username_not_valid();
+	}
+	if (preg_match('/[A-Za-z0-9]+/', $_POST['msg']) == 0) {
+		site_login_username_not_valid();
+	}
+	$sql = "insert into tweets (username, msg, posted) value('".$username."', '".$msg."', NOW())";
+	$result = mysqli_query($conn, $sql);
+	if($result) {
+        echo "
+        <div class='alert alert-info alert-with-icon' data-notify='container'>
+                <button type='button' aria-hidden='true' class='close'>
+                        <i class='now-ui-icons ui-1_simple-remove'></i>
+                </button>
+                <span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
+                <span data-notify='message'><b>".DASHBOARDTWITTERNOTE1."</b></span>
+        </div>";
+	}
+	$conn->close();
+	header("Location:dashboard.php");
+	die();
 }
 
 if(isset($_POST['like_msg'])){
-		$liked = filter_input(INPUT_POST, 'liked', FILTER_SANITIZE_STRING) + 1;
-		$id = $_REQUEST['id'];
-		$msg = $_REQUEST['msg'];
-		
-		$sql2 = "UPDATE tweets SET liked='".$liked."' ORDER BY id LIMIT 10";
-		$result2 = mysqli_query($conn, $sql2);
-		if($result2)
-		{
-			site_tweetings_liked_done();
-		}
-		$conn->close();
+	$liked = filter_input(INPUT_POST, 'liked', FILTER_SANITIZE_STRING) + 1;
+	$id = $_REQUEST['id'];
+	$msg = $_REQUEST['msg'];
+        
+	$sql2 = "UPDATE tweets SET liked='".$liked."' ORDER BY id LIMIT 10";
+	$result2 = mysqli_query($conn, $sql2);
+	if($result2)
+	{
+		site_tweetings_liked_done();
+	}
+	$conn->close();
 }
 
 if(isset($_POST['tweeting_del'])){
@@ -73,14 +68,14 @@ if(isset($_POST['tweeting_del'])){
 	$result3 = mysqli_query($conn, $sql3);
 	if($result3)
 	{
-		echo "
-		<div class='alert alert-info alert-with-icon' data-notify='container'>
-			<button type='button' aria-hidden='true' class='close'>
-				<i class='now-ui-icons ui-1_simple-remove'></i>
-			</button>
-			<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-			<span data-notify='message'><b>".DASHBOARDTWITTERNOTE2."</b></span>
-		</div>";
+        echo "
+        <div class='alert alert-info alert-with-icon' data-notify='container'>
+                <button type='button' aria-hidden='true' class='close'>
+                        <i class='now-ui-icons ui-1_simple-remove'></i>
+                </button>
+                <span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
+                <span data-notify='message'><b>".DASHBOARDTWITTERNOTE2."</b></span>
+        </div>";
 	}
 	$conn->close();
 	header("Location:dashboard.php");
@@ -104,8 +99,6 @@ echo "
 						<div class='row'>			
 							<div class='col-sm-12'>
 								<b>".WELCOMETO." Dashboard! ";
-								$id = 0 + $_COOKIE["secure"];
-								$securecode = $row["id"];
 								$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 								$result = $conn->query($sql);
 
@@ -178,8 +171,6 @@ echo "
 																</div>
 															</div>
 														</div>";
-												$id = 0 + $_COOKIE["secure"];
-												$securecode = $row["id"];
 												$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 												$resultx = $conn->query($sqlx);
 												if ($resultx->num_rows > 0) {

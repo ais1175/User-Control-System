@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -122,7 +122,7 @@ if ($support == "addticket") {
 				<div class='row'>			
 					<div class='col-sm-12'>
 			<?php	
-				$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
+				$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -220,7 +220,7 @@ if ($support == "addticket") {
 					<?php
 						$id = 0 + $_COOKIE["secure"];
 						$securecode = $row["id"];
-						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['secure_first']."";
+						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 						$result = $conn->query($sql);
 
 						if ($result->num_rows > 0) {
@@ -252,7 +252,7 @@ if ($support == "addticket") {
 			</div>
 
 <?php
-	if(intval($_SESSION['secure_staff']) >= 3) {
+	if(intval($_SESSION['username']['secure_staff']) >= 3) {
 ?>
 		<div class='row'>
           <div class='col-md-12'>
