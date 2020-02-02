@@ -204,7 +204,7 @@ echo "
 													</div>
 												</form>";
 													
-											if(intval($_SESSION['secure_staff']) >= 7) {
+											if(intval($_SESSION['username']['secure_staff']) >= 7) {
 												echo "
 													<div class='col-sm-1'>
 														<form action='".$_SERVER['PHP_SELF']."?=tweeting_del' method='post' enctype='multipart/form-data'>
