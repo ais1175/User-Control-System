@@ -890,11 +890,11 @@ function site_content_nologged() {
           <div class='collapse navbar-collapse justify-content-end' id='navigation'>
             <form method='get' action='' id='changer_lang'>
               <p> 
-                <a href='?lang=en'>
+                <a href='".$_SERVER['PHP_SELF']."?lang=en'>
                   <input type='hidden' name='lang' value='lang_en' />
                   <img src='./themes/destiny-life/assets/flags/en.svg' alt='en' width='16' height='16'>
                 </a>&nbsp;
-                <a href='?lang=de'>
+                <a href='".$_SERVER['PHP_SELF']."?lang=de'>
                   <input type='hidden' name='lang' value='lang_de' />
                   <img src='./themes/destiny-life/assets/flags/de.svg' alt='de' width='16' height='16'>
                 </a>
@@ -928,11 +928,11 @@ function site_content_logged() {
           </button>
           <form method='get' action='' id='changer_lang'>
           <p>
-            <a href='?lang=en'>
+            <a href='".$_SERVER['PHP_SELF']."?lang=en'>
               <input type='hidden' name='lang' value='lang_en' />
               <img src='./themes/destiny-life/assets/flags/en.svg' alt='en' width='16' height='16'>
             </a>&nbsp;
-            <a href='?lang=de'>
+            <a href='".$_SERVER['PHP_SELF']."?lang=de'>
               <input type='hidden' name='lang' value='lang_de' />
               <img src='./themes/destiny-life/assets/flags/de.svg' alt='de' width='16' height='16'>
             </a>
