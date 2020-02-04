@@ -186,7 +186,7 @@ echo "
 												}		
 												echo "
 													<div class='col-sm-8'>
-														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='Was gibt es Neues ?' value='' maxlength='220' id='border-right6'/>			
+														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='".DASHBOARDTWITTERNOTE3."' value='' maxlength='220' id='border-right6'/>			
 													</div>
 													<div class='col-sm-2'>
 														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> ".DASHBOARDTWITTER."</button>		
