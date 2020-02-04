@@ -215,8 +215,6 @@ if ($support == "addticket") {
 					<div class='col-sm-12'>
 						<b><?php echo WELCOMETO; ?>
 					<?php
-						$id = 0 + $_COOKIE["secure"];
-						$securecode = $row["id"];
 						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 						$result = $conn->query($sql);
 
