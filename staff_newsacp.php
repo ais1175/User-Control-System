@@ -27,8 +27,6 @@ if(isset($_POST['news_sup'])){
     }
     else
     {
-		// New Filter System from PHP7
-		// Thanks to Tenchuu for the food for thought!
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
         $title_de 	= filter_input(INPUT_POST, 'title_de', FILTER_SANITIZE_STRING);
         $content 	= filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);

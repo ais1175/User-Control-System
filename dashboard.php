@@ -20,8 +20,6 @@ site_secure();
 secure_url();
 
 if(isset($_POST['tweeting'])){
-	// New Filter System from PHP7
-	// Thanks to Tenchuu for the food for thought!
 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 	$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
 	$posted 	= date('Y-m-d H:i:s');	

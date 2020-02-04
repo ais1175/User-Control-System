@@ -21,9 +21,6 @@ if(isset($_POST['myprofilechange'])){
 	}
 	else
 	{	
-		// New Filter System from PHP7
-		// Thanks to Tenchuu for the food for thought!
-		$securecode = $row["id"];
 		$username = $socialclubname;
 		$email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$socialclubname = filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);

@@ -70,13 +70,10 @@ if ($support == "addticket") {
 		}
 		else
 		{
-			$username = xss_cleaner(trim(htmlspecialchars($_POST['username'])));
-			$username = mysqli_real_escape_string($conn,$username);
-			$msg 	= xss_cleaner(trim(htmlspecialchars($_POST['msg'])));
-			$msg 	= mysqli_real_escape_string($conn,$msg);
-			$bug 	= xss_cleaner(trim(htmlspecialchars($_POST['bug'])));
-			$bug 	= mysqli_real_escape_string($conn,$bug);
-			$posted 	= time();
+			$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+			$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
+			$bug 	= filter_input(INPUT_POST, 'bug', FILTER_SANITIZE_STRING);
+			$posted 	= date('Y-m-d H:i:s');
 
 			// CHECK USERNAME FROM KEY
 			if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {

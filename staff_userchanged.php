@@ -27,10 +27,6 @@ if(isset($_POST['submit'])){
   }
   else
   {
-    $securecode = $row["id"];
-    
-		// New Filter System from PHP7
-		// Thanks to Tenchuu for the food for thought!
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $socialclubname 	= filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);

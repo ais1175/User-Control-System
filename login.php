@@ -35,8 +35,6 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 			site_login_max_pass_long();
 		}
 
-		// Get the client ip address
-		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];	
 		$_SESSION["secure"] = sitehash($securecode);	
 		$sql = "select * from users where username = '".$username."' LIMIT 1";
 		$rs = mysqli_query($conn,$sql);
