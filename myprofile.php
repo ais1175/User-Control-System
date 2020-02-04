@@ -16,7 +16,7 @@ site_secure();
 secure_url();
 
 if(isset($_POST['myprofilechange'])){
-	if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])){
+	if(empty($_POST['socialclubname']) || empty($_POST['password']) || empty($_POST['email'])){
 		site_login_notfound_done();
 	}
 	else
@@ -28,7 +28,7 @@ if(isset($_POST['myprofilechange'])){
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
 		// The 2nd check to make sure that nothing bad can happen.
-		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['socialclubname']) == 0) {
 			site_login_username_not_valid();
 		}
 		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
@@ -38,7 +38,7 @@ if(isset($_POST['myprofilechange'])){
 			site_login_user_no_valid_email();
 		}
 
-		$sql = "UPDATE users SET username='".$username."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['username']['secure_first']."'";
+		$sql = "UPDATE users SET username='".$socialclubname."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['username']['secure_first']."'";
    
    		if (mysqli_query($conn, $sql)) {
       		site_myprofile_done();
