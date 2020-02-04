@@ -131,7 +131,7 @@ define("SUPPORTUSERINFO3", "Deine Beschreibung sollte möglichst genau beschrieb
 define("SUPPORTUSERNAME", "Username");
 define("SUPPORTEMAIL", "E-Mail");
 define("SUPPORTSUBJECT", "Betreff");
-define("SUPPORTMSG", "E-Mail");
+define("SUPPORTMSG", "Nachricht");
 define("SUPPORTDATE", "Datum");
 define("SUPPORTSAVE","Speichern");
 define("SUPPORTDELETEINFO","Du hast alle Support Tickets gelöscht");
