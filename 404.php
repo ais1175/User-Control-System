@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.3
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -17,7 +17,7 @@ site_navi_nologged();
 site_content_nologged();
 
 echo "
-        <div class='content'>
+      <div class='content'>
          <div class='row'>
           <div class='col-md-12'>
             <div class='card'>

@@ -191,7 +191,7 @@ echo "
 													<div class='col-sm-2'>
 														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> ".DASHBOARDTWITTER."</button>		
 													</div>
-												</form>";
+											</form>";
 													
 											if(intval($_SESSION['username']['secure_staff']) >= 7) {
 												echo "
