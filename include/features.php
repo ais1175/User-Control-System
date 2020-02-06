@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.3
+// * Version: 1.4.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -12,7 +12,6 @@
 // ************************************************************************************//
 require_once("settings/database_mysql.php");
 require_once("settings/settings.php");
-require_once("include/bcrypt_class.php");
 require_once("include/template.php");
 
 // Set Language variable

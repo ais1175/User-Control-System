@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.2
+// * Version: 1.4.4
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -25,7 +25,6 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 		session_regenerate_id();
 		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
-		$securecode = $row["id"];
 
 		// The 2nd check to make sure that nothing bad can happen.
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
@@ -35,7 +34,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 			site_login_max_pass_long();
 		}
 
-		$_SESSION["secure"] = sitehash($securecode);	
+		$_SESSION["secure"] = sitehash($username);	
 		$sql = "select * from users where username = '".$username."' LIMIT 1";
 		$rs = mysqli_query($conn,$sql);
 		$numRows = mysqli_num_rows($rs);
