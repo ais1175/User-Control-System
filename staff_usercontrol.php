@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.5
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -31,7 +31,7 @@ echo "
                 <p class='category'>User Control Panel | Team Account Control System - ".STAFF_USERCONTROL."</p>
               </div>
               <div class='card-body'>
-			<div class='row'>
+			  <div class='row'>
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
@@ -91,7 +91,7 @@ echo "
                   </table>
                 </div>
               </div>		  
-			</div>
+			    </div>
 				</div>
               </div>
             </div>

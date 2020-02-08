@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.4
+// * Version: 1.4.5
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -20,8 +20,6 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 	}
 	else
 	{	
-		// New Filter System from PHP7
-		// Thanks to Tenchuu for the food for thought!
 		session_regenerate_id();
 		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
