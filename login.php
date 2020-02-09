@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.5
+// * Version: 1.4.6
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -58,7 +58,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 	}	
 }
 
-site_header();
+site_header_nologged();
 site_navi_nologged();
 site_content_nologged();
 

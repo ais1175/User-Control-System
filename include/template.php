@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.5
+// * Version: 1.4.6
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -13,7 +13,7 @@
 
 function site_secure() {
 	if(!isset($_SESSION['username']['secure_first']) || $_SESSION['username']['secure_granted'] !== 'granted') {
-		site_header();
+		site_header_nologged();
 		site_navi_nologged();
 		site_content_nologged();
 
@@ -38,14 +38,13 @@ function site_secure() {
         </div>
       </div>";
 		site_footer();
-		header("Location:login.php");
 		die();
 	}  
 }
 
 function site_secure_staff_check() {
 	if(intval($_SESSION['username']['secure_staff']) < 5) {
-		site_header();
+		site_header_nologged();
 		site_navi_nologged();
 		site_content_nologged();
 
@@ -307,7 +306,7 @@ function site_myprofile_done() {
 }
 
 function site_register_done() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
 
@@ -335,7 +334,7 @@ function site_register_done() {
 }
 
 function site_login_notfound_done() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
   
@@ -364,7 +363,7 @@ function site_login_notfound_done() {
 }
 
 function site_register_notfound_done() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
     
@@ -393,7 +392,7 @@ function site_register_notfound_done() {
 }
 
 function site_login_password_none_correct() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
 
@@ -422,7 +421,7 @@ function site_login_password_none_correct() {
 }
 
 function site_login_user_notfound() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
 
@@ -451,7 +450,7 @@ function site_login_user_notfound() {
 }
 
 function site_login_user_no_valid_email() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
   
@@ -480,7 +479,7 @@ function site_login_user_no_valid_email() {
 }
 
 function site_login_username_not_valid() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
   
@@ -509,7 +508,7 @@ function site_login_username_not_valid() {
 }
 
 function site_login_max_pass_long() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
   
@@ -538,7 +537,7 @@ function site_login_max_pass_long() {
 }
 
 function site_login_user_already() {
-  site_header();
+  site_header_nologged();
   site_navi_nologged();
   site_content_nologged();
   
@@ -567,7 +566,7 @@ function site_login_user_already() {
 }
 
 function site_logout() {	
-  site_header();
+  site_header_nologged();
   setCookie("PHPSESSID", "", 0x7fffffff,  "/");
   session_destroy();
   site_navi_nologged();
@@ -593,8 +592,7 @@ function site_logout() {
           </div>
         </div>
       </div>";
-  site_footer();
-  header("Location: index.php");  
+  site_footer(); 
   exit();   
 }
 
@@ -755,7 +753,7 @@ function site_header() {
   <html lang='en'>
   <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.4.5.      # -->
+	<!-- #   Powered by User Control Panel Version 1.4.6.      # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -773,30 +771,60 @@ function site_header() {
   header("Expect-CT: max-age=7776000, enforce");
   header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
 
+  // starting the session
+  session_start();
+
 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 	$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 	$securecode = $row["id"];
-	
-	session_name('secure');
-  session_start();
+
 	$_SESSION["secure"] = sitehash($securecode);
-	$sql = "select * from accounts where username = '".$username."'";
-	$rs = mysqli_query($conn,$sql);
-	$numRows = mysqli_num_rows($rs);
-	
-	if($numRows  > 0){
-    $row = mysqli_fetch_assoc($rs);
-		$_SESSION['username']['secure_first'] = $row["id"];
-		$_SESSION['username']['secure_staff'] = $row["adminLevel"];
-		$_SESSION['username']['secure_granted'] = "granted";
-		if(isset($_POST["username"]) && ! empty($_POST["username"]))
-		{
-			$_SESSION['username']['secure_first'] = $row["id"];
-			$_SESSION['username']['secure_staff'] = $row["adminLevel"];
-			$_SESSION['username']['secure_granted'] = "granted";
-		} 			
-		header("Location:dashboard.php");
-	}
+  if(isset($_POST["username"]) && ! empty($_POST["username"]))
+  {
+    $_SESSION['username']['secure_first'] = $row["id"];
+    $_SESSION['username']['secure_staff'] = $row["adminLevel"];
+    $_SESSION['username']['secure_granted'] = "granted";
+  }
+
+  echo " 
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous' />
+	<link href='themes/".SITE_THEMES."/assets/css/bootstrap.min.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/assets/css/now-ui-dashboard.php?v=1.5.0' rel='stylesheet' />
+  <link href='themes/".SITE_THEMES."/assets/site/site.php' rel='stylesheet' />
+  </head>
+  <body class='' style='overflow: hidden;'>
+    <div class='wrapper'>";   
+}
+
+function site_header_nologged() {
+  secure_url();
+  echo "
+  <!DOCTYPE html>
+  <html lang='en'>
+  <head>
+	<!-- ####################################################### -->
+	<!-- #   Powered by User Control Panel Version 1.4.6.      # -->
+	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
+	<!-- #   All rights reserved.                              # -->
+	<!-- ####################################################### -->
+	<meta charset='utf-8' />
+	<link rel='apple-touch-icon' sizes='76x76' href='themes/".SITE_THEMES."/assets/img/apple-icon.png'>
+	<link rel='icon' type='image/png' href='themes/".SITE_THEMES."/assets/img/favicon.png'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	<title>".SITETITLE."</title>";
+
+  // starting the session
+  session_start();
+
+  header("X-Frame-Options: sameorigin");
+  header("X-XSS-Protection: 1; mode=block");
+  header("X-Content-Type-Options: nosniff");
+  header("Strict-Transport-Security: max-age=31536000");
+  header("Referrer-Policy: origin-when-cross-origin");
+  header("Expect-CT: max-age=7776000, enforce");
+  header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
 
   echo " 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />

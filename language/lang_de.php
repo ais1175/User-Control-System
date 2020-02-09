@@ -64,6 +64,8 @@ define("WHITELIST","Für die Whitelist");
 define("TWITTER","Für das kommende Twitter Modul");
 define("RPSERVER","UCP sowie für den Game Server");
 define("MYPROFILENOTE","Du musst bei jeder Änderung alle Felder ausfühlen!");
+define("SIGNATUR","Signatur");
+define("SIGNOTE","Deine Signatur für deine Profil Ansicht!");
 define("MYPROFILESAVE","Speichern");
 
 // ************************************************************************************//

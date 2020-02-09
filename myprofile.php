@@ -16,7 +16,7 @@ site_secure();
 secure_url();
 
 if(isset($_POST['myprofilechange'])){
-	if(empty($_POST['socialclubname']) || empty($_POST['password']) || empty($_POST['email'])){
+	if(empty($_POST['socialclubname']) || empty($_POST['password']) || empty($_POST['email'])|| empty($_POST['usersig'])){
 		site_login_notfound_done();
 	}
 	else
@@ -25,10 +25,14 @@ if(isset($_POST['myprofilechange'])){
 		$email 	= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$socialclubname = filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);
 		$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
+		$usersig = filter_input(INPUT_POST, 'usersig', FILTER_SANITIZE_STRING);
 		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
 		// The 2nd check to make sure that nothing bad can happen.
 		if (preg_match('/[A-Za-z0-9]+/', $_POST['socialclubname']) == 0) {
+			site_login_username_not_valid();
+		}
+		if (preg_match('/[A-Za-z0-9]+/', $_POST['usersig']) == 0) {
 			site_login_username_not_valid();
 		}
 		if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
@@ -38,7 +42,7 @@ if(isset($_POST['myprofilechange'])){
 			site_login_user_no_valid_email();
 		}
 
-		$sql = "UPDATE users SET username='".$socialclubname."', email='".$email."', socialclubname='".$socialclubname."', password='".$hashPassword."' WHERE id = '".$_SESSION['username']['secure_first']."'";
+		$sql = "UPDATE users SET username='".$socialclubname."', email='".$email."', socialclubname='".$socialclubname."', usersig='".$usersig."', password='".$hashPassword."' WHERE id = '".$_SESSION['username']['secure_first']."'";
    
    		if (mysqli_query($conn, $sql)) {
       		site_myprofile_done();
@@ -94,10 +98,16 @@ echo "
 							".PASSWORD."
 							<small class='text-muted'>".RPSERVER."</small>
 						</h6>
-                      </th>						  
+					  </th>
+                      <th>
+						<h6>
+							".SIGNATUR."
+							<small class='text-muted'>".SIGNOTE."</small>
+						</h6>
+                      </th>					  						  
                     </thead>
                     <tbody>";
-				$sql = "SELECT socialclubname, password, email FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+				$sql = "SELECT socialclubname, password, email, usersig FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -135,8 +145,18 @@ echo "
 								</div>						
 								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='password' name='password' id='exampleInputPassword1' size='50' maxlength='60' class='form-control' required>
 							</div>	
-                        </td>						
-                        </tr>
+                        </td>											  
+					  	<td>
+					  		<div class='input-group'>
+						  		<div class='input-group-prepend'>
+							  		<div class='input-group-text'>
+								  		<i class='now-ui-icons business_badge'></i>
+							  		</div>      
+						  		</div>						
+						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='usersig' size='50' maxlength='160' class='form-control' value='" . $row["usersig"]. "' required>
+					  		</div>	
+				  		</td>						
+				      </tr>					  
                       <tr>					  
 						<td>						
 							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
