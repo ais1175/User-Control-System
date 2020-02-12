@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.1
+// * Version: 1.4.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -19,6 +19,7 @@ define('MYSQL_USER', 'xxx');
 define('MYSQL_PASSWORD', 'xxx');
 define('MYSQL_HOST', 'localhost');
 define('MYSQL_DATABASE', 'xxx');
+define('MYSQL_PORT', '3306');
 
 // ************************************************************************************//
 // * MySQL Account Data Connect
@@ -27,7 +28,8 @@ $conn = mysqli_connect(
 			"" . MYSQL_HOST . "",
 			"" . MYSQL_USER . "",
 			"" . MYSQL_PASSWORD . "",
-			"" . MYSQL_DATABASE . "");
+			"" . MYSQL_DATABASE . "",
+			"" . MYSQL_PORT . "");
 
 // ************************************************************************************//
 // * MySQL Connection error failed Msg
