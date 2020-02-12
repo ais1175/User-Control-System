@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.3
+// * Version: 1.4.8
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -35,7 +35,7 @@ define("SITE_LOGOUT","Abmelden");
 // ************************************************************************************//
 define("MSG_1","Sie sollten sich zuerst <a href='login.php'>einloggen</a>!");
 define("MSG_2","Du bist kein Supporter!");
-define("MSG_3","<b>Du hast den Account erfolgreich bearbeitet!</b><br><br><a href='staff_userchanged.php'>Zurück</a>");
+define("MSG_3","<b>Du hast den Account erfolgreich bearbeitet!</b>");
 define("MSG_4","<b>Dein Ticket wurde gesendet!</b><br><br><a href='support.php'>Zurück</a>");
 define("MSG_5","<b>Dein Tweet wurde erfolgreich gesendet!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>");
 define("MSG_6","<b>Dein Like in den Tweet wurde erfolgreich gesetzt!</b><br><br><a href='dashboard.php'>Zurück zum Dashboard</a>");
@@ -138,7 +138,7 @@ define("SUPPORTDATE", "Datum");
 define("SUPPORTSAVE","Speichern");
 define("SUPPORTDELETEINFO","Du hast alle Support Tickets gelöscht");
 define("SUPPORTDELETE1","<b>Gehe nun zurück zu den <a href='support.php'>Support Tickets</a>!</b>");
-define("SUPPORTDELETE2","Tickets löschen");
+define("SUPPORTDELETE2","Tickets löschen!");
 define("SUPPORTADDTICKET1", "Erstelle nun dein Ticket!");
 define("SUPPORTADDTICKET2", "Klick mich");
 

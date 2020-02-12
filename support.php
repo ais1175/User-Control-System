@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.3
+// * Version: 1.4.8
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -19,15 +19,15 @@ if (isset($_GET["support"])) $support = trim(htmlentities($_GET["support"]));
 elseif (isset($_POST["support"])) $support = trim(htmlentities($_POST["support"]));
 else $support = "view";
 
-site_header();
-site_navi_logged();
-site_content_logged();
-
-if(isset($_POST['posted_del'])){
-	$sql3 = "DELETE FROM support";
-	$result3 = mysqli_query($conn, $sql3);
-	if($result3)
-	{
+if ($support == "remoticket") {
+	if(isset($_POST['sup_rem'])){
+		$sql3 = "DELETE FROM support";
+		$result3 = mysqli_query($conn, $sql3);
+		if($result3)
+		{
+			site_header();
+			site_navi_logged();
+			site_content_logged();	
 		echo "
 		<div class='content'>
         <div class='row'>
@@ -45,10 +45,8 @@ if(isset($_POST['posted_del'])){
 							<i class='now-ui-icons ui-1_simple-remove'></i>
 						</button>
 						<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-						<span data-notify='message'><b>".SUPPORTDELETEINFO."</b></span>
+						<span data-notify='message'><b>".SUPPORTDELETEINFO."<br><br>".SUPPORTDELETE1."</b></span>
 					</div>
-					<br>
-					".SUPPORTDELETE."	
 				</div>				
 			</div>										
 		  </div>
@@ -56,14 +54,14 @@ if(isset($_POST['posted_del'])){
 		</div>
 		</div>
 		</div>";
-	}
-	site_footer();
-	$conn->close();
-	die();
-}
+		$conn->close();
+		site_footer();
+		die();
+		} 
+	}		           		
+} 
 
 if ($support == "addticket") {
-// } 
 	if(isset($_POST['posted_sup'])){
 		if(empty($_POST['username']) || empty($_POST['msg']) || empty($_POST['bug'])){
 			site_login_notfound_done();
@@ -99,6 +97,10 @@ if ($support == "addticket") {
 			$conn->close();
 		}
 	}
+	
+	site_header();
+	site_navi_logged();
+	site_content_logged();
 ?>
       <div class='content'>
         <div class='row'>
@@ -165,13 +167,13 @@ if ($support == "addticket") {
 								<?php echo SUPPORTMSG; ?>
 								<small class='text-muted'><?php echo SUPPORTUSERINFO3; ?></small>
 							</h6>
-							<div class='textarea-group'>
-								<div class='textarea-group-prepend'>
-									<div class='textarea-group-text'>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
-								</div>						
-								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='msg' size='50' maxlength='60' class='form-control textarea' required></textarea>
+								</div>				
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='msg' size='50' maxlength='260' class='form-control textarea' required></textarea>
 							</div>	
                         </td>						
                       </tr>					  
@@ -182,7 +184,7 @@ if ($support == "addticket") {
 							</button>
 							</submit>
                         </td>							
-                      </tr>						
+                      </tr>				  						
 					</form>
 
 		<?php
@@ -201,6 +203,11 @@ if ($support == "addticket") {
 	site_footer();
 	die();		
 }
+
+site_header();
+site_navi_logged();
+site_content_logged();
+
 ?>
     <div class='content'>
         <div class='row'>
@@ -253,19 +260,12 @@ if ($support == "addticket") {
           <div class='col-md-12'>
             <div class='card'>
               <div class='card-header'>
-                <h4 class='card-title' style='float: left;'> Support Control System - <?php echo SUPPORTDELETE2; ?></h4>
-					<?php
-						if(intval($_SESSION['secure_staff']) >= 10) {
-					?>
-						<h4 style='float: right;'>		
-							<form action='<?php echo $_SERVER['PHP_SELF'];?>?=posted_del' method='post' enctype='multipart/form-data'>
-								<button class='form-control btn-round btn-icon border-gray' name='posted_del'><i class='now-ui-icons ui-1_simple-remove'></i> <?php echo SUPPORTDELETE2; ?></button>
-							</form>
-						</h4>
-					<?php	
-						}
-					?>	 
-				
+                <h4 class='card-title' style='float: left;'> Support Control System</h4>
+				<h4 class='card-title' style='float: right;'>
+					<form method='post' action='<?php echo $_SERVER['PHP_SELF']?>?support=remoticket' enctype='multipart/form-data'>
+						<button type='submit' name='sup_rem' class='form-control btn-round btn-icon border-gray'><i class='now-ui-icons ui-1_simple-remove'></i> <?php echo SUPPORTDELETE2; ?></submit>
+					</form>
+				</h4>				
               </div>
               <div class='card-body'>
                 <div class='table-responsive'>
@@ -285,17 +285,17 @@ if ($support == "addticket") {
                       </th>				  
                       <th>
 					  	<?php echo SUPPORTDATE; ?>
-                      </th>
+                      </th>				  
                     </thead>
                     <tbody>
 		<?php
-			$sql = "SELECT id, username, msg, bug, posted FROM support ORDER BY posted";
+			$sql = "SELECT id, username, msg, bug, posted FROM support";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
 						// output data of each row
 				while($row = $result->fetch_assoc()) {
-		?>
+		?>			
                       <tr>
                         <td>
                           <?=$row["id"]?>
@@ -311,7 +311,7 @@ if ($support == "addticket") {
                         </td>
                         <td>
                           <?=$row["posted"]?>
-                        </td>
+                        </td>					
                       </tr>
 		<?php	  
 				}
@@ -332,4 +332,5 @@ if ($support == "addticket") {
 </div>
 <?php
 site_footer();
+//}
 ?>

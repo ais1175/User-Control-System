@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.2
+// * Version: 1.4.8
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -126,8 +126,8 @@ if(isset($_POST['rules_sup'])){
 									<div class='input-group-text'>
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
-								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='<?=$row["content"]?>' required>
+								</div>					
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='<?=$row["content"]?>' required></textarea>
 							</div>	
                         </td>						
                       </tr>
@@ -142,8 +142,8 @@ if(isset($_POST['rules_sup'])){
 									<div class='input-group-text'>
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
-								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='<?=$row["content_de"]?>' required>
+								</div>					
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='<?=$row["content_de"]?>' required></textarea>
 							</div>	
                         </td>						
                       </tr>                      					  

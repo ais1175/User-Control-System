@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.6
+// * Version: 1.4.8
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -163,6 +163,9 @@ function site_userchanged_done() {
 }
 
 function site_support_posted_done() {
+  site_header();
+  site_navi_logged();
+  site_content_logged();
   echo "
         <div class='content'>
          <div class='row'>
@@ -175,7 +178,7 @@ function site_support_posted_done() {
               <div class='card-body'>			  
 				        <div class='row'>			
 					        <div class='col-sm-8'>
-                    ".MSG_4."
+                    ".MSG_4."<br><br>".SUPPORTDELETE1."
 					        </div>				
 				        </div>										
               </div>
@@ -184,7 +187,7 @@ function site_support_posted_done() {
         </div>
       </div>";
   site_footer();
-  die();	  
+  die();
 }
 
 // Tweet System MSG done
@@ -747,7 +750,11 @@ function site_rules_not_done() {
 }
 
 function site_header() {
+  // starting the session
+  session_start();
+  // starting secure urls
   secure_url();
+  // starting header section
   echo "
   <!DOCTYPE html>
   <html lang='en'>
@@ -771,21 +778,27 @@ function site_header() {
   header("Expect-CT: max-age=7776000, enforce");
   header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
 
-  // starting the session
-  session_start();
-
 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 	$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 	$securecode = $row["id"];
 
-	$_SESSION["secure"] = sitehash($securecode);
-  if(isset($_POST["username"]) && ! empty($_POST["username"]))
-  {
-    $_SESSION['username']['secure_first'] = $row["id"];
-    $_SESSION['username']['secure_staff'] = $row["adminLevel"];
-    $_SESSION['username']['secure_granted'] = "granted";
-  }
-
+  $_SESSION["secure"] = sitehash($securecode);
+	$sql = "select * from accounts where username = '".$username."'";
+	$rs = mysqli_query($conn,$sql);
+	$numRows = mysqli_num_rows($rs);
+	
+	if($numRows  > 0){
+    $row = mysqli_fetch_assoc($rs);
+		$_SESSION['username']['secure_first'] = $row["id"];
+		$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+		$_SESSION['username']['secure_granted'] = "granted";
+		if(isset($_POST["username"]) && ! empty($_POST["username"]))
+		{
+			$_SESSION['username']['secure_first'] = $row["id"];
+			$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+			$_SESSION['username']['secure_granted'] = "granted";
+		} 			
+	}
   echo " 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet' />

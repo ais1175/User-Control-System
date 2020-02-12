@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.3
+// * Version: 1.4.8
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -36,7 +36,7 @@ define("SITE_LOGOUT","Logout");
 define("MSG_1","You should look first <a href='login.php'>login</a>!");
 define("MSG_2","You are not a supporter!");
 define("MSG_3","<b>You have successfully edited the account!</b><br><br><a href='staff_userchanged.php'>go back</a>");
-define("MSG_4","<b>Your ticket has been sent!</b><br><br><a href='support.php'>go back</a>");
+define("MSG_4","<b>Your ticket has been sent!</b>");
 define("MSG_5","<b>Your tweet was sent successfully!</b><br><br><a href='dashboard.php'>Back to the dashboard</a>");
 define("MSG_6","<b>Your like in the tweet was successfully set!</b><br><br><a href='dashboard.php'>Back to the dashboard</a>");
 define("MSG_7","<b>Your changes could not be saved!</b>");
@@ -108,7 +108,7 @@ define("NEWS_CONTENT_DE_TEXT","The German Content");
 define("NEWS_SAVE","Save");
 
 // ************************************************************************************//
-// * English Language Section - News System
+// * English Language Section - Rules System
 // ************************************************************************************//
 define("RULES_HEADER","Rules System");
 define("RULES_INFO","You have to fill in all fields!");
@@ -137,7 +137,7 @@ define("SUPPORTMSG", "Message");
 define("SUPPORTDATE", "Date");
 define("SUPPORTSAVE","Save");
 define("SUPPORTDELETEINFO","You have deleted all support tickets");
-define("SUPPORTDELETE1","<b>Now go back to the <a href='support.php'>Support Tickets</a>!</b>");
+define("SUPPORTDELETE1","Now go back to the <a href='support.php'>Support Tickets</a>!");
 define("SUPPORTDELETE2","Delete tickets");
 define("SUPPORTADDTICKET1", "Now create your ticket!");
 define("SUPPORTADDTICKET2", "click me");
