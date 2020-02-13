@@ -1,12 +1,18 @@
 # User Control System
  User Control System for all Roleplay Projects! Have fun!
  
- The PDO Version is not finished!
+Main requirements:
 
-Requirements:
+1. MySQL Server
+2. Webserver
+3. Php 7.3.x or newer
 
-1. Webserver
+Features requirements:
 
-2. MySQL server with MySQLi from the master branch or pdo from the pdo version branch
-
-3. Php 7.3
+1. Login & Register System
+2. Staff Tools ( User Changer, Playerlist, News Creator, Rules Creator )
+3. Language System ( English & German )
+4. Support System
+5. Profile Changer
+6. Twitter System
+7. and more
