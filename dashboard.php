@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.4.3
+// * Version: 1.5
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -96,18 +96,7 @@ echo "
 					<div class='card-body'>		  
 						<div class='row'>			
 							<div class='col-sm-12'>
-								<b>".WELCOMETO." Dashboard! ";
-								$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-								$result = $conn->query($sql);
-
-								if ($result->num_rows > 0) {
-									// output data of each row
-									while($row = $result->fetch_assoc()) {
-										echo"".$row["username"]."";
-									}
-								}
-echo "						
-					  			</b>
+								<b>".WELCOMETO." Dashboard!</b>
 							</div>				
 						</div>
 					</div>										
