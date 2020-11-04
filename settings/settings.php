@@ -17,6 +17,6 @@ session_start();
 // ************************************************************************************//
 define("PROJECTNAME","UCP Demo");
 define("SITETITLE","UCP DEMO | UCP");
-define("SITE_THEMES","destiny-life");
+define("SITE_THEMES","default");
 
 ?>
