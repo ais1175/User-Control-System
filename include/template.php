@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.5
+// * Version: 1.6
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -16,7 +16,6 @@ function site_secure() {
 		site_header_nologged();
 		site_navi_nologged();
 		site_content_nologged();
-
 		echo "
         <div class='content'>
          <div class='row'>
@@ -47,7 +46,6 @@ function site_secure_staff_check() {
 		site_header_nologged();
 		site_navi_nologged();
 		site_content_nologged();
-
 		echo "
         <div class='content'>
          <div class='row'>
@@ -77,11 +75,11 @@ function site_secure_staff() {
 	if(intval($_SESSION['username']['secure_staff']) >= 5) {
 		secure_url();
     echo "
-      <div class='logo'>
-        <a href='dashboard.php' class='simple-text logo-normal'>
-         <i class='now-ui-icons business_badge'></i> ".SITESTAFF."
-        </a>
-      </div>   
+		<div class='logo'>
+			<a href='dashboard.php' class='simple-text logo-normal'>
+				<i class='now-ui-icons business_badge'></i> ".SITESTAFF."
+			</a>
+		</div>   
           <li>
             <a href='./staff_userchanged.php'>
               <i class='now-ui-icons ui-2_settings-90'></i>
@@ -112,11 +110,11 @@ function site_secure_staff() {
 function site_secure_member() {
 		secure_url();
     echo "
-      <div class='logo'>
-        <a href='dashboard.php' class='simple-text logo-normal'>
-         <i class='now-ui-icons business_badge'></i> ".USERACCOUNT."
-        </a>
-      </div>   
+		<div class='logo'>
+			<a href='dashboard.php' class='simple-text logo-normal'>
+				<i class='now-ui-icons business_badge'></i> ".USERACCOUNT."
+			</a>
+		</div>   
           <li>
             <a href='./user.php'>
               <i class='now-ui-icons users_single-02'></i>
@@ -124,7 +122,7 @@ function site_secure_member() {
             </a>
           </li>
           <li>
-            <a href='./myprofile.php'>
+            <a href='./myprofile.php?myprofile=dashboard'>
               <i class='now-ui-icons ui-2_settings-90'></i>
               <p>".USERPROFILECHANGE."</p>
             </a>
@@ -148,11 +146,11 @@ function site_userchanged_done() {
                 <p class='category'>User Control Panel | Team Account Control System - Spieler bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                  ".MSG_3."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_3."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -176,11 +174,11 @@ function site_support_posted_done() {
                 <p class='category'>User Control Panel | Support - Dein Ticket</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_4."<br><br>".SUPPORTDELETE1."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_4."<br><br>".SUPPORTDELETE1."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -205,11 +203,11 @@ function site_tweetings_done() {
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_5."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_5."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -234,11 +232,11 @@ function site_tweetings_liked_done() {
                 <p class='category'>User Control Panel | Tweet System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_6."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_6."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -263,13 +261,13 @@ function site_myprofile_done_error() {
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_7."
-						        <br>
-						        " . mysqli_error($conn) . "
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_7."
+						<br>
+						" . mysqli_error($conn) . "
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -294,11 +292,11 @@ function site_myprofile_done() {
                 <p class='category'>User Control Panel | Mein Account bearbeiten</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_8."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_8."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -323,11 +321,11 @@ function site_register_done() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_9."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_9."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -409,11 +407,11 @@ function site_login_password_none_correct() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_11."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_11."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -438,11 +436,11 @@ function site_login_user_notfound() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_12."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_12."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -585,11 +583,11 @@ function site_logout() {
                 <p class='category'>User Control Panel | Secure System</p>
               </div>
               <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-                    ".MSG_17."
-					        </div>				
-				        </div>										
+				<div class='row'>			
+					<div class='col-sm-8'>
+						".MSG_17."
+					</div>				
+				</div>										
               </div>
             </div>
           </div>
@@ -760,7 +758,7 @@ function site_header() {
   <html lang='en'>
   <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.4.6.      # -->
+	<!-- #   Powered by User Control Panel Version 1.6         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -818,7 +816,7 @@ function site_header_nologged() {
   <html lang='en'>
   <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.4.6.      # -->
+	<!-- #   Powered by User Control Panel Version 1.6         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->

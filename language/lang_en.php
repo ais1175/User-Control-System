@@ -67,6 +67,11 @@ define("MYPROFILENOTE","You have to fill in all fields with every change!");
 define("SIGNATUR","Signature");
 define("SIGNOTE","Your signature for your profile view!");
 define("MYPROFILESAVE","Save");
+define("CHANGE_MYPROFILE_DASHNOTE","Please note");
+define("CHANGE_MYPROFILE_PASSWORD","Change Password");
+define("CHANGE_MYPROFILE_SIGNATUR","Change signature");
+define("CHANGE_MYPROFILE_USERNAME","Change username");
+define("CHANGE_MYPROFILE_EMAIL","Change E-Mail address");
 
 // ************************************************************************************//
 // * English Language Section - My Profile

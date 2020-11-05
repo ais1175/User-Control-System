@@ -61,12 +61,17 @@ define("MSG_23","<b>Dein regelwerk Eintrag war nicht erfolgreich!</b>");
 // * German Language Section - My Profile Change
 // ************************************************************************************//
 define("WHITELIST","Für die Whitelist");
-define("TWITTER","Für das kommende Twitter Modul");
+define("TWITTER","Für das Twitter Modul");
 define("RPSERVER","UCP sowie für den Game Server");
 define("MYPROFILENOTE","Du musst bei jeder Änderung alle Felder ausfühlen!");
 define("SIGNATUR","Signatur");
 define("SIGNOTE","Deine Signatur für deine Profil Ansicht!");
 define("MYPROFILESAVE","Speichern");
+define("CHANGE_MYPROFILE_DASHNOTE","Bitte beachten");
+define("CHANGE_MYPROFILE_PASSWORD","Passwort ändern");
+define("CHANGE_MYPROFILE_SIGNATUR","Signatur ändern");
+define("CHANGE_MYPROFILE_USERNAME","Benutzername ändern");
+define("CHANGE_MYPROFILE_EMAIL","E-Mail Adresse ändern");
 
 // ************************************************************************************//
 // * German Language Section - My Profile
