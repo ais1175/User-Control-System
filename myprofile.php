@@ -55,7 +55,7 @@ if ($myprofile == "changepass") {
 		{	
 			$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 			$hashPassword = password_hash($password,PASSWORD_BCRYPT);
-
+			
 			// The 2nd check to make sure that nothing bad can happen.
 			if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 				site_login_max_pass_long();
@@ -340,7 +340,7 @@ echo "
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 echo "						
-					<form action='".$_SERVER['PHP_SELF']."?myprofile=changeuname' method='post' enctype='multipart/form-data'>
+					<form action='".$_SERVER['PHP_SELF']."?myprofile=changepass' method='post' enctype='multipart/form-data'>
                       <tr>
                         <td>
 							<div class='input-group'>
