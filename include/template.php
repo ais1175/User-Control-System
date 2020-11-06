@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6
+// * Version: 1.6.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -806,7 +806,7 @@ function site_header() {
   <link href='themes/".SITE_THEMES."/assets/site/site.php' rel='stylesheet' />
   </head>
   <body class='' style='overflow: hidden;'>
-    <div class='wrapper'>";   
+    <div class='wrapper'>";
 }
 
 function site_header_nologged() {
@@ -929,12 +929,12 @@ function site_content_nologged() {
           <div class='collapse navbar-collapse justify-content-end' id='navigation'>
             <form method='get' action='' id='changer_lang'>
               <p> 
-                <a href='".$_SERVER['PHP_SELF']."?lang=en'>
-                  <input type='hidden' name='lang' value='lang_en' />
+                <a href='".$_SERVER['PHP_SELF']."?secure_lang=en'>
+                  <input type='hidden' name='secure_lang' value='secure_lang_en' />
                   <img src='./themes/".SITE_THEMES."/assets/flags/en.svg' alt='en' width='16' height='16'>
                 </a>&nbsp;
-                <a href='".$_SERVER['PHP_SELF']."?lang=de'>
-                  <input type='hidden' name='lang' value='lang_de' />
+                <a href='".$_SERVER['PHP_SELF']."?secure_lang=de'>
+                  <input type='hidden' name='secure_lang' value='secure_lang_de' />
                   <img src='./themes/".SITE_THEMES."/assets/flags/de.svg' alt='de' width='16' height='16'>
                 </a>
               </p>
@@ -942,7 +942,7 @@ function site_content_nologged() {
           </div>
         </div>
       </nav>
-      <div class='panel-header panel-header-sm'></div>";  
+      <div class='panel-header panel-header-sm'></div>";	  
 }
 
 function site_content_logged() {
@@ -967,12 +967,12 @@ function site_content_logged() {
           </button>
           <form method='get' action='' id='changer_lang'>
           <p>
-            <a href='".$_SERVER['PHP_SELF']."?lang=en'>
-              <input type='hidden' name='lang' value='lang_en' />
+            <a href='".$_SERVER['PHP_SELF']."?secure_lang=en'>
+              <input type='hidden' name='secure_lang' value='secure_lang_en' />
               <img src='./themes/".SITE_THEMES."/assets/flags/en.svg' alt='en' width='16' height='16'>
             </a>&nbsp;
-            <a href='".$_SERVER['PHP_SELF']."?lang=de'>
-              <input type='hidden' name='lang' value='lang_de' />
+            <a href='".$_SERVER['PHP_SELF']."?secure_lang=de'>
+              <input type='hidden' name='secure_lang' value='secure_lang_de' />
               <img src='./themes/".SITE_THEMES."/assets/flags/de.svg' alt='de' width='16' height='16'>
             </a>
           </p>
@@ -986,7 +986,7 @@ function site_content_logged() {
         </form>
       </div>        
       </nav>
-      <div class='panel-header panel-header-sm'></div>";     
+      <div class='panel-header panel-header-sm'></div>";
 }
 
 function site_footer() {

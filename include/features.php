@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6
+// * Version: 1.6.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -15,17 +15,17 @@ require_once("settings/settings.php");
 require_once("include/template.php");
 
 // Set Language variable
-if(isset($_GET['lang']) && !empty($_GET['lang'])){
-        $_SESSION['lang'] = $_GET['lang'];
+if(isset($_GET['secure_lang']) && !empty($_GET['secure_lang'])){
+        $_SESSION['secure_lang'] = $_GET['secure_lang'];
        
-        if(isset($_SESSION['lang']) && $_SESSION['lang'] != $_GET['lang']){
+        if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] != $_GET['secure_lang']){
          echo "<script type='text/javascript'> location.reload(); </script>";
         }
 }
        
 // Include Language file
-if(isset($_SESSION['lang'])){
-        include "./language/lang_".$_SESSION['lang'].".php";
+if(isset($_SESSION['secure_lang'])){
+        include "./language/lang_".$_SESSION['secure_lang'].".php";
 }else{
         include "./language/lang_en.php";
 }

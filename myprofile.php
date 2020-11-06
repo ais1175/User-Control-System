@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6
+// * Version: 1.6.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -132,82 +132,93 @@ site_content_logged();
 if ($myprofile == "dashboard") {
 
 echo "
-<div class='content'>
-   <div class='row'>
-		<div class='col-md-4'>
-            <div class='card card-user'>
-              <div class='image'>
-                <img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
-              </div>
-              <div class='card-body'>
-                <div class='author'>
-                  <a href='#'>
-                    <img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/usernote.jpg' alt='...'>
-                    <h5 class='title'>
-                    ".CHANGE_MYPROFILE_DASHNOTE."
-					          </h5>
-                  </a>
-                </div>
-                <p class='description text-center'>
-				<div style='padding:2px;width:100%;'>
-					<div class='rules-item mb-6'>
-						<div class='ti-content'>
-							<div class='ti-text'>
-								<span><b>".MYPROFILENOTE."</span></b><br />
+	  <div class='content'>
+		<div class='row'>
+			<div class='col-md-12'>
+				<div class='card'>
+					<div class='card-header'>
+						<h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+						<p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
+					</div>
+					<div class='card-body'>
+						<div class='row'>
+							<div class='col-md-4'>
+								<div class='card card-user'>
+									<div class='image'>
+										<img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
+									</div>
+									<div class='card-body'>
+										<div class='author'>
+											<a href='#'>
+												<img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/usernote.jpg' alt='...'>
+												<h5 class='title'>
+													".CHANGE_MYPROFILE_DASHNOTE."
+												</h5>
+											</a>
+										</div>
+										<p class='description text-center'>
+											<div style='padding:2px;width:100%;'>
+												<div class='rules-item mb-6'>
+													<div class='ti-content'>
+														<div class='ti-text'>
+															<span><b>".MYPROFILENOTE."</span></b><br />
+														</div>
+													</div>
+												</div>
+											</div>				
+										</p>
+									</div>
+								</div>
+							</div>
+						<div class='col-md-8'>
+							<div class='card card-user'>
+								<div class='image'>
+									<img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
+								</div>
+								<div class='card-body all-icons'>
+									<div class='author'>
+										<a href='#'>
+											<img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/user.jpg' alt='...'>
+											<h5 class='title'>
+												".USERPROFILECHANGE."
+											</h5>
+										</a>
+									</div>
+									<span class='card-plain'>                				
+										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
+											<div class='font-icon-detail'>
+												<i class='now-ui-icons users_single-02'></i>
+													<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changeuname'>".CHANGE_MYPROFILE_USERNAME."</a></p>
+											</div>
+										</div>
+										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
+											<div class='font-icon-detail'>
+												<i class='now-ui-icons ui-2_settings-90'></i>
+												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changepass'>".CHANGE_MYPROFILE_PASSWORD."</a></p>
+											</div>
+										</div>
+										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
+											<div class='font-icon-detail'>
+												<i class='now-ui-icons ui-1_email-85'></i>
+												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changemail'>".CHANGE_MYPROFILE_EMAIL."</a></p>
+											</div>
+										</div>
+										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
+											<div class='font-icon-detail'>
+												<i class='now-ui-icons text_align-center'></i>
+												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changesignote'>".CHANGE_MYPROFILE_SIGNATUR."</a></p>
+											</div>
+										</div>
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<br />				
-                </p>
-              </div>
-            </div>
-		</div>
-		<div class='col-md-8'>
-            <div class='card card-user'>
-              <div class='image'>
-                <img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
-              </div>
-              <div class='card-body all-icons'>
-                <div class='author'>
-                  <a href='#'>
-                    <img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/user.jpg' alt='...'>
-                    <h5 class='title'>
-						".USERPROFILECHANGE."
-					</h5>
-                  </a>
-                </div>
-                <span class='card-plain'>                				
-                  <div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-                    <div class='font-icon-detail'>
-                      <i class='now-ui-icons users_single-02'></i>
-                      <p><a href='".$_SERVER['PHP_SELF']."?myprofile=changeuname'>".CHANGE_MYPROFILE_USERNAME."</a></p>
-                    </div>
-                  </div>
-                  <div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-                    <div class='font-icon-detail'>
-                        <i class='now-ui-icons ui-2_settings-90'></i>
-                        <p><a href='".$_SERVER['PHP_SELF']."?myprofile=changepass'>".CHANGE_MYPROFILE_PASSWORD."</a></p>
-                    </div>
-                  </div>
-                  <div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-                    <div class='font-icon-detail'>
-                        <i class='now-ui-icons ui-1_email-85'></i>
-                        <p><a href='".$_SERVER['PHP_SELF']."?myprofile=changemail'>".CHANGE_MYPROFILE_EMAIL."</a></p>
-                    </div>
-                  </div>
-                  <div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-                    <div class='font-icon-detail'>
-                        <i class='now-ui-icons text_align-center'></i>
-                        <p><a href='".$_SERVER['PHP_SELF']."?myprofile=changesignote'>".CHANGE_MYPROFILE_SIGNATUR."</a></p>
-                    </div>
-                  </div>
-				</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>";
+				</div>									
+			</div>
+		 </div>
+	  </div>
+    </div>";
 }
 
 if ($myprofile == "changeuname") {

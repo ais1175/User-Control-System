@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.5
+// * Version: 1.6.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -177,7 +177,7 @@ define("STAFF_USERCONTROLSAVE","Save");
 // * English Language Section - Footer
 // ************************************************************************************//
 define("DISCORD","Join to Discord");
-define("DISCORDURL","https://discord.gg/xxxxxx");
+define("DISCORDURL","https://discord.gg/r8YQAVB");
 define("TEAMSPEAK","Join to Teamspeak");
 define("TEAMSPEAKURL","ts3server://xxxxxx?port=9987");
 define("IMPRINT","Impressum");
