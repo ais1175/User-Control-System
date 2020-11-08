@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -66,7 +66,17 @@ echo "
               <div class='card-body'>
                 <div class='author'>
                   <a href='#'>
-                    <img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/mike.jpg' alt='...'>
+                    <img class='avatar border-gray' src='";
+						$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+						$result = $conn->query($sql);
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								echo " " . $row["userava"]. "";
+							}
+						}
+echo "' alt='...'>
                     <h5 class='title'>";
 						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 						$result = $conn->query($sql);
@@ -89,15 +99,56 @@ echo "
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "
-                ".PLAYERID.": ".$_SESSION['username']['secure_first']." <br> 
-								".PLAYERSOCIALCLUB.": " . $row["socialclubname"]. " <br>
-								".PLAYEREMAIL.": " . $row["email"]. "<br>
-								".PLAYERBANNED.": " . $row["banAces"]. "<br>
-								".PLAYERADMIN.": " . $row["adminLevel"]. "<br>
-								".PLAYERWHITELISTED.": " . $row["betaAcess"]. "<br>
-                ".PLAYERFIRSTLOGIN.": " . $row["FirstLogin"]. "
-                <br><br>
-                " . $row["usersig"]. "";
+								<div class='table-responsive'>
+									<table class='table'>
+										<thead class=' text-primary'>               
+											<tr>
+												<th>
+													".PLAYERID."
+												</th>
+												<th>
+													".PLAYERSOCIALCLUB."
+												</th>
+												<th>
+													".PLAYEREMAIL."
+												</th>
+												<th>
+													".PLAYERBANNED."
+												</th>
+												<th>
+													".PLAYERADMIN."
+												</th>
+												<th>
+													".PLAYERWHITELISTED."
+												</th>				
+											</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td>
+														".$_SESSION['username']['secure_first']."
+													</td>
+													<td>
+														" . $row["socialclubname"]. "
+													</td>
+													<td>
+														" . $row["email"]. "
+													</td>
+													<td>
+														" . $row["banAces"]. "
+													</td>
+													<td>
+														" . $row["adminLevel"]. "
+													</td>
+													<td>
+														" . $row["betaAcess"]. "
+													</td>						
+												</tr>      
+										</tbody>
+									</table>
+								</div>
+								<br>
+								<span class='text-center'>" . $row["usersig"]. "</span>";
 					}
 				}
 							

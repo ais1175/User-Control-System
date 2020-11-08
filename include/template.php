@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -92,6 +92,12 @@ function site_secure_staff() {
               <p>".STAFF_USERCONTROL."</p>
             </a>
           </li>
+          <li>
+            <a href='./staff_faqacp.php'>
+              <i class='now-ui-icons files_single-copy-04'></i>
+              <p>".FAQ_HEADER."</p>
+            </a>
+          </li>		  
           <li>
             <a href='./staff_newsacp.php'>
               <i class='now-ui-icons education_paper'></i>
@@ -747,6 +753,56 @@ function site_rules_not_done() {
   die();
 }
 
+function site_faq_done() {
+  echo "
+                  <div class='content'>
+                   <div class='row'>
+                    <div class='col-md-12'>
+                      <div class='card'>
+                        <div class='card-header'>
+                          <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                          <p class='category'>User Control Panel | ".FAQ_HEADER."</p>
+                        </div>
+                        <div class='card-body'>			  
+                          <div class='row'>			
+                            <div class='col-sm-8'>
+                              ".MSG_25."
+                            </div>				
+                          </div>										
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+  site_footer();
+  die();
+}
+
+function site_faq_not_done() {
+  echo "
+                  <div class='content'>
+                   <div class='row'>
+                    <div class='col-md-12'>
+                      <div class='card'>
+                        <div class='card-header'>
+                          <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                          <p class='category'>User Control Panel | ".FAQ_HEADER."</p>
+                        </div>
+                        <div class='card-body'>			  
+                          <div class='row'>			
+                            <div class='col-sm-8'>
+                              ".MSG_24."
+                            </div>				
+                          </div>										
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+  site_footer();
+  die();
+}
+
 function site_header() {
   // starting the session
   session_start();
@@ -758,7 +814,7 @@ function site_header() {
   <html lang='en'>
   <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.6         # -->
+	<!-- #   Powered by User Control Panel Version 1.7         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -816,7 +872,7 @@ function site_header_nologged() {
   <html lang='en'>
   <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 1.6         # -->
+	<!-- #   Powered by User Control Panel Version 1.7         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -865,6 +921,12 @@ function site_navi_logged() {
               <p>".DASHBOARD."</p>
             </a>
           </li>
+          <li>
+            <a href='./faq.php'>
+              <i class='now-ui-icons files_single-copy-04'></i>
+              <p>".FAQ."</p>
+            </a>
+          </li>		  
           <li>
             <a href='./rules.php'>
               <i class='now-ui-icons business_badge'></i>

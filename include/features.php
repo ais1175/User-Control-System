@@ -30,8 +30,20 @@ if(isset($_SESSION['secure_lang'])){
         include "./language/lang_en.php";
 }
 
+// Logout System
 if(isset($_POST['logout'])){
 	site_logout();
+}
+
+// Avatar System
+function is_image($src) {
+
+    if(@getimagesize($src) !== false) {
+        return(1);
+    } else {
+        return(0);
+    }
+
 }
 
 function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")

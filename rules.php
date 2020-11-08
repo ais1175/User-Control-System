@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -81,7 +81,7 @@ echo "
 	
 						        $title_field = "title";
 						        $content_field = "content";
-						        if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){
+						        if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] == 'de'){
 							        $title_field = "title_de";
 							        $content_field = "content_de";
 						        }

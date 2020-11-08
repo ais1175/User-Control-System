@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -113,7 +113,7 @@ echo "
 
 					$title_field = "title";
 					$content_field = "content";
-					if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'de'){
+					if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] == 'de'){
 						$title_field = "title_de";
 						$content_field = "content_de";
 					}
@@ -122,15 +122,15 @@ echo "
 					$content = $row[$content_field];
 					$shortcontent = substr($content, 0, 260)."...";					
 				echo "
-				<div class='card' id='post_".$id."'>		
-					<div class='card-header'>
-						<h5 class='title'>".$title."</h5>
-						<p class='category'>User Control Panel | Dashboard - News</p>
-		  			</div>
-			  		<div class='col-md-12'>			 			  
-						$shortcontent
-					</div>
-				</div>";
+					<div class='card' id='post_".$id."'>		
+						<div class='card-header'>
+							<h5 class='title'>".$title."</h5>
+							<p class='category'>User Control Panel | Dashboard - News</p>
+						</div>
+						<div class='col-md-12'>			 			  
+							$shortcontent
+						</div>
+					</div>";
 				}
 echo "									
 			</div>
@@ -154,7 +154,17 @@ echo "
 														<div class='avatar' style='float: left;'>
 															<div class='author'>
 																<div class='title'>
-																	<img class='avatar border-gray' src='../themes/".SITE_THEMES."/assets/img/mike.jpg' alt='...'>
+																	<img class='avatar border-gray' src='";
+																	$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+																	$result = $conn->query($sql);
+
+																	if ($result->num_rows > 0) {
+																		// output data of each row
+																		while($row = $result->fetch_assoc()) {
+																			echo "" . $row["userava"]. "' alt='...'>";
+																		}
+																	}
+												echo "
 																</div>
 															</div>
 														</div>";
@@ -201,24 +211,23 @@ echo "
 					</h5>
                   </a>
 				  </div>
-				</div>
-				<div class='col-md-12'>
-				<div class='description'>";
-				
-				$sql = "SELECT username, msg, liked, posted FROM tweets";
-				$result = $conn->query($sql);
+				</div>";
+											
+						$sqlposted = "SELECT username, msg, liked, posted FROM tweets";
+						$resultposted = $conn->query($sqlposted);
 
-				if ($result->num_rows > 0) {
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-						echo "
-						<br>
+						if ($resultposted->num_rows > 0) {
+							// output data of each row
+							while($row = $resultposted->fetch_assoc()) {
+								echo "
+				<div class='col-md-12'>
+					<div class='description'>
 						<div class='card'>
-							<div class='category'>
+							<div class='category'>								
 								<div class='col-sm-12'>
 									<span>
 										<h5 style=float:left>
-											<i class='now-ui-icons users_single-02'> " . $row["username"]. " - " . $row["posted"]. "</i>
+											" . $row["username"]. " - " . $row["posted"]. "</i>
 										</h5>												
 									</span>														
 									<span>
@@ -237,13 +246,13 @@ echo "
 									<h5>" . $row["msg"]. "</h5>
 								</span>
 							</div>
-						</div>";
+						</div>
+					</div>
+				</div>";
 					}
 				}
 							
 echo "
-				</div>
-              </div>
             </div>
           </div>		  
 	</div>

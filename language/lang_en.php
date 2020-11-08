@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -29,6 +29,7 @@ define("WELCOMETO","Welcome to");
 define("STAFF_NEWSACP","News System");
 define("STAFF_RULESACP","Rules System");
 define("SITE_LOGOUT","Logout");
+define("FAQ","FAQs");
 
 // ************************************************************************************//
 // * English Language Section - Message System 
@@ -56,6 +57,8 @@ define("MSG_20","<b>Please fill in both the German content and the English conte
 define("MSG_21","<b>Your news entry was successful!</b>");
 define("MSG_22","<b>Your rules entry was successful!</b>");
 define("MSG_23","<b>Your rules entry was not successful!</b>");
+define("MSG_24","<b>Your faq entry was successful!</b>");
+define("MSG_25","<b>Your faq entry was not successful!</b>");
 
 // ************************************************************************************//
 // * English Language Section - My Profile Change
@@ -66,12 +69,15 @@ define("RPSERVER","UCP as well as for the game server");
 define("MYPROFILENOTE","You have to fill in all fields with every change!");
 define("SIGNATUR","Signature");
 define("SIGNOTE","Your signature for your profile view!");
+define("AVATAR","Avatar url");
+define("AVANOTE","Your avatar picture for your profile!");
 define("MYPROFILESAVE","Save");
 define("CHANGE_MYPROFILE_DASHNOTE","Please note");
 define("CHANGE_MYPROFILE_PASSWORD","Change Password");
 define("CHANGE_MYPROFILE_SIGNATUR","Change signature");
 define("CHANGE_MYPROFILE_USERNAME","Change username");
 define("CHANGE_MYPROFILE_EMAIL","Change E-Mail address");
+define("CHANGE_MYPROFILE_AVATAR","Change avatar");
 
 // ************************************************************************************//
 // * English Language Section - My Profile
@@ -96,6 +102,21 @@ define("DASHBOARDTWITTERNOTE3","Whats new ?");
 define("DASHBOARDTWITTERNOTE4","Your Username");
 define("DASHBOARDTWITTERNOTE5","Your tweet message");
 define("READMORE","read more");
+
+// ************************************************************************************//
+// * English Language Section - FAQ System
+// ************************************************************************************//
+define("FAQ_HEADER","FAQ System");
+define("FAQ_INFO","You have to fill in all fields!");
+define("FAQ_TITLE_EN","Title English");
+define("FAQ_TITLE_EN_TEXT","The English Title");
+define("FAQ_TITLE_DE","Title German");
+define("FAQ_TITLE_DE_TEXT","The German Title");
+define("FAQ_CONTENT_EN","Content Englisch");
+define("FAQ_CONTENT_EN_TEXT","The English Content");
+define("FAQ_CONTENT_DE","Content German");
+define("FAQ_CONTENT_DE_TEXT","The German Content");
+define("FAQ_SAVE","Save");
 
 // ************************************************************************************//
 // * English Language Section - News System

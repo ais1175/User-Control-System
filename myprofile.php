@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 1.7
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -125,6 +125,38 @@ if ($myprofile == "changemail") {
 	}		
 }
 
+if ($myprofile == "changeava") {
+	if(isset($_POST['myprofilechange'])){
+		if(empty($_POST['userava'])){
+			site_login_notfound_done();
+		}
+		else
+		{	
+			$userava = filter_input(INPUT_POST, 'userava', FILTER_SANITIZE_STRING);
+
+			// The 1nd check to image
+			if (!is_image($userava))
+			{
+				// The 2nd check to make sure that nothing bad can happen.
+				if (preg_match('/[A-Za-z0-9]+/', $_POST['userava']) == 0) {
+					site_login_username_not_valid();
+				}
+			}
+			else
+			{
+				$sql = "UPDATE users SET userava='".$userava."' WHERE id = '".$_SESSION['username']['secure_first']."'";
+			}
+   
+			if (mysqli_query($conn, $sql)) {
+				site_myprofile_done();
+			} else {
+				site_myprofile_done_error();
+			}
+			mysqli_close($conn);
+		}
+	}		
+}
+
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -209,6 +241,12 @@ echo "
 												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changesignote'>".CHANGE_MYPROFILE_SIGNATUR."</a></p>
 											</div>
 										</div>
+										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
+											<div class='font-icon-detail'>
+												<i class='now-ui-icons business_badge'></i>
+												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changeava'>".CHANGE_MYPROFILE_AVATAR."</a></p>
+											</div>
+										</div>										
 									</span>
 								</div>
 							</div>
@@ -229,19 +267,8 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Account bearbeiten</p>
+                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
               </div>
-              <div class='card-body'>
-			  	<div class='card'>
-					<div class='table-responsive'>
-						<div class='alert alert-info alert-with-icon' data-notify='container'>
-                    		<button type='button' aria-hidden='true' class='close'>
-                        	<i class='now-ui-icons ui-1_simple-remove'></i>
-                    	</button>
-                    	<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-                    	<span data-notify='message'>".MYPROFILENOTE."</span>
-					</div>
-                </div>
 			  <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
@@ -295,9 +322,7 @@ echo "
           </div>
         </div>
       </div>
-	</div>
-  </div>
-</div>";
+	</div>";
 }
 
 if ($myprofile == "changepass") {
@@ -308,19 +333,8 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Account bearbeiten</p>
+                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
               </div>
-              <div class='card-body'>
-			  	<div class='card'>
-					<div class='table-responsive'>
-						<div class='alert alert-info alert-with-icon' data-notify='container'>
-                    		<button type='button' aria-hidden='true' class='close'>
-                        	<i class='now-ui-icons ui-1_simple-remove'></i>
-                    	</button>
-                    	<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-                    	<span data-notify='message'>".MYPROFILENOTE."</span>
-					</div>
-                </div>
 			  <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
@@ -374,9 +388,7 @@ echo "
           </div>
         </div>
       </div>
-	</div>
-  </div>
-</div>";
+	</div>";
 }
 
 if ($myprofile == "changemail") {
@@ -387,19 +399,8 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Account bearbeiten</p>
+                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
               </div>
-              <div class='card-body'>
-			  	<div class='card'>
-					<div class='table-responsive'>
-						<div class='alert alert-info alert-with-icon' data-notify='container'>
-                    		<button type='button' aria-hidden='true' class='close'>
-                        	<i class='now-ui-icons ui-1_simple-remove'></i>
-                    	</button>
-                    	<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-                    	<span data-notify='message'>".MYPROFILENOTE."</span>
-					</div>
-                </div>
 			  <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
@@ -453,9 +454,7 @@ echo "
           </div>
         </div>
       </div>
-	</div>
-  </div>
-</div>";
+	</div>";
 }
 
 if ($myprofile == "changesignote") {
@@ -466,19 +465,8 @@ echo "
             <div class='card'>
               <div class='card-header'>
                 <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Account bearbeiten</p>
+                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
               </div>
-              <div class='card-body'>
-			  	<div class='card'>
-					<div class='table-responsive'>
-						<div class='alert alert-info alert-with-icon' data-notify='container'>
-                    		<button type='button' aria-hidden='true' class='close'>
-                        	<i class='now-ui-icons ui-1_simple-remove'></i>
-                    	</button>
-                    	<span data-notify='icon' class='now-ui-icons ui-1_bell-53'></span>
-                    	<span data-notify='message'>".MYPROFILENOTE."</span>
-					</div>
-                </div>
 			  <div class='card-body'>
                 <div class='table-responsive'>
                   <table class='table'>
@@ -532,9 +520,73 @@ echo "
           </div>
         </div>
       </div>
-	</div>
-  </div>
-</div>";
+	</div>";
+}
+
+if ($myprofile == "changeava") {
+echo "
+      <div class='content'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <div class='card'>
+              <div class='card-header'>
+                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
+                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
+              </div>
+			  <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table'>
+                    <thead class=' text-primary'>			  
+                      <th>
+						<h6>
+							".AVATAR."
+							<small class='text-muted'>".AVANOTE."</small>
+						</h6>
+                      </th>					  						  
+                    </thead>
+                    <tbody>";
+				$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+echo "						
+					<form action='".$_SERVER['PHP_SELF']."?myprofile=changeava' method='post' enctype='multipart/form-data'>
+                      <tr>											  
+					  	<td>
+					  		<div class='input-group'>
+						  		<div class='input-group-prepend'>
+							  		<div class='input-group-text'>
+								  		<i class='now-ui-icons business_badge'></i>
+							  		</div>      
+						  		</div>						
+						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='userava' size='50' maxlength='160' class='form-control' value='" . $row["userava"]. "' required>
+					  		</div>	
+				  		</td>						
+				      </tr>					  
+                      <tr>					  
+						<td>						
+							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
+								<i class='now-ui-icons ui-1_check'></i> ".MYPROFILESAVE."
+							</button>
+							</submit>
+                        </td>							
+                      </tr>						
+					</form>";
+				}
+				mysqli_close($conn);
+			}					
+
+echo "	 
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>";
 }
 
 site_footer();	
