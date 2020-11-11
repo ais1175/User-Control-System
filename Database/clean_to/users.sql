@@ -12,8 +12,9 @@ CREATE TABLE `users` (
   `betaAcess` int(32) DEFAULT '0',
   `banAces` int(32) DEFAULT '1',
   `FirstLogin` datetime(6) DEFAULT NULL,
-  `adminName` varchar(32) DEFAULT 'null',  
-  `usersig` varchar(140) DEFAULT 'null'
+  `adminName` varchar(32) DEFAULT 'null',
+  `usersig` varchar(140) DEFAULT NULL,
+  `userava` varchar(256) DEFAULT 'themes/uploads/mike.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
@@ -30,5 +31,5 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;

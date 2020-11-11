@@ -73,9 +73,9 @@ echo "
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo " " . $row["userava"]. "";
-							}
-						}
+								echo "" . $row["userava"]. "";
+							}	
+						}		
 echo "' alt='...'>
                     <h5 class='title'>";
 						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
