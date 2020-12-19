@@ -1,7 +1,3 @@
---
--- Tabellenstruktur für Tabelle `users`
---
-
 CREATE TABLE `users` (
   `id` int(12) NOT NULL,
   `username` varchar(255) NOT NULL DEFAULT '',
@@ -17,19 +13,9 @@ CREATE TABLE `users` (
   `userava` varchar(256) DEFAULT 'themes/uploads/mike.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
---
--- Indizes für die Tabelle `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`,`username`) USING BTREE;
 
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `users`
---
 ALTER TABLE `users`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;

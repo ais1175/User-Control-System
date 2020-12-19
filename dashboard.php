@@ -84,28 +84,62 @@ site_header();
 site_navi_logged();
 site_content_logged();
 
+if(intval($_SESSION['username']['secure_staff']) >= 5) {
 echo "
-    <div class='content'>
-        <div class='row'>
-			<div class='col-md-12'>
-				<div class='card'>
-					<div class='card-header'>
-                		<h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                		<p class='category'>User Control Panel | Dashboard</p>
-			  		</div>
-					<div class='card-body'>		  
-						<div class='row'>			
-							<div class='col-sm-12'>
-								<b>".WELCOMETO." Dashboard!</b>
-							</div>				
-						</div>
-					</div>										
-				</div>
-			</div>													
-		</div>
-		<div class='row'>
-			<div class='col-md-12'>
-			<div class='card'>";
+			<div class='row clearfix'>
+                <div class='col-lg-6 col-md-6 col-sm-9 col-xs-12'>
+                    <div class='info-box bg-cyan hover-expand-effect'>
+                        <div class='icon'>
+                            <i class='material-icons'>help</i>
+                        </div>
+                        <div class='content'>
+                            <div class='text'>".DASHBOARDSUPPORT."</div>";
+
+			$sqlsupport = "SELECT id FROM support ORDER by id DESC LIMIT 1";
+			$resultsupport = $conn->query($sqlsupport);
+
+			if ($resultsupport->num_rows > 0) {
+						// output data of each row
+				while($row = $resultsupport->fetch_assoc()) {
+					echo "
+                            <div class='number count-to' data-from='0' data-to='" . $row["id"]. "' data-speed='1000' data-fresh-interval='20'>" . $row["id"]. "</div>";
+				}
+			}					
+
+echo "
+                        </div>
+                    </div>
+                </div>
+                <div class='col-lg-6 col-md-6 col-sm-9 col-xs-12'>
+                    <div class='info-box bg-orange hover-expand-effect'>
+                        <div class='icon'>
+                            <i class='material-icons'>person_add</i>
+                        </div>
+                        <div class='content'>
+                            <div class='text'>".DASHBOARDUSERS."</div>";
+
+			$sqlusers = "SELECT id FROM users ORDER by id DESC LIMIT 1";
+			$resultusers = $conn->query($sqlusers);
+
+			if ($resultusers->num_rows > 0) {
+						// output data of each row
+				while($row = $resultusers->fetch_assoc()) {
+					echo "
+                            <div class='number count-to' data-from='0' data-to='" . $row["id"]. "' data-speed='1000' data-fresh-interval='20'>" . $row["id"]. "</div>";
+				}
+			}					
+
+echo "							
+                        </div>
+                    </div>
+                </div>
+            </div>";
+}
+echo"			
+			
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>";
 				$query = "select * from news_lang";
 				$result = mysqli_query($conn,$query);
 
@@ -121,97 +155,64 @@ echo "
 					$title = $row[$title_field];
 					$content = $row[$content_field];
 					$shortcontent = substr($content, 0, 260)."...";					
-				echo "
-					<div class='card' id='post_".$id."'>		
-						<div class='card-header'>
-							<h5 class='title'>".$title."</h5>
-							<p class='category'>User Control Panel | Dashboard - News</p>
-						</div>
-						<div class='col-md-12'>			 			  
-							$shortcontent
-						</div>
-					</div>";
+				echo "					
+                        <div class='header' id='post_".$id."'>
+                            <h2>
+                                ".NEWS." ".$title."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='lead'>
+                                $shortcontent
+                            </p>
+                        </div>";
 				}
-echo "									
-			</div>
-			</div>				
-		</div>				
-		<div class='row'>
-		  <div class='col-md-12'>
-              <div class='card'>
-			  <div class='col-md-12'>
-                <div class='author'>
-                    <h5 class='title'>
-					<div class='col-md-12'>
-						<p class='description text-center'>
-							<div style='padding:2px;width:100%;'>
-								<div class='rules-item mb-6'>
-									<div class='ti-content'>
-										<div class='ti-text'>
-											<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
-												<div class='form-row'>
-													<div class='col-sm-1'>
-														<div class='avatar' style='float: left;'>
-															<div class='author'>
-																<div class='title'>
-																	<img class='avatar border-gray' src='";
-																	$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-																	$result = $conn->query($sql);
-
-																	if ($result->num_rows > 0) {
-																		// output data of each row
-																		while($row = $result->fetch_assoc()) {
-																			echo "" . $row["userava"]. "' alt='...'>";
-																		}
-																	}
-												echo "
-																</div>
-															</div>
-														</div>";
-												$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-												$resultx = $conn->query($sqlx);
-												if ($resultx->num_rows > 0) {
-													// output data of each row
-													while($row = $resultx->fetch_assoc()) {
-												echo"
-														<div class='category' style='float:left;'>
-															".$row["username"]."
-														</div>		
-													</div>
-													<div class='col-sm-2' style='display:none;'>
-														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='' value='' maxlength='10' id='border-right6'/>			
-													</div>";
-													}
-												}		
-												echo "
-													<div class='col-sm-8'>
-														<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Deine Tweet Nachricht' type='text' name='msg' class='form-control' placeholder='".DASHBOARDTWITTERNOTE3."' value='' maxlength='220' id='border-right6'/>			
-													</div>
-													<div class='col-sm-2'>
-														<button class='form-control btn-round btn-icon border-gray' name='tweeting'><i class='now-ui-icons ui-1_check'></i> ".DASHBOARDTWITTER."</button>		
-													</div>
-											</form>";
-													
-											if(intval($_SESSION['username']['secure_staff']) >= 7) {
-												echo "
-													<div class='col-sm-1'>
-														<form action='".$_SERVER['PHP_SELF']."?=tweeting_del' method='post' enctype='multipart/form-data'>
-															<button class='form-control btn-round btn-icon border-gray' name='tweeting_del' style='float: right;'><i class='now-ui-icons ui-1_simple-remove'></i></button>
-														</form>
-													</div>";
-											}
-											echo "		
-												</div>				
+				echo "				
+                    </div>
+                </div>
+            </div>
+				
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".DASHBOARDTWITTER.": ".DASHBOARDTWITTERNOTE3."							
+                            </h2>
+                        </div>
+                        <div class='body'>
+							<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>";
+							$sqlx = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+							$resultx = $conn->query($sqlx);
+							if ($resultx->num_rows > 0) {
+								// output data of each row
+								while($row = $resultx->fetch_assoc()) {
+							echo"
+                                    <div class='title'>
+										<div style='display:none;'>
+											<input required style='box-shadow: 0 0 1px rgba(92,90,90,0.7);' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='' value='' maxlength='10' id='border-right6' />
 										</div>
-									</div>
-								</div>
-							</div>			
-						</p>
-					</div>
-					</h5>
-				  </div>
-				</div>";
-											
+                                    </div>";
+								}
+							}		
+							echo "
+                                    <div class='content'>
+                                        <input required style='background:rgba(92,90,90,0.7); box-shadow: 0px 12px 33px 0px rgba(62, 73, 84, 0.08);' type='text' name='msg' class='form-control form-line' placeholder='".DASHBOARDTWITTERNOTE3."' value='' maxlength='220' id='border-right6'/>	
+                                    </div>
+                                    <div class='title'></div>
+                                    <div class='content'>
+                                        <button class='btn btn-primary m-t-5 waves-effect' name='tweeting'><i class='material-icons'>location_on</i> ".DASHBOARDTWITTER."</button>";
+										if(intval($_SESSION['username']['secure_staff']) >= 7) {
+											echo "
+											<form action='".$_SERVER['PHP_SELF']."?=tweeting_del' method='post' enctype='multipart/form-data'>
+												<button class='btn btn-primary m-t-5 waves-effect' name='tweeting_del' style='float: right;'><i class='material-icons'>delete</i></button>
+											</form>";
+										}
+							echo"
+                                    </div>
+							</form>											
+                            <p class='lead'>";
+
 						$sqlposted = "SELECT username, msg, liked, posted FROM tweets";
 						$resultposted = $conn->query($sqlposted);
 
@@ -219,43 +220,64 @@ echo "
 							// output data of each row
 							while($row = $resultposted->fetch_assoc()) {
 								echo "
-				<div class='col-md-12'>
-					<div class='description'>
-						<div class='card'>
-							<div class='category'>								
-								<div class='col-sm-12'>
-									<span>
-										<h5 style=float:left>
-											" . $row["username"]. " - " . $row["posted"]. "</i>
-										</h5>												
-									</span>														
-									<span>
-										<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
-											<button class='btn btn-fab btn-icon btn-round' name='like_msg' style='float: right;'><i class='now-ui-icons ui-2_like'></i></button>
-										</form>
-									</span>
-									<span>
-										<h5 class='btn-fab btn-icon btn-round' style='float: right;'>" . $row["liked"]. "</h5>
-									</span>										
-								</div>
-							</div>
-							<br>
-							<div class='col-md-12' style='float: left;'>							
-								<span>
-									<h5>" . $row["msg"]. "</h5>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>";
+							<div class='list-group'>
+                                <a href='javascript:void(0);' class='list-group-item'>
+                                    <h4 class='list-group-item-heading'>
+										<span>
+											<h5 style=float:left>
+												" . $row["username"]. " - " . $row["posted"]. "</i>
+											</h5>												
+										</span>														
+										<span>
+											<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+												<button class='btn btn-primary m-t-5 waves-effect' name='like_msg' style='float: right;'>
+													<span>
+														<h5 style='float: right;'>" . $row["liked"]. "</h5>
+													</span>
+													<i class='material-icons'>thumb_up</i>
+												</button>
+											</form>
+										</span>								
+									</h4>
+									<br>
+                                    <p class='list-group-item-text'>
+										<span>
+											<h5>" . $row["msg"]. "</h5>
+										</span>
+                                    </p>
+                                </a>
+                            </div>";
 					}
-				}
-							
+				}		
 echo "
+                            </p>
+                        </div>
+				
+                    </div>					
+                </div>
             </div>
-          </div>		  
-	</div>
-</div>";			  
+            <div class='row clearfix'>
+                <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                    <div class='card'>
+                        <div class='header'>
+                            <div class='row clearfix'>
+                                <div class='col-xs-12 col-sm-6'>
+                                    <h2>".DASHBOARDCPUUSE." (%)</h2>
+                                </div>
+                                <div class='col-xs-12 col-sm-6 align-right'>
+                                    <div class='switch panel-switch-btn'>
+                                        <span class='m-r-10 font-12'>".DASHBOARDCPUREALTIME."</span>
+                                        <label>".DASHBOARDCPUUSEOFF."<input type='checkbox' id='realtime' checked><span class='lever switch-col-cyan'></span>".DASHBOARDCPUUSEON."</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='body'>
+                            <div id='real_time_chart' class='dashboard-flot-chart'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>";			  
 	
 site_footer();	
 ?>

@@ -162,125 +162,203 @@ site_navi_logged();
 site_content_logged();
 
 if ($myprofile == "dashboard") {
-
 echo "
-	  <div class='content'>
-		<div class='row'>
-			<div class='col-md-12'>
-				<div class='card'>
-					<div class='card-header'>
-						<h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-						<p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-					</div>
-					<div class='card-body'>
-						<div class='row'>
-							<div class='col-md-4'>
-								<div class='card card-user'>
-									<div class='image'>
-										<img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
-									</div>
-									<div class='card-body'>
-										<div class='author'>
-											<a href='#'>
-												<img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/usernote.jpg' alt='...'>
-												<h5 class='title'>
-													".CHANGE_MYPROFILE_DASHNOTE."
-												</h5>
-											</a>
-										</div>
-										<p class='description text-center'>
-											<div style='padding:2px;width:100%;'>
-												<div class='rules-item mb-6'>
-													<div class='ti-content'>
-														<div class='ti-text'>
-															<span><b>".MYPROFILENOTE."</span></b><br />
-														</div>
-													</div>
-												</div>
-											</div>				
-										</p>
-									</div>
-								</div>
-							</div>
-						<div class='col-md-8'>
-							<div class='card card-user'>
-								<div class='image'>
-									<img src='themes/".SITE_THEMES."/assets/img/bg5.jpg' alt='...'>
-								</div>
-								<div class='card-body all-icons'>
-									<div class='author'>
-										<a href='#'>
-											<img class='avatar border-gray' src='themes/".SITE_THEMES."/assets/img/user.jpg' alt='...'>
-											<h5 class='title'>
-												".USERPROFILECHANGE."
-											</h5>
-										</a>
-									</div>
-									<span class='card-plain'>                				
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-											<div class='font-icon-detail'>
-												<i class='now-ui-icons users_single-02'></i>
-													<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changeuname'>".CHANGE_MYPROFILE_USERNAME."</a></p>
+            <div class='row clearfix'>
+                <div class='col-xs-12 col-sm-3'>
+                    <div class='card profile-card'>
+                        <div class='profile-header'>&nbsp;</div>
+                        <div class='profile-body'>
+                            <div class='image-area'>
+                                <img src='";
+						$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+						$result = $conn->query($sql);
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								echo "" . $row["userava"]. "";
+							}	
+						}		
+echo "' alt='Profile Image' />
+                            </div>
+                            <div class='content-area'>
+                                <h3>";
+						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+						$result = $conn->query($sql);
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								echo " " . $row["username"]. "";
+							}
+						}
+echo "</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='card card-about-me'>
+                        <div class='header'>
+                            <h2>".PLAYERABOUTME."</h2>
+                        </div>
+                        <div class='body'>";
+				$sql = "SELECT username, socialclubname, email, banAces, betaAcess, adminLevel, FirstLogin, usersig FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+						echo "
+                            <ul>
+                                <li>
+                                    <div class='title'>
+                                        <i class='material-icons'>location_on</i>
+                                        ".PLAYERSOCIALCLUB."
+                                    </div>
+                                    <div class='content'>
+                                        " . $row["socialclubname"]. "
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class='title'>
+                                        <i class='material-icons'>edit</i>
+                                        ".PLAYEREMAIL."
+                                    </div>
+                                    <div class='content'>
+                                        " . $row["email"]. "
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class='title'>
+                                        <i class='material-icons'>notes</i>
+                                        ".PLAYERWHITELISTED."
+                                    </div>
+                                    <div class='content'>
+                                        " . $row["betaAcess"]. "
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class='title'>
+                                        <i class='material-icons'>notes</i>
+                                        ".PLAYERSIGNATURE."
+                                    </div>
+                                    <div class='content'>
+                                        " . $row["usersig"]. "
+                                    </div>
+                                </li>								
+                            </ul>";
+					}
+				}
+							
+echo "
+                        </div>
+                    </div>
+                </div>
+                <div class='col-lg-9 col-md-9 col-sm-9 col-xs-9'>
+                    <div class='card' id='post_".$id."'>				
+                        <div class='header'>
+                            <h2>".USERPROFILECHANGE."</h2>
+                        </div>
+                        <div class='body'>
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>account_box</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changeuname'>".CHANGE_MYPROFILE_USERNAME."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-											<div class='font-icon-detail'>
-												<i class='now-ui-icons ui-2_settings-90'></i>
-												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changepass'>".CHANGE_MYPROFILE_PASSWORD."</a></p>
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>storage</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changepass'>".CHANGE_MYPROFILE_PASSWORD."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-											<div class='font-icon-detail'>
-												<i class='now-ui-icons ui-1_email-85'></i>
-												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changemail'>".CHANGE_MYPROFILE_EMAIL."</a></p>
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>email</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changemail'>".CHANGE_MYPROFILE_EMAIL."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-											<div class='font-icon-detail'>
-												<i class='now-ui-icons text_align-center'></i>
-												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changesignote'>".CHANGE_MYPROFILE_SIGNATUR."</a></p>
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>textsms</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changesignote'>".CHANGE_MYPROFILE_SIGNATUR."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>
-										<div class='font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6' style='float:left;'>
-											<div class='font-icon-detail'>
-												<i class='now-ui-icons business_badge'></i>
-												<p><a href='".$_SERVER['PHP_SELF']."?myprofile=changeava'>".CHANGE_MYPROFILE_AVATAR."</a></p>
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>swap_calls</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changeava'>".CHANGE_MYPROFILE_AVATAR."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>										
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>									
-			</div>
-		 </div>
-	  </div>
-    </div>";
+                        </div>
+                    </div>					
+                </div>
+            </div>";
 }
 
 if ($myprofile == "changeuname") {
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-              </div>
-			  <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>			  
-                      <th>
-						<h6>
-							".SOCIALCLUBNAME."
-							<small class='text-muted'>".WHITELIST."</small>
-						</h6>
-                      </th>					  						  
-                    </thead>
-                    <tbody>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".SOCIALCLUBNAME."
+								<small class='text-muted'>".WHITELIST."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";
 				$sql = "SELECT socialclubname FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
@@ -315,38 +393,26 @@ echo "
 			}					
 
 echo "	 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>";
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 }
 
 if ($myprofile == "changepass") {
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-              </div>
-			  <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>			  
-                      <th>
-						<h6>
-							".PASSWORD."
-							<small class='text-muted'>".RPSERVER."</small>
-						</h6>
-					  </th>					  						  
-                    </thead>
-                    <tbody>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".PASSWORD."
+								<small class='text-muted'>".RPSERVER."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";
 				$sql = "SELECT password FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
@@ -379,40 +445,27 @@ echo "
 				}
 				mysqli_close($conn);
 			}					
-
 echo "	 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>";
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 }
 
 if ($myprofile == "changemail") {
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-              </div>
-			  <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>			  
-                      <th>
-						<h6>
-							".EMAIL."
-							<small class='text-muted'>".TWITTER."</small>
-						</h6>
-                      </th>					  						  
-                    </thead>
-                    <tbody>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".EMAIL."
+								<small class='text-muted'>".TWITTER."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";	
 				$sql = "SELECT email FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
@@ -445,40 +498,27 @@ echo "
 				}
 				mysqli_close($conn);
 			}					
-
 echo "	 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>";
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 }
 
 if ($myprofile == "changesignote") {
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-              </div>
-			  <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>			  
-                      <th>
-						<h6>
-							".SIGNATUR."
-							<small class='text-muted'>".SIGNOTE."</small>
-						</h6>
-                      </th>					  						  
-                    </thead>
-                    <tbody>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".SIGNATUR."
+								<small class='text-muted'>".SIGNOTE."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";	
 				$sql = "SELECT usersig FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
@@ -511,40 +551,27 @@ echo "
 				}
 				mysqli_close($conn);
 			}					
-
 echo "	 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>";
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 }
 
 if ($myprofile == "changeava") {
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".USERPROFILECHANGE."</p>
-              </div>
-			  <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>			  
-                      <th>
-						<h6>
-							".AVATAR."
-							<small class='text-muted'>".AVANOTE."</small>
-						</h6>
-                      </th>					  						  
-                    </thead>
-                    <tbody>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".AVATAR."
+								<small class='text-muted'>".AVANOTE."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";	
 				$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 				$result = $conn->query($sql);
 
@@ -577,16 +604,12 @@ echo "
 				}
 				mysqli_close($conn);
 			}					
-
 echo "	 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>";
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 }
 
 site_footer();	

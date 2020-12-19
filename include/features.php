@@ -4,15 +4,27 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.6.1
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
+
+// Settings files from this ucp
 require_once("settings/database_mysql.php");
 require_once("settings/settings.php");
-require_once("include/template.php");
+
+// Themes System
+include("themes/".SITE_THEMES."/templates/header.php");
+include("themes/".SITE_THEMES."/templates/footer.php");
+include("themes/".SITE_THEMES."/templates/left_navi.php");
+include("themes/".SITE_THEMES."/templates/content.php");
+
+// Other files from Themes System
+include("themes/".SITE_THEMES."/templates/login_msg.php");
+include("themes/".SITE_THEMES."/templates/messaqges.php");
+include("themes/".SITE_THEMES."/templates/secure.php");
 
 // Set Language variable
 if(isset($_GET['secure_lang']) && !empty($_GET['secure_lang'])){
@@ -25,9 +37,9 @@ if(isset($_GET['secure_lang']) && !empty($_GET['secure_lang'])){
        
 // Include Language file
 if(isset($_SESSION['secure_lang'])){
-        include "./language/lang_".$_SESSION['secure_lang'].".php";
+        include "./themes/".SITE_THEMES."/language/lang_".$_SESSION['secure_lang'].".php";
 }else{
-        include "./language/lang_en.php";
+        include "./themes/".SITE_THEMES."/language/lang_en.php";
 }
 
 // Logout System
@@ -46,11 +58,13 @@ function is_image($src) {
 
 }
 
+// Site hash system from session system
 function sitehash($var,$addtext="",$addsecure="02fb9ff482dfb6d9baf1a56b6d1f17zufr67r45403f643eeb1204b3012391f8ee63bfe4f4e")
 {
     return hash('sha512','This UCP ".$addtext.$var.$addtext."".$addsecure." is the new user control panel system for all roleplay projects!');
 }
 
+// Site secure url system
 function secure_url() {
   $ct_spammer_def = array();                    // Reset Definition Array "Spammer"
   $ct_mailscn_def = array();                    // Reset Definition Array "Mailscan"

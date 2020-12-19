@@ -32,7 +32,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 			site_login_max_pass_long();
 		}
 
-		$_SESSION["secure"] = sitehash($username);	
+		$_SESSION["secure"] = sitehash($username);
 		$sql = "select * from users where username = '".$username."' LIMIT 1";
 		$rs = mysqli_query($conn,$sql);
 		$numRows = mysqli_num_rows($rs);
@@ -63,32 +63,33 @@ site_navi_nologged();
 site_content_nologged();
 
 echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".LOGIN."</p>
-              </div>
-              <div class='card-body'>
-			<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
-			<div class='form-row'>
-				<div class='form-group col-md-6'>
-					<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> ".SOCIALCLUBNAME."</label>
-					<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
-				</div>
-				<div class='form-group col-md-4'>
-					<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> ".PASSWORD."</label>
-					<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
-				</div>				
-			</div>				
-			<button type='submit' class='btn btn-primary' name='login'>".LOGIN."</submit>					
-			</form>				
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".LOGIN."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='row clearfix'>
+								<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
+									<div class='form-group'>
+										<div class='form-line'>
+											<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> ".SOCIALCLUBNAME."</label>
+											<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
+										</div>
+										<div class='form-line'>
+											<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> ".PASSWORD."</label>
+											<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
+										</div>				
+									</div>				
+									<button type='submit' class='btn btn-primary' name='login'>".LOGIN."</submit>					
+								</form>	
+                            </p>
+                        </div>			
+                    </div>					
+                </div>
+            </div>";
 site_footer();	  
 ?>

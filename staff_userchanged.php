@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -71,91 +71,81 @@ if ($result->num_rows > 0) {
     }
   }
 }
-  echo "
-      <div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Team Account Control System - ".STAFF_USERCAHNEGED."</p>
-              </div>
-              <div class='card-body'>
-			  <div class='row'>	
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h4 class='card-title'> Team Account Control System - ".STAFF_USERCAHNEGED."</h4>
-              </div>
-              <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table'>
-                    <thead class=' text-primary'>
-                      <th>
-                        ".STAFF_USERCONTROLUSERID."
-                      </th>
-                      <th>
-                        ".STAFF_USERCONTROLUSERNAME."
-                      </th>					  
-                      <th>
-                        ".STAFF_USERCONTROLSOCIALCLUB."
-                      </th>
-                      <th>
-                        ".STAFF_USERCONTROLEMAIL."
-                      </th>				  
-                      <th>
-                        ".STAFF_USERCONTROLACCOUNTWHITELIST."
-                      </th>
-                      <th>
-                        Option
-                      </th>					  
-                    </thead>
-                    <tbody>";
+echo "
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".STAFF_USERCAHNEGED."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>
+								<div class='table-responsive'>
+									<table class='table'>
+										<thead class=' text-primary'>
+											<th>
+												".STAFF_USERCONTROLUSERID."
+											</th>
+											<th>
+												".STAFF_USERCONTROLUSERNAME."
+											</th>					  
+											<th>
+												".STAFF_USERCONTROLSOCIALCLUB."
+											</th>
+											<th>
+												".STAFF_USERCONTROLEMAIL."
+											</th>				  
+											<th>
+												".STAFF_USERCONTROLACCOUNTWHITELIST."
+											</th>
+											<th>
+												".STAFF_USERCONTROLOPTION."
+											</th>					  
+										</thead>
+									<tbody>";
 
-			          $sql = "SELECT id, username, email, socialclubname, betaAcess from users";
-			          $result = $conn->query($sql);
+									$sql = "SELECT id, username, email, socialclubname, betaAcess from users";
+									$result = $conn->query($sql);
 
-			          if ($result->num_rows > 0) {
-						      // output data of each row
-				          while($row = $result->fetch_assoc()) {
-                    echo "
-                    <form method='post' action='".$_SERVER['PHP_SELF']."?ucpchanger=".$row['id']."' enctype='multipart/form-data'>
-                      <tr>
-                        <td>
-                          <p style='box-shadow: 0 0 1px rgba(0,0,0, .4);' class='btn btn-*'>" . $row["id"]. "</p>
-                        </td>
-                        <td>			
-                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["username"]. "' required>
-                        </td>
-                        <td>						
-                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["socialclubname"]. "' required>
-                        </td>						
-                        <td>						
-                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["email"]. "' required>
-                        </td>
-                        <td>
-                          <input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='betaAcess' size='2' maxlength='2' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["betaAcess"]. "' required>
-                        </td>
-                        <td>
-                          <button type='submit' class='btn btn-primary' name='submit'>".STAFF_USERCONTROLSAVE."</submit>
-                        </td>
-                      </tr>						
-                    </form>";
-				          }
-			          }					
+									if ($result->num_rows > 0) {
+										// output data of each row
+										while($row = $result->fetch_assoc()) {
+										echo "
+											<form method='post' action='".$_SERVER['PHP_SELF']."?ucpchanger=".$row['id']."' enctype='multipart/form-data'>
+												<tr>
+													<td>
+														<p style='box-shadow: 0 0 1px rgba(0,0,0, .4);' class='btn btn-*'>" . $row["id"]. "</p>
+													</td>
+													<td>			
+														<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["username"]. "' required>
+													</td>
+													<td>						
+														<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["socialclubname"]. "' required>
+													</td>						
+													<td>						
+														<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["email"]. "' required>
+													</td>
+													<td>
+														<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='betaAcess' size='2' maxlength='2' class='form-control text-left btn btn-flat btn-primary fc-today-button' value='" . $row["betaAcess"]. "' required>
+													</td>
+													<td>
+														<button type='submit' class='btn btn-primary' name='submit'>".STAFF_USERCONTROLSAVE."</submit>
+													</td>
+												</tr>						
+											</form>";
+										}
+									}					
 
-                echo "		  
-                    </tbody>
-                  </table>
+									echo "		  
+										</tbody>
+									</table>
+								</div>
+                            </p>
+                        </div>				
+                    </div>					
                 </div>
-              </div>		  
-			      </div>	
-				  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>";
+            </div>";
   site_footer();	
 ?>

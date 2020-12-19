@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -19,20 +19,11 @@ site_navi_logged();
 site_content_logged();
 
 echo "
-      <div class='content'>
-                <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | ".FAQ."</p>
-              </div>
-              <div class='card-body'>
-			<div class='row'>			
-		  <div class='col-md-12'>
-            <div class='card card-user'>
-              <div class='card-body'>
-                <div class='author'>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card' id='post_".$id."'>				
+                        <div class='header'>
+                            <h2>";
 					        $query = "select * from faq_lang";
 					        $result = mysqli_query($conn,$query);
 	
@@ -47,27 +38,20 @@ echo "
 						        $id = $row['id'];
 						        $title = $row[$title_field];
 						        $content = $row[$content_field];
-echo "		
-                    <h5 class='title'>
-						".$title."
-					</h5>
-                </div>
-				<div class='card' id='post_".$id."'>		
-					<div class='col-md-12'>			 			  
-						$content
-					</div>
-				</div>";
-				      }
+echo "
+								".$title."";
+						}
+echo "						
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>
+								$content	
+                            </p>
+                        </div>";
 echo "				
-                </p>
-              </div>
-            </div>
-          </div>		  
-			</div>										
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
+                    </div>					
+                </div>
+            </div>";
 site_footer();	
 ?>

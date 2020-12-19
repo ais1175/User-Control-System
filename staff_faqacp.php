@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -55,39 +55,30 @@ if(isset($_POST['faq_sup'])){
         $conn->close();
     }
 }
-?>
-<div class='content'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'><?php echo WELCOMETO; ?> <?php echo PROJECTNAME; ?>!</h5>
-                <p class='category'>User Control Panel | <?php echo FAQ_HEADER; ?></p>
-              </div>
-			  <div class='card-body'>
-				<div class='row'>			
-					<div class='col-sm-12'>
-						<b><?php echo FAQ_INFO; ?></b>
-					</div>
-				</div>
-			  </div>
-			  <div class='card-body'>			  
-				<div class='row'>			
-					<div class='col-sm-12'>
-			<?php	
+echo "
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".FAQ_HEADER."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";
 				$sql = "SELECT title, title_de, content, content_de FROM faq_lang WHERE id = 1";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-			?>
-					<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method='post' enctype='multipart/form-data'>
+					echo"
+					<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
                       <tr>				  
                         <td>
 							<h6>
-								<?php echo FAQ_TITLE_EN; ?>
-								<small class='text-muted'><?php echo FAQ_TITLE_EN_TEXT; ?></small>
+								".FAQ_TITLE_EN."
+								<small class='text-muted'>".FAQ_TITLE_EN_TEXT."</small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -95,15 +86,15 @@ if(isset($_POST['faq_sup'])){
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title' size='50' maxlength='100' class='form-control' value='<?=$row["title"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title' size='50' maxlength='100' class='form-control' value='".$row["title"]."' required>
 							</div>	
                         </td>
 					  </tr>
                       <tr>				  
                         <td>
 							<h6>
-								<?php echo FAQ_TITLE_DE; ?>
-								<small class='text-muted'><?php echo FAQ_TITLE_DE_TEXT; ?></small>
+								".FAQ_TITLE_DE."
+								<small class='text-muted'>".FAQ_TITLE_DE_TEXT."</small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -111,15 +102,15 @@ if(isset($_POST['faq_sup'])){
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title_de' size='50' maxlength='100' class='form-control' value='<?=$row["title_de"]?>' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title_de' size='50' maxlength='100' class='form-control' value='".$row["title_de"]."' required>
 							</div>	
                         </td>
 					  </tr>
                       <tr>					  
                         <td>
 							<h6>
-								<?php echo FAQ_CONTENT_EN; ?>
-								<small class='text-muted'><?php echo FAQ_CONTENT_EN_TEXT; ?></small>
+								".FAQ_CONTENT_EN."
+								<small class='text-muted'>".FAQ_CONTENT_EN_TEXT."</small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -127,15 +118,15 @@ if(isset($_POST['faq_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>					
-								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='<?=$row["content"]?>' required></textarea>
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='".$row["content"]."' required></textarea>
 							</div>	
                         </td>						
                       </tr>
                       <tr>					  
                         <td>
 							<h6>
-								<?php echo FAQ_CONTENT_DE; ?>
-								<small class='text-muted'><?php echo FAQ_CONTENT_DE_TEXT; ?></small>
+								".FAQ_CONTENT_DE."
+								<small class='text-muted'>".FAQ_CONTENT_DE_TEXT."</small>
 							</h6>
 							<div class='input-group'>
 								<div class='input-group-prepend'>
@@ -143,32 +134,34 @@ if(isset($_POST['faq_sup'])){
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>					
-								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='<?=$row["content_de"]?>' required></textarea>
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='".$row["content_de"]."' required></textarea>
 							</div>	
                         </td>						
                       </tr>                      					  
                       <tr>					  
 						<td>						
 							<button type='submit' name='faq_sup' class='btn btn-primary btn-round'>
-								<i class='now-ui-icons ui-1_check'></i> <?php echo FAQ_SAVE; ?>
+								<i class='now-ui-icons ui-1_check'></i> ".FAQ_SAVE."
 							</button>
 							</submit>
                         </td>							
                       </tr>						
-					</form>
+					</form>";
 
-		<?php
 				}
 				mysqli_close($conn);
 			}
-		?>						 
-              </div>
-            </div>
-          </div>
-        </div>
-		</div>
-	</div>
-</div>
-<?php
+echo "
+									<br>
+									<div class='form-group'>
+										<div class='form-line'></div>
+										<br>
+										".FAQ_INFO."
+									</div>		
+                            </p>
+                        </div>
+                    </div>					
+                </div>
+            </div>";
 site_footer();
 ?>

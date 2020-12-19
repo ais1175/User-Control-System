@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -17,25 +17,22 @@ site_navi_nologged();
 site_content_nologged();
 
 echo "
-      <div class='content'>
-         <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | 404</p>
-              </div>
-              <div class='card-body'>			  
-		            <div class='row'>			
-			            <div class='col-sm-8'>
-				            <b>Ressource not found...</b>
-			            </div>				
-		            </div>										
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								404
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='error-message'>
+								This page doesn't exist	
+                            </p>
+                        </div>
+                    </div>					
+                </div>
+            </div>";
 	  
 site_footer();
 ?>
