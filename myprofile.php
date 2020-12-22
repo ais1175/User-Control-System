@@ -189,7 +189,7 @@ echo "' alt='Profile Image' />
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo " " . $row["username"]. "";
+								echo "".htmlentities("" . $row["username"]. "")."";
 							}
 						}
 echo "</h3>

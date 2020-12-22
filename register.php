@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -71,24 +71,28 @@ echo "
                         <div class='body'>
                             <p class='row clearfix'>
 								<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
-									<div class='form-group'>
+									<div class='input-group'>
 										<div class='form-line'>
-											<label class='card-inside-title' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> ".USERNAME." *</label>
-											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".USERNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>person</i> ".USERNAME." *</label>
+											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' class='form-control' placeholder='".USERNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 										</div>
+									</div>
+									<div class='input-group'>									
 										<div class='form-line'>
-											<label class='card-inside-title' for='exampleFormControlInput1'><i id='email-icon' class='fa fa-envelope'></i> ".SOCIALCLUBNAME." *</label>
-											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Social Club Name' type='text' name='socialclubname' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>person</i> ".SOCIALCLUBNAME." *</label>
+											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 										</div>				
 									</div>		
-									<div class='form-group'>
+									<div class='input-group'>
 										<div class='form-line'>
-											<label class='card-inside-title' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> ".EMAIL." *</label>
-											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='E-Mail' type='text' name='email' class='form-control' placeholder='".EMAIL." *' value='' maxlength='45' id='border-right6' autocomplete='off'/>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>sms</i> ".EMAIL." *</label>
+											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' class='form-control' placeholder='".EMAIL." *' value='' maxlength='45' id='border-right6' autocomplete='off'/>
 										</div>
+									</div>										
+									<div class='input-group'>										
 										<div class='form-line'>
-											<label class='card-inside-title' for='exampleFormControlInput1'><i id='message-icon' class='fa fa-comment'></i> ".PASSWORD." *</label>
-											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>enhanced_encryption</i> ".PASSWORD." *</label>
+											<input required style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='border-right6' autocomplete='off'/>
 										</div>				
 									</div>			
 									<div class='form-group'>

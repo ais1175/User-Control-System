@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -76,11 +76,13 @@ echo "
 								<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' autocomplete='off'>
 									<div class='form-group'>
 										<div class='form-line'>
-											<label for='exampleFormControlInput1'><i id='email-icon' class='now-ui-icons users_single-02'></i> ".SOCIALCLUBNAME."</label>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>person</i> ".SOCIALCLUBNAME."</label>
 											<input required aria-label='Social Club Name' type='text' name='username' class='form-control' placeholder='".SOCIALCLUBNAME." *' value='' maxlength='30' id='exampleInputEmail1' autocomplete='off'/>
 										</div>
+									</div>										
+									<div class='form-group'>										
 										<div class='form-line'>
-											<label for='exampleFormControlInput1'><i id='message-icon' class='now-ui-icons ui-1_lock-circle-open'></i> ".PASSWORD."</label>
+											<label class='title' for='exampleFormControlInput1'><i class='material-icons'>lock</i> ".PASSWORD."</label>
 											<input required aria-label='Password' type='password' name='password' class='form-control' placeholder='".PASSWORD." *' value='' maxlength='30' id='exampleInputPassword1' autocomplete='off'/>
 										</div>				
 									</div>				
