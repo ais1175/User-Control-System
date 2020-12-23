@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -168,31 +168,33 @@ echo "
                     <div class='card profile-card'>
                         <div class='profile-header'>&nbsp;</div>
                         <div class='profile-body'>
-                            <div class='image-area'>
-                                <img src='";
-						$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-						$result = $conn->query($sql);
+                            <div class='image-area'>";
+								$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+								$result = $conn->query($sql);
 
-						if ($result->num_rows > 0) {
-							// output data of each row
-							while($row = $result->fetch_assoc()) {
-								echo "" . $row["userava"]. "";
-							}	
-						}		
-echo "' alt='Profile Image' />
+								if ($result->num_rows > 0) {
+									// output data of each row
+									while($row = $result->fetch_assoc()) {
+										echo "
+											<img src='".htmlentities($row['userava'], ENT_QUOTES, 'UTF-8')."' alt='User Avatar' />";
+									}	
+								}		
+echo "
                             </div>
                             <div class='content-area'>
                                 <h3>";
-						$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-						$result = $conn->query($sql);
+									$sql = "SELECT username FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+									$result = $conn->query($sql);
 
-						if ($result->num_rows > 0) {
-							// output data of each row
-							while($row = $result->fetch_assoc()) {
-								echo "".htmlentities("" . $row["username"]. "")."";
-							}
-						}
-echo "</h3>
+									if ($result->num_rows > 0) {
+									// output data of each row
+										while($row = $result->fetch_assoc()) {
+											echo "
+											".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."";
+										}
+									}
+echo "
+								</h3>
                             </div>
                         </div>
                     </div>
@@ -216,7 +218,7 @@ echo "</h3>
                                         ".PLAYERSOCIALCLUB."
                                     </div>
                                     <div class='content'>
-                                        " . $row["socialclubname"]. "
+										".htmlentities($row['socialclubname'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -225,7 +227,7 @@ echo "</h3>
                                         ".PLAYEREMAIL."
                                     </div>
                                     <div class='content'>
-                                        " . $row["email"]. "
+										".htmlentities($row['email'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -234,7 +236,7 @@ echo "</h3>
                                         ".PLAYERWHITELISTED."
                                     </div>
                                     <div class='content'>
-                                        " . $row["betaAcess"]. "
+										".htmlentities($row['betaAcess'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -243,7 +245,7 @@ echo "</h3>
                                         ".PLAYERSIGNATURE."
                                     </div>
                                     <div class='content'>
-                                        " . $row["usersig"]. "
+										".htmlentities($row['usersig'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>								
                             </ul>";
@@ -255,7 +257,7 @@ echo "
                     </div>
                 </div>
                 <div class='col-lg-9 col-md-9 col-sm-9 col-xs-9'>
-                    <div class='card' id='post_".$id."'>				
+                    <div class='card'>				
                         <div class='header'>
                             <h2>".USERPROFILECHANGE."</h2>
                         </div>

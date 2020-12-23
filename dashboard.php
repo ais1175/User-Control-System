@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 1.7
+// * Version: 2.0
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -22,7 +22,7 @@ secure_url();
 if(isset($_POST['tweeting'])){
 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 	$msg 	= filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
-	$posted 	= date('Y-m-d H:i:s');	
+	$posted 	= time();	
 	// The 2nd check to make sure that nothing bad can happen. 	
 	if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 		site_login_username_not_valid();
@@ -102,7 +102,7 @@ echo "
 						// output data of each row
 				while($row = $resultsupport->fetch_assoc()) {
 					echo "
-                            <div class='number count-to' data-from='0' data-to='" . $row["id"]. "' data-speed='1000' data-fresh-interval='20'>" . $row["id"]. "</div>";
+                            <div class='number count-to' data-from='0' data-to='".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."</div>";
 				}
 			}					
 
@@ -125,7 +125,7 @@ echo "
 						// output data of each row
 				while($row = $resultusers->fetch_assoc()) {
 					echo "
-                            <div class='number count-to' data-from='0' data-to='" . $row["id"]. "' data-speed='1000' data-fresh-interval='20'>" . $row["id"]. "</div>";
+                            <div class='number count-to' data-from='0' data-to='".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."</div>";
 				}
 			}					
 
@@ -190,7 +190,7 @@ echo"
 							echo"
                                     <div class='title'>
 										<div style='display:none;'>
-											<input required style='box-shadow: 0 0 1px rgba(92,90,90,0.7);' type='text' name='username' class='form-control' value='" . $row["username"]. "' placeholder='' value='' maxlength='10' id='border-right6' />
+											<input required style='box-shadow: 0 0 1px rgba(92,90,90,0.7);' type='text' name='username' class='form-control' value='".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."' placeholder='' value='' maxlength='10' id='border-right6' />
 										</div>
                                     </div>";
 								}
@@ -225,14 +225,14 @@ echo"
                                     <h4 class='list-group-item-heading'>
 										<span>
 											<h5 style=float:left>
-												" . $row["username"]. " - " . $row["posted"]. "</i>
+												".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')." - ".htmlentities($row['posted'], ENT_QUOTES, 'UTF-8')."</i>
 											</h5>												
 										</span>														
 										<span>
 											<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
 												<button class='btn btn-primary m-t-5 waves-effect' name='like_msg' style='float: right;'>
 													<span>
-														<h5 style='float: right;'>" . $row["liked"]. "</h5>
+														<h5 style='float: right;'>".htmlentities($row['liked'], ENT_QUOTES, 'UTF-8')."</h5>
 													</span>
 													<i class='material-icons'>thumb_up</i>
 												</button>
@@ -242,7 +242,7 @@ echo"
 									<br>
                                     <p class='list-group-item-text'>
 										<span>
-											<h5>" . $row["msg"]. "</h5>
+											<h5>".htmlentities($row['msg'], ENT_QUOTES, 'UTF-8')."</h5>
 										</span>
                                     </p>
                                 </a>

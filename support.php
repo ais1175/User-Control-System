@@ -141,7 +141,7 @@ echo"
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control' value='".$row["username"]."' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control' value='".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."' required>
 							</div>	
                         </td>
 					  </tr>
@@ -284,19 +284,19 @@ echo"
 echo"					
                       <tr>
                         <td>
-                          ".$row["id"]."
+							".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-                          ".$row["username"]."
+							".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."
                         </td>						
                         <td>
-                          ".$row["bug"]."
+							".htmlentities($row['bug'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-                          ".$row["msg"]."
+							".htmlentities($row['msg'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-                          ".$row["posted"]."
+							".htmlentities($row['posted'], ENT_QUOTES, 'UTF-8')."
                         </td>					
                       </tr>";	  
 				}
