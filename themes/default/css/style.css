@@ -1,4 +1,28 @@
-﻿/* Navbar ====================================== */
+﻿.form-div { margin-top: 100px; border: 1px solid #e0e0e0; }
+#profileDisplay { display: block; height: 210px; width: 50%; margin: 0px auto; border-radius: 50%; }
+.img-placeholder {
+  width: 50%;
+  color: white;
+  height: 55%;
+  background: black;
+  opacity: .7;
+  height: 210px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.img-placeholder h4 {
+  margin-top: 10%;
+  color: white;
+}
+.img-div:hover .img-placeholder {
+  display: block;
+  cursor: pointer;
+}
+/* Navbar ====================================== */
 @import url(materialize.css);
 .navbar {
   font-family: "Roboto", sans-serif;
@@ -1903,11 +1927,12 @@
     color: #fff !important; }
 
 .bg-teal {
-  background-color: #009688 !important;
-  color: #fff; }
+  color: #a6b0cf;
+    background-color: #2f363e; }
   .bg-teal .content .text,
   .bg-teal .content .number {
-    color: #fff !important; }
+    color: #a6b0cf;
+    background-color: #2f363e; }
 
 .bg-green {
   background-color: #4CAF50 !important;
@@ -5942,7 +5967,9 @@ color: #a6b0cf;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
-  border-radius: 0; }
+  border-radius: 0;
+color: #a6b0cf;
+    background-color: #2f363e; }
   .pagination > li:first-child > a .material-icons,
   .pagination > li:last-child > a .material-icons {
     position: relative;
@@ -7421,6 +7448,11 @@ color: #a6b0cf;
   .dropdown-menu .divider {
     margin: 5px 0; }
   .dropdown-menu .header {
+    background-color: #2a3042;
+    background-clip: border-box;
+    border: 0 solid #32394e;
+    -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
     font-size: 13px;
     font-weight: bold;
     min-width: 270px;
@@ -7919,6 +7951,7 @@ color: #a6b0cf;
   text-align: center;
   margin-top: -64px; }
   .profile-card .profile-body .image-area img {
+    max-height: 240px;
     border: 2px solid #ad1455;
     padding: 2px;
     margin: 2px;
