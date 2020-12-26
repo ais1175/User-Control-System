@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -20,6 +20,14 @@ site_secure_staff_check();
 site_header();
 site_navi_logged();
 site_content_logged();
+
+$limit = 10;  
+if (isset($_GET["site"])) {
+	$site  = $_GET["site"]; 
+}else{ 
+	$site=1;
+};  
+$start_from = ($site-1) * $limit;
 
 echo "
 			<div class='row clearfix'>
@@ -53,7 +61,7 @@ echo "
 										</thead>
 										<tbody>";
 
-										$sql = "SELECT id, username, email, socialclubname, betaAcess FROM users ORDER BY username";
+										$sql = "SELECT id, username, email, socialclubname, betaAcess FROM users ORDER BY id ASC LIMIT ".$start_from.", ".$limit."";
 										$result = $conn->query($sql);
 
 										if ($result->num_rows > 0) {
@@ -82,7 +90,24 @@ echo "
 
 echo "					  
 										</tbody>
-									</table>
+									</table>";
+									
+									$result_db = mysqli_query($conn,"SELECT COUNT(id) FROM users"); 
+									$row_db = mysqli_fetch_row($result_db);  
+									$total_records = $row_db[0];  
+									$total_sites = ceil($total_records / $limit); 
+									$siteLink = "
+									<nav>
+										<ul class='pagination'>";  
+									for ($i=1; $i<=$total_sites; $i++) {
+										$siteLink .= "
+											<li class='bg-teal'>
+												<a class='waves-effect' href='".$_SERVER['PHP_SELF']."?site=".$i."'>".$i."</a>
+											</li>";	
+									}
+									echo $siteLink . "
+										</ul>
+									</nav>
 								</div>
                             </p>
                         </div>				

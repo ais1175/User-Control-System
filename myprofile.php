@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -126,35 +126,36 @@ if ($myprofile == "changemail") {
 }
 
 if ($myprofile == "changeava") {
-	if(isset($_POST['myprofilechange'])){
-		if(empty($_POST['userava'])){
-			site_login_notfound_done();
+	if (isset($_POST['myprofilechange'])) {
+		// for the database
+		$profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
+		// For image upload
+		$target_dir = "".UPLOAD_AVATAR_FOLDER."";
+		$target_file = $target_dir . basename($profileImageName);
+		// VALIDATION
+		// validate image size. Size is calculated in Bytes
+		if($_FILES['profileImage']['size'] > 250000) {
+			site_myprofile_done_error();
+		}				
+		// check if file exists
+		if(file_exists($target_file)) {
+			site_myprofile_done_error();
 		}
-		else
-		{	
-			$userava = filter_input(INPUT_POST, 'userava', FILTER_SANITIZE_STRING);
-
-			// The 1nd check to image
-			if (!is_image($userava))
-			{
-				// The 2nd check to make sure that nothing bad can happen.
-				if (preg_match('/[A-Za-z0-9]+/', $_POST['userava']) == 0) {
-					site_login_username_not_valid();
-				}
-			}
-			else
-			{
-				$sql = "UPDATE users SET userava='".$userava."' WHERE id = '".$_SESSION['username']['secure_first']."'";
-			}
-   
-			if (mysqli_query($conn, $sql)) {
+		// Upload image only if no errors
+		if (empty($error)) {
+			if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
+				$useravasql = "UPDATE users SET userava='".UPLOAD_AVATAR_FOLDER."".$profileImageName."' WHERE id = '".$_SESSION['username']['secure_first']."'";
+			if(mysqli_query($conn, $useravasql)){
 				site_myprofile_done();
 			} else {
 				site_myprofile_done_error();
 			}
-			mysqli_close($conn);
+		} else {
+			site_myprofile_done_error();
 		}
-	}		
+	}
+	mysqli_close($conn);
+	}
 }
 
 site_header();
@@ -574,14 +575,13 @@ echo "
                         </div>
                         <div class='body'>
                             <p class='m-t-15 m-b-30'>";	
-				$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
-				$result = $conn->query($sql);
+				$sqlold = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+				$resultold = $conn->query($sqlold);
 
-				if ($result->num_rows > 0) {
+				if ($resultold->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($row = $resultold->fetch_assoc()) {
 echo "						
-					<form action='".$_SERVER['PHP_SELF']."?myprofile=changeava' method='post' enctype='multipart/form-data'>
                       <tr>											  
 					  	<td>
 					  		<div class='input-group'>
@@ -590,22 +590,29 @@ echo "
 								  		<i class='now-ui-icons business_badge'></i>
 							  		</div>      
 						  		</div>						
-						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='userava' size='50' maxlength='160' class='form-control' value='" . $row["userava"]. "' required>
+								<form action='".$_SERVER['PHP_SELF']."?myprofile=changeava' method='post' enctype='multipart/form-data'>
+									<div class='form-group text-center' style='position: relative;' >
+										<span class='img-div'>
+											<div class='text-center img-placeholder'  onClick='triggerClick()'>
+												<h4>".CHANGE_MYPROFILE_AVATAR." <br><small class='text-muted'>".CHANGE_MYPROFILE_AVATARNOTE."</small></h4>
+											</div>
+											<img src='".htmlentities($row['userava'], ENT_QUOTES, 'UTF-8')."' onClick='triggerClick()' id='profileDisplay'>
+										</span>
+										<input type='file' name='profileImage' onChange='displayImage(this)' id='profileImage' class='form-control' style='display: none;'>
+									</div>
 					  		</div>	
 				  		</td>						
 				      </tr>					  
                       <tr>					  
 						<td>						
-							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
-								<i class='now-ui-icons ui-1_check'></i> ".MYPROFILESAVE."
-							</button>
-							</submit>
+							<div class='form-group'>
+								<button type='submit' name='myprofilechange' class='btn btn-primary waves-effect'>".MYPROFILESAVE."</button>
+							</div>
                         </td>							
-                      </tr>						
-					</form>";
-				}
-				mysqli_close($conn);
-			}					
+                      </tr>";
+					}
+					mysqli_close($conn);
+				}					
 echo "	 
                             </p>
                         </div>				

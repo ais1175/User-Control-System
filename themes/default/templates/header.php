@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -22,7 +22,7 @@ function site_header() {
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.0         # -->
+	<!-- #   Powered by User Control Panel Version 2.1         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
@@ -134,7 +134,7 @@ function site_header_nologged() {
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.0         # -->
+	<!-- #   Powered by User Control Panel Version 2.1         # -->
 	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->

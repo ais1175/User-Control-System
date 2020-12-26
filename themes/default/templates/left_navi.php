@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -36,12 +36,6 @@ echo "
                         </a>
                     </li>					
                     <li class='header'>".USERACCOUNT."</li>
-                    <li>
-                        <a href='user.php'>
-                            <i class='material-icons'>account_box</i>
-                            <span>".USERPROFILE."</span>
-                        </a>
-                    </li>
                     <li>
                         <a href='myprofile.php?myprofile=dashboard'>
                             <i class='material-icons'>contacts</i>
@@ -97,7 +91,7 @@ echo"
                     &copy; ".PROJECTNAME.". All rights reserved.
                 </div>
                 <div class='version'>
-                    <b>UCP Version: </b> 2.0
+                    <b>UCP Version: </b> 2.1
                 </div>
             </div>
         </aside>"; 

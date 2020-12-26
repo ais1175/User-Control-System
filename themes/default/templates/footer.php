@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -29,9 +29,13 @@ function site_footer() {
     <script src='themes/".SITE_THEMES."/plugins/flot-charts/jquery.flot.categories.js'></script>
     <script src='themes/".SITE_THEMES."/plugins/flot-charts/jquery.flot.time.js'></script>
     <script src='themes/".SITE_THEMES."/plugins/jquery-sparkline/jquery.sparkline.js'></script>
+    <script src='themes/".SITE_THEMES."/plugins/node-waves/waves.js'></script>
     <script src='themes/".SITE_THEMES."/js/admin.js'></script>
+    <script src='themes/".SITE_THEMES."/js/pages/ui/modals.js'></script>
+	<script src='themes/".SITE_THEMES."/js/pages/ui/notifications.js'></script>
     <script src='themes/".SITE_THEMES."/js/pages/index.js'></script>
-    <script src='themes/".SITE_THEMES."/js/demo.js'></script>
+    <script src='themes/".SITE_THEMES."/js/avatar.js'></script>
+    <script src='themes/".SITE_THEMES."/js/demo.js'></script>	
 </body>
 </html>";   
 }

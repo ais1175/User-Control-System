@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.0
+// * Version: 2.1
 // * 
 // * Copyright (c) 2020 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -80,6 +80,7 @@ define("CHANGE_MYPROFILE_SIGNATUR","Change signature");
 define("CHANGE_MYPROFILE_USERNAME","Change username");
 define("CHANGE_MYPROFILE_EMAIL","Change E-Mail address");
 define("CHANGE_MYPROFILE_AVATAR","Change avatar");
+define("CHANGE_MYPROFILE_AVATARNOTE","Press the left mouse button to change!");
 
 // ************************************************************************************//
 // * English Language Section - My Profile
