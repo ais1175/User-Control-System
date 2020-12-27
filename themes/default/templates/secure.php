@@ -17,25 +17,22 @@ function site_secure() {
 		site_navi_nologged();
 		site_content_nologged();
 		echo "
-        <div class='content'>
-         <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Secure System</p>
-              </div>
-              <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-						        <b>".MSG_1."</b>				
-					        </div>				
-				        </div>										
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".PROJECTNAME."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>
+								".MSG_1."
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";		
 		site_footer();
 		die();
 	}  
@@ -47,25 +44,22 @@ function site_secure_staff_check() {
 		site_navi_nologged();
 		site_content_nologged();
 		echo "
-        <div class='content'>
-         <div class='row'>
-          <div class='col-md-12'>
-            <div class='card'>
-              <div class='card-header'>
-                <h5 class='title'>".WELCOMETO." ".PROJECTNAME."!</h5>
-                <p class='category'>User Control Panel | Secure System</p>
-              </div>
-              <div class='card-body'>			  
-				        <div class='row'>			
-					        <div class='col-sm-8'>
-						        <b>".MSG_2."</b>				
-					        </div>				
-				        </div>										
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".PROJECTNAME."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>
+								".MSG_2."
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
 		site_footer();
 		die();		
    }
