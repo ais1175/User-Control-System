@@ -32,7 +32,6 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 			site_login_max_pass_long();
 		}
 
-		$_SESSION["secure"] = sitehash($username);
 		$sql = "select * from users where username = '".$username."' LIMIT 1";
 		$rs = mysqli_query($conn,$sql);
 		$numRows = mysqli_num_rows($rs);
@@ -43,6 +42,8 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 				$_SESSION['username']['secure_first'] = $row["id"];
 				$_SESSION['username']['secure_granted'] = "granted";
 				$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+				$_SESSION['username']['secure_lang'] = $row["language"];
+				$_SESSION['username']["secure_key"] = sitehash($username);
 				if($result)
 				{
 				// Platzhalter: redir to dashboard.php

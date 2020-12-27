@@ -38,7 +38,9 @@ function site_header() {
     <link href='themes/".SITE_THEMES."/plugins/animate-css/animate.css' rel='stylesheet' />
     <link href='themes/".SITE_THEMES."/plugins/morrisjs/morris.css' rel='stylesheet' />
     <link href='themes/".SITE_THEMES."/css/style.css' rel='stylesheet'>
-    <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />";
+    <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/plugins/waitme/waitMe.css' rel='stylesheet' />
+    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />";
   
   header("X-Frame-Options: sameorigin");
   header("X-XSS-Protection: 1; mode=block");
@@ -52,7 +54,6 @@ function site_header() {
 	$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 	$securecode = $row["id"];
 
-  $_SESSION["secure"] = sitehash($securecode);
 	$sql = "select * from accounts where username = '".$username."'";
 	$rs = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($rs);
@@ -61,12 +62,16 @@ function site_header() {
     $row = mysqli_fetch_assoc($rs);
 		$_SESSION['username']['secure_first'] = $row["id"];
 		$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+		$_SESSION['username']['secure_lang'] = $row["language"];
 		$_SESSION['username']['secure_granted'] = "granted";
+		$_SESSION['username']["secure_key"] = sitehash($username);
 		if(isset($_POST["username"]) && ! empty($_POST["username"]))
 		{
 			$_SESSION['username']['secure_first'] = $row["id"];
 			$_SESSION['username']['secure_staff'] = $row["adminLevel"];
+			$_SESSION['username']['secure_lang'] = $row["language"];
 			$_SESSION['username']['secure_granted'] = "granted";
+			$_SESSION['username']["secure_key"] = sitehash($username);
 		} 			
 	}
   echo " 
@@ -104,22 +109,6 @@ function site_header() {
 								</button>&nbsp;								
 							</form>						
                         </a>
-                    </li>
-                    <li class='dropdown' style='float:right;'>
-                        <a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown' role='button'>					
-                            <form method='get' action='".$_SERVER['PHP_SELF']."' id='changer_lang'>
-								<p style='float:right;'> 
-								<a href='".$_SERVER['PHP_SELF']."?secure_lang=en'>
-									<input type='hidden' name='secure_lang' value='secure_lang_en' />
-									<img src='./themes/".SITE_THEMES."/flags/uk.png' alt='en' width='16' height='16'>
-								</a>&nbsp;
-								<a href='".$_SERVER['PHP_SELF']."?secure_lang=de'>
-									<input type='hidden' name='secure_lang' value='secure_lang_de' />
-									<img src='./themes/".SITE_THEMES."/flags/de.png' alt='de' width='16' height='16' >
-								</a>	
-								</p>
-							</form>
-                        </a>
                     </li>					
                 </ul>
             </div>
@@ -128,6 +117,9 @@ function site_header() {
 }
 
 function site_header_nologged() {
+  // starting the session
+  session_start();
+  // starting secure urls  
   secure_url();
   echo "
 <!DOCTYPE html>
@@ -150,10 +142,10 @@ function site_header_nologged() {
     <link href='themes/".SITE_THEMES."/plugins/animate-css/animate.css' rel='stylesheet' />
     <link href='themes/".SITE_THEMES."/plugins/morrisjs/morris.css' rel='stylesheet' />
     <link href='themes/".SITE_THEMES."/css/style.css' rel='stylesheet'>
-    <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />";
-
-  // starting the session
-  session_start();
+    <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css' rel='stylesheet' />	
+	<link href='themes/".SITE_THEMES."/plugins/waitme/waitMe.css' rel='stylesheet' />
+    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />";
 
   header("X-Frame-Options: sameorigin");
   header("X-XSS-Protection: 1; mode=block");
@@ -188,28 +180,8 @@ function site_header_nologged() {
                 <a href='javascript:void(0);' class='bars'></a>
                 <a class='navbar-brand' href='index.php'>".SITETITLE."</a>
             </div>
-            <div class='collapse navbar-collapse' id='navbar-collapse'>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li class='dropdown'>
-                        <a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown' role='button'>
-                            <form method='get' action='' id='changer_lang'>
-								<p> 
-								<a href='".$_SERVER['PHP_SELF']."?secure_lang=en'>
-									<input type='hidden' name='secure_lang' value='secure_lang_en' />
-									<img src='./themes/".SITE_THEMES."/flags/uk.png' alt='en' width='16' height='16'>
-								</a>&nbsp;
-								<a href='".$_SERVER['PHP_SELF']."?secure_lang=de'>
-									<input type='hidden' name='secure_lang' value='secure_lang_de' />
-									<img src='./themes/".SITE_THEMES."/flags/de.png' alt='de' width='16' height='16'>
-								</a>
-								</p>
-							</form>
-                        </a>
-                    </li>					
-                </ul>
-            </div>
         </div>
-    </nav>";   
+    </nav>";	
 }
 
 ?>

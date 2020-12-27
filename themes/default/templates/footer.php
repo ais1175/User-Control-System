@@ -31,8 +31,13 @@ function site_footer() {
     <script src='themes/".SITE_THEMES."/plugins/jquery-sparkline/jquery.sparkline.js'></script>
     <script src='themes/".SITE_THEMES."/plugins/node-waves/waves.js'></script>
     <script src='themes/".SITE_THEMES."/js/admin.js'></script>
+	<script src='themes/".SITE_THEMES."/plugins/autosize/autosize.js'></script>
+    <script src='themes/".SITE_THEMES."/plugins/momentjs/moment.js'></script>	
     <script src='themes/".SITE_THEMES."/js/pages/ui/modals.js'></script>
 	<script src='themes/".SITE_THEMES."/js/pages/ui/notifications.js'></script>
+	<script src='themes/".SITE_THEMES."/js/pages/forms/basic-form-elements.js'></script>
+	<script src='themes/".SITE_THEMES."/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js'></script>
+    <script src='themes/".SITE_THEMES."/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js'></script>
     <script src='themes/".SITE_THEMES."/js/pages/index.js'></script>
     <script src='themes/".SITE_THEMES."/js/avatar.js'></script>
     <script src='themes/".SITE_THEMES."/js/demo.js'></script>	

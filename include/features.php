@@ -28,19 +28,30 @@ include("themes/".SITE_THEMES."/templates/secure.php");
 
 // Set Language variable
 if(isset($_GET['secure_lang']) && !empty($_GET['secure_lang'])){
-        $_SESSION['secure_lang'] = $_GET['secure_lang'];
+        $_SESSION['username']['secure_lang'] = $_GET['secure_lang'];
        
-        if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] != $_GET['secure_lang']){
+        if(isset($_SESSION['username']['secure_lang']) && $_SESSION['username']['secure_lang'] != $_GET['secure_lang']){
          echo "<script type='text/javascript'> location.reload(); </script>";
         }
 }
        
 // Include Language file
-if(isset($_SESSION['secure_lang'])){
-        include "./themes/".SITE_THEMES."/language/lang_".$_SESSION['secure_lang'].".php";
+if(isset($_SESSION['username']['secure_lang'])){
+	$sqllang = "SELECT language FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+	$resultlang = $conn->query($sqllang);
+
+	if ($resultlang->num_rows > 0) {
+		// output data of each row
+		while($row = $resultlang->fetch_assoc()) {
+			include "./themes/".SITE_THEMES."/language/lang_".htmlentities($row['language'], ENT_QUOTES, 'UTF-8').".php";
+		}
+	}else{
+			include "./themes/".SITE_THEMES."/language/lang_".SITE_LANGUAGE.".php";
+	}
 }else{
-        include "./themes/".SITE_THEMES."/language/lang_en.php";
+	include "./themes/".SITE_THEMES."/language/lang_".SITE_LANGUAGE.".php";
 }
+
 
 // Logout System
 if(isset($_POST['logout'])){

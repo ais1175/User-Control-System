@@ -12,7 +12,6 @@
 // ************************************************************************************//
 require_once("include/features.php");
 secure_url();
-
 site_header_nologged();
 site_navi_nologged();
 site_content_nologged();
@@ -32,6 +31,6 @@ echo "
                         </div>				
                     </div>					
                 </div>
-            </div>";								
+            </div>";			
 site_footer();
 ?>

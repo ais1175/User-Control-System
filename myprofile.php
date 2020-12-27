@@ -158,6 +158,27 @@ if ($myprofile == "changeava") {
 	}
 }
 
+if ($myprofile == "changelanguage") {
+	if(isset($_POST['myprofilechange'])){
+		if(empty($_POST['language'])){
+			site_login_notfound_done();
+		}
+		else
+		{	
+			$language 	= filter_input(INPUT_POST, 'language', FILTER_SANITIZE_STRING);
+
+			$sql = "UPDATE users SET language='".$language."' WHERE id = '".$_SESSION['username']['secure_first']."'";
+   
+			if (mysqli_query($conn, $sql)) {
+				site_myprofile_done();
+			} else {
+				site_myprofile_done_error();
+			}
+			mysqli_close($conn);
+		}
+	}		
+}
+
 site_header();
 site_navi_logged();
 site_content_logged();
@@ -342,6 +363,22 @@ echo "
                                                     </div>
                                                 </div>
 											</div>
+										</div>	
+										<div class='panel panel-default panel-post'>
+                                            <div class='panel-heading'>                				
+												<div class='media'>
+                                                    <div class='media-left'>
+                                                        <a href='#'>
+                                                            <i class='material-icons'>swap_calls</i>
+                                                        </a>
+                                                    </div>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'>
+                                                            <a href='".$_SERVER['PHP_SELF']."?myprofile=changelanguage'>".CHANGE_MYPROFILE_LANGUAGE."</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+											</div>
 										</div>										
                         </div>
                     </div>					
@@ -485,7 +522,7 @@ echo "
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control' value='" . $row["email"]. "' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control' value='".htmlentities($row['email'], ENT_QUOTES, 'UTF-8')."' required>
 							</div>	
                         </td>						
 				      </tr>					  
@@ -538,7 +575,7 @@ echo "
 								  		<i class='now-ui-icons business_badge'></i>
 							  		</div>      
 						  		</div>						
-						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='usersig' size='50' maxlength='160' class='form-control' value='" . $row["usersig"]. "' required>
+						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='usersig' size='50' maxlength='160' class='form-control' value='".htmlentities($row['usersig'], ENT_QUOTES, 'UTF-8')."' required>
 					  		</div>	
 				  		</td>						
 				      </tr>					  
@@ -619,6 +656,65 @@ echo "
 					}
 					mysqli_close($conn);
 				}					
+echo "	 
+                            </p>
+                        </div>				
+                    </div>					
+                </div>
+            </div>";
+}
+
+if ($myprofile == "changelanguage") {
+echo "
+			<div class='row clearfix'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>				
+                        <div class='header'>
+                            <h2>
+								".LANGUAGE."
+								<small class='text-muted'>".LANGUAGENOTE."</small>
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <p class='m-t-15 m-b-30'>";	
+				$sql = "SELECT language FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+echo "						
+					<form action='".$_SERVER['PHP_SELF']."?myprofile=changelanguage' method='post' enctype='multipart/form-data'>
+                      <tr>					  
+                        <td>
+							<div class='input-group'>
+								<div class='input-group-prepend'>
+									<div class='input-group-text'>
+										<i class='now-ui-icons ui-2_settings-90'></i>
+									</div>      
+								</div>						
+								<div class='bootstrap-select form-control'>
+									<select name='language' class='form-control'>
+                                        <option value=''>-- ".CHANGE_MYPROFILE_LANGUAGENOTE." --</option>
+                                        <option value='en'>".CHANGE_MYPROFILE_LANGUAGE_SELECT_EN."</option>
+                                        <option value='de'>".CHANGE_MYPROFILE_LANGUAGE_SELECT_DE."</option>
+                                    </select>
+								</div>
+							</div>	
+                        </td>						
+				      </tr>					  
+                      <tr>					  
+						<td>						
+							<button type='submit' name='myprofilechange' class='btn btn-primary btn-round'>
+								<i class='now-ui-icons ui-1_check'></i> ".MYPROFILESAVE."
+							</button>
+							</submit>
+                        </td>							
+                      </tr>						
+					</form>";
+				}
+				mysqli_close($conn);
+			}					
 echo "	 
                             </p>
                         </div>				

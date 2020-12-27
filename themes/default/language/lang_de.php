@@ -74,6 +74,8 @@ define("SIGNOTE","Deine Signatur für deine Profil Ansicht!");
 define("AVATAR","Avatar URL");
 define("AVANOTE","Dein Avatar Bild für dein Profil!");
 define("MYPROFILESAVE","Speichern");
+define("LANGUAGE","Webseiten Sprache");
+define("LANGUAGENOTE","Du hast hier die Möglichkeit die Sprache des UCP zu ändern.");
 define("CHANGE_MYPROFILE_DASHNOTE","Bitte beachten");
 define("CHANGE_MYPROFILE_PASSWORD","Passwort ändern");
 define("CHANGE_MYPROFILE_SIGNATUR","Signatur ändern");
@@ -81,6 +83,10 @@ define("CHANGE_MYPROFILE_USERNAME","Benutzername ändern");
 define("CHANGE_MYPROFILE_EMAIL","E-Mail Adresse ändern");
 define("CHANGE_MYPROFILE_AVATAR","Avatar ändern");
 define("CHANGE_MYPROFILE_AVATARNOTE","Legen Sie Dateien hier ab oder klicken Sie zum Hochladen.");
+define("CHANGE_MYPROFILE_LANGUAGE","Webseiten Sprache ändern");
+define("CHANGE_MYPROFILE_LANGUAGENOTE","Bitte auswählen");
+define("CHANGE_MYPROFILE_LANGUAGE_SELECT_EN","Englisch");
+define("CHANGE_MYPROFILE_LANGUAGE_SELECT_DE","Deutsch");
 
 // ************************************************************************************//
 // * German Language Section - My Profile

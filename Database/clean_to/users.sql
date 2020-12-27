@@ -10,12 +10,24 @@ CREATE TABLE `users` (
   `FirstLogin` datetime(6) DEFAULT NULL,
   `adminName` varchar(32) DEFAULT 'null',
   `usersig` varchar(140) DEFAULT NULL,
-  `userava` varchar(256) DEFAULT 'themes/uploads/mike.jpg'
+  `userava` varchar(256) DEFAULT 'themes/uploads/mike.jpg',
+  `language` varchar(5) NOT NULL DEFAULT 'en'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+--
+-- Indizes für die Tabelle `users`
+--
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`,`username`) USING BTREE;
 
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `users`
+--
 ALTER TABLE `users`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
+
