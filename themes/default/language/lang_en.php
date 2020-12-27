@@ -80,7 +80,7 @@ define("CHANGE_MYPROFILE_SIGNATUR","Change signature");
 define("CHANGE_MYPROFILE_USERNAME","Change username");
 define("CHANGE_MYPROFILE_EMAIL","Change E-Mail address");
 define("CHANGE_MYPROFILE_AVATAR","Change avatar");
-define("CHANGE_MYPROFILE_AVATARNOTE","Press the left mouse button to change!");
+define("CHANGE_MYPROFILE_AVATARNOTE","Drop files here or click to upload.");
 
 // ************************************************************************************//
 // * English Language Section - My Profile

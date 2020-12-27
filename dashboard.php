@@ -253,8 +253,7 @@ echo"
 				}		
 echo "
                             </p>
-                        </div>
-				
+						</div>
                     </div>					
                 </div>
             </div>
@@ -269,7 +268,9 @@ echo "
                                 <div class='col-xs-12 col-sm-6 align-right'>
                                     <div class='switch panel-switch-btn'>
                                         <span class='m-r-10 font-12'>".DASHBOARDCPUREALTIME."</span>
-                                        <label>".DASHBOARDCPUUSEOFF."<input type='checkbox' id='realtime' checked><span class='lever switch-col-cyan'></span>".DASHBOARDCPUUSEON."</label>
+										<div class='switch'>
+											<label>".DASHBOARDCPUUSEOFF."<input type='checkbox' id='realtime' checked=''><span class='lever switch-col-black'></span>".DASHBOARDCPUUSEON."</label>
+										</div>
                                     </div>
                                 </div>
                             </div>

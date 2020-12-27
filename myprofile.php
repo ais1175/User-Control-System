@@ -590,11 +590,17 @@ echo "
 								  		<i class='now-ui-icons business_badge'></i>
 							  		</div>      
 						  		</div>						
-								<form action='".$_SERVER['PHP_SELF']."?myprofile=changeava' method='post' enctype='multipart/form-data'>
+								<form action='".$_SERVER['PHP_SELF']."?myprofile=changeava' method='post' enctype='multipart/form-data' id='frmFileUpload' class='dropzone dz-clickable'>
 									<div class='form-group text-center' style='position: relative;' >
 										<span class='img-div'>
-											<div class='text-center img-placeholder'  onClick='triggerClick()'>
-												<h4>".CHANGE_MYPROFILE_AVATAR." <br><small class='text-muted'>".CHANGE_MYPROFILE_AVATARNOTE."</small></h4>
+											<div class='text-center img-placeholder' onClick='triggerClick()'>
+												<div class='dz-message'>
+													<div class='drag-icon-cph'>
+														<i class='material-icons'>touch_app</i>
+													</div>
+													<h3>".CHANGE_MYPROFILE_AVATAR."</h3>
+													<em>".CHANGE_MYPROFILE_AVATARNOTE."</em>
+												</div>
 											</div>
 											<img src='".htmlentities($row['userava'], ENT_QUOTES, 'UTF-8')."' onClick='triggerClick()' id='profileDisplay'>
 										</span>

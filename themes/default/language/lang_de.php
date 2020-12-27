@@ -80,7 +80,7 @@ define("CHANGE_MYPROFILE_SIGNATUR","Signatur ändern");
 define("CHANGE_MYPROFILE_USERNAME","Benutzername ändern");
 define("CHANGE_MYPROFILE_EMAIL","E-Mail Adresse ändern");
 define("CHANGE_MYPROFILE_AVATAR","Avatar ändern");
-define("CHANGE_MYPROFILE_AVATARNOTE","Zum ändern die Linke Maus Taste drücken!");
+define("CHANGE_MYPROFILE_AVATARNOTE","Legen Sie Dateien hier ab oder klicken Sie zum Hochladen.");
 
 // ************************************************************************************//
 // * German Language Section - My Profile

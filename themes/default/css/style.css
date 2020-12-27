@@ -1,28 +1,4 @@
-﻿.form-div { margin-top: 100px; border: 1px solid #e0e0e0; }
-#profileDisplay { display: block; height: 210px; width: 50%; margin: 0px auto; border-radius: 50%; }
-.img-placeholder {
-  width: 50%;
-  color: white;
-  height: 55%;
-  background: black;
-  opacity: .7;
-  height: 210px;
-  border-radius: 50%;
-  z-index: 2;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-}
-.img-placeholder h4 {
-  margin-top: 10%;
-  color: white;
-}
-.img-div:hover .img-placeholder {
-  display: block;
-  cursor: pointer;
-}
-/* Navbar ====================================== */
+﻿/* Navbar ====================================== */
 @import url(materialize.css);
 .navbar {
   font-family: "Roboto", sans-serif;
@@ -5221,7 +5197,7 @@ fieldset[disabled] .form-control {
 /* Dropzone ==================================== */
 .dropzone {
   border: 2px solid transparent !important;
-  background-color: #eee !important; }
+  background-color: #2a3042 !important; }
   .dropzone .dz-message .drag-icon-cph .material-icons {
     font-size: 80px;
     color: #777; }
@@ -8272,3 +8248,31 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
+
+.form-div { 
+  margin-top: 100px; border: 1px solid #e0e0e0; }
+#profileDisplay { 
+  display: block; height: 210px; width: 50%; margin: 0px auto; border-radius: 50%; }
+.img-placeholder {
+  width: 50%;
+  color: white;
+  height: 55%;
+  background: black;
+  opacity: .7;
+  height: 210px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.img-placeholder h4 {
+  margin-top: 10%;
+  color: white;
+}
+.img-div:hover .img-placeholder {
+  display: block;
+  cursor: pointer;
+}
+

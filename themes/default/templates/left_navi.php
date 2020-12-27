@@ -123,7 +123,7 @@ echo "
                     &copy; ".PROJECTNAME.". All rights reserved.
                 </div>
                 <div class='version'>
-                    <b>UCP Version: </b> 2.0
+                    <b>UCP Version: </b> 2.1
                 </div>
             </div>
         </aside>";   
