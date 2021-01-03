@@ -4,15 +4,15 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
 require_once("include/features.php");
 secure_url();
-site_header_nologged();
+site_header_nologged("404");
 site_navi_nologged();
 site_content_nologged();
 

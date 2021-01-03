@@ -1,17 +1,17 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
 
-function site_header() {
+function site_header($SITESUBTITLE = "") {
   // starting the session
   session_start();
   // starting secure urls
@@ -22,14 +22,14 @@ function site_header() {
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.1         # -->
-	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
+	<!-- #   Powered by User Control Panel Version 2.2         # -->
+	<!-- #   Copyright (c) 2020 - 2021 DerStr1k3r.             # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <title>".SITETITLE."</title>
+    <title>".SITETITLE." | ".$SITESUBTITLE."</title>
     <link rel='icon' href='themes/".SITE_THEMES."/logo.png' type='image/x-icon'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
@@ -50,30 +50,6 @@ function site_header() {
   header("Expect-CT: max-age=7776000, enforce");
   header("Feature-Policy: vibrate 'self'; usermedia *; sync-xhr 'self'");
 
-	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-	$password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
-	$securecode = $row["id"];
-
-	$sql = "select * from accounts where username = '".$username."'";
-	$rs = mysqli_query($conn,$sql);
-	$numRows = mysqli_num_rows($rs);
-	
-	if($numRows  > 0){
-    $row = mysqli_fetch_assoc($rs);
-		$_SESSION['username']['secure_first'] = $row["id"];
-		$_SESSION['username']['secure_staff'] = $row["adminLevel"];
-		$_SESSION['username']['secure_lang'] = $row["language"];
-		$_SESSION['username']['secure_granted'] = "granted";
-		$_SESSION['username']["secure_key"] = sitehash($username);
-		if(isset($_POST["username"]) && ! empty($_POST["username"]))
-		{
-			$_SESSION['username']['secure_first'] = $row["id"];
-			$_SESSION['username']['secure_staff'] = $row["adminLevel"];
-			$_SESSION['username']['secure_lang'] = $row["language"];
-			$_SESSION['username']['secure_granted'] = "granted";
-			$_SESSION['username']["secure_key"] = sitehash($username);
-		} 			
-	}
   echo " 
 </head>
 <body class='theme-grey'>
@@ -104,7 +80,7 @@ function site_header() {
                     <li class='dropdown' style='float:left;'>
                         <a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown' role='button'>
 							<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>							
-								<button type='submit' name='logout' class='label label-default waves-float'>
+								<button type='submit' name='logout' class='btn btn-primary'>
 									".SITE_LOGOUT."
 								</button>&nbsp;								
 							</form>						
@@ -116,7 +92,7 @@ function site_header() {
     </nav>";
 }
 
-function site_header_nologged() {
+function site_header_nologged($SITESUBTITLE = "") {
   // starting the session
   session_start();
   // starting secure urls  
@@ -126,14 +102,14 @@ function site_header_nologged() {
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.1         # -->
-	<!-- #   Copyright (c) 2020 DerStr1k3r.                    # -->
+	<!-- #   Powered by User Control Panel Version 2.2         # -->
+	<!-- #   Copyright (c) 2020 - 2021 DerStr1k3r.             # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <title>".SITETITLE."</title>
+    <title>".SITETITLE." | ".$SITESUBTITLE."</title>
     <link rel='icon' href='themes/".SITE_THEMES."/logo.png' type='image/x-icon'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>

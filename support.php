@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -97,7 +97,7 @@ if ($support == "addticket") {
 		}
 	}
 	
-	site_header();
+	site_header("".USERSUPPORT."");
 	site_navi_logged();
 	site_content_logged();
 
@@ -124,7 +124,7 @@ echo"
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($support = $result->fetch_assoc()) {
 echo"
 			<div class='row clearfix'>
                 <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -149,7 +149,7 @@ echo"
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control' value='".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='username' size='50' maxlength='60' class='form-control' value='".htmlentities($support['username'], ENT_QUOTES, 'UTF-8')."' required>
 							</div>	
                         </td>
 					  </tr>
@@ -208,7 +208,7 @@ echo"
 	die();		
 }
 
-site_header();
+site_header("".USERSUPPORT."");
 site_navi_logged();
 site_content_logged();
 
@@ -288,23 +288,23 @@ echo"
 
 			if ($result->num_rows > 0) {
 						// output data of each row
-				while($row = $result->fetch_assoc()) {
+				while($support = $result->fetch_assoc()) {
 echo"					
                       <tr>
                         <td>
-							".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."
+							".htmlentities($support['id'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-							".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."
+							".htmlentities($support['username'], ENT_QUOTES, 'UTF-8')."
                         </td>						
                         <td>
-							".htmlentities($row['bug'], ENT_QUOTES, 'UTF-8')."
+							".htmlentities($support['bug'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-							".htmlentities($row['msg'], ENT_QUOTES, 'UTF-8')."
+							".htmlentities($support['msg'], ENT_QUOTES, 'UTF-8')."
                         </td>
                         <td>
-							".htmlentities($row['posted'], ENT_QUOTES, 'UTF-8')."
+							".htmlentities($support['posted'], ENT_QUOTES, 'UTF-8')."
                         </td>					
                       </tr>";	  
 				}
@@ -313,8 +313,8 @@ echo"
                     </tbody>
                   </table>";
 					$result_db = mysqli_query($conn,"SELECT COUNT(id) FROM users"); 
-					$row_db = mysqli_fetch_row($result_db);  
-					$total_records = $row_db[0];  
+					$support_db = mysqli_fetch_row($result_db);  
+					$total_records = $support_db[0];  
 					$total_sites = ceil($total_records / $limit); 
 					$siteLink = "
 					<nav>

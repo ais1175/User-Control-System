@@ -12,7 +12,7 @@ Main requirements:
 
 1. MySQL Server
 2. Webserver
-3. Php 7.4.x or newer
+3. Php 8.0.0 or newer
 
 Features requirements:
 

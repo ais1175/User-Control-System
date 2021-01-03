@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -17,7 +17,7 @@ secure_url();
 
 site_secure_staff_check();
 
-site_header();
+site_header("".STAFF_USERCONTROL."");
 site_navi_logged();
 site_content_logged();
 
@@ -66,23 +66,23 @@ echo "
 
 										if ($result->num_rows > 0) {
 											// output data of each row
-											while($row = $result->fetch_assoc()) {
+											while($userchange = $result->fetch_assoc()) {
 												echo "
 											<tr>
 												<td>
-													" . $row["id"]. "
+													" . $userchange["id"]. "
 												</td>
 												<td>
-													" . $row["username"]. "
+													" . $userchange["username"]. "
 												</td>						
 												<td>
-													" . $row["socialclubname"]. "
+													" . $userchange["socialclubname"]. "
 												</td>
 												<td>
-													" . $row["email"]. "
+													" . $userchange["email"]. "
 												</td>
 												<td>
-													" . $row["betaAcess"]. "
+													" . $userchange["betaAcess"]. "
 												</td>
 											</tr>";
 											}
@@ -93,8 +93,8 @@ echo "
 									</table>";
 									
 									$result_db = mysqli_query($conn,"SELECT COUNT(id) FROM users"); 
-									$row_db = mysqli_fetch_row($result_db);  
-									$total_records = $row_db[0];  
+									$userchange_db = mysqli_fetch_row($result_db);  
+									$total_records = $userchange_db[0];  
 									$total_sites = ceil($total_records / $limit); 
 									$siteLink = "
 									<nav>

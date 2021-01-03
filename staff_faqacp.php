@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -17,7 +17,7 @@ secure_url();
 
 site_secure_staff_check();
 
-site_header();
+site_header("".FAQ_HEADER."");
 site_navi_logged();
 site_content_logged();
 
@@ -71,7 +71,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($faq = $result->fetch_assoc()) {
 					echo"
 					<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
                       <tr>				  
@@ -86,7 +86,7 @@ echo "
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title' size='50' maxlength='100' class='form-control' value='".$row["title"]."' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title' size='50' maxlength='100' class='form-control' value='".$faq["title"]."' required>
 							</div>	
                         </td>
 					  </tr>
@@ -102,7 +102,7 @@ echo "
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title_de' size='50' maxlength='100' class='form-control' value='".$row["title_de"]."' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='title_de' size='50' maxlength='100' class='form-control' value='".$faq["title_de"]."' required>
 							</div>	
                         </td>
 					  </tr>
@@ -118,7 +118,7 @@ echo "
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>					
-								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='".$row["content"]."' required></textarea>
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content' size='450' maxlength='1260' class='form-control' value='".$faq["content"]."' required></textarea>
 							</div>	
                         </td>						
                       </tr>
@@ -134,7 +134,7 @@ echo "
 										<i class='now-ui-icons ui-1_settings-gear-63'></i>
 									</div>      
 								</div>					
-								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='".$row["content_de"]."' required></textarea>
+								<textarea style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='content_de' size='450' maxlength='1260' class='form-control' value='".$faq["content_de"]."' required></textarea>
 							</div>	
                         </td>						
                       </tr>                      					  

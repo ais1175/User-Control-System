@@ -4717,6 +4717,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding-left: 0;
   margin: 20px 0;
   border-radius: 4px;
+  color: #a6b0cf;
+  background-color: #2f363e;
 }
 .pagination > li {
   display: inline;
@@ -5249,8 +5251,7 @@ a.thumbnail.active {
   padding-left: 0;
   margin-bottom: 20px;
 color: #a6b0cf;
-    background-color: #2f363e;
-    box-shadow: 0px 12px 33px 0px rgba(62, 73, 84, 0.08); 
+    background-color: #2f363e; 
 }
 .list-group-item {
   position: relative;

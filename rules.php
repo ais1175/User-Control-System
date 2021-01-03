@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -14,30 +14,29 @@ require_once("include/features.php");
 
 site_secure();
 secure_url();
-site_header();
+site_header("".RULES."");
 site_navi_logged();
 site_content_logged();
-	  
+
+						$query = "select * from rules_lang";
+						$result = mysqli_query($conn,$query);	  
 echo "
 			<div class='row clearfix'>
                 <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                    <div class='card' id='post_".$id."'>				
+                    <div class='card'>				
                         <div class='header'>
                             <h2>";
-					        $query = "select * from rules_lang";
-					        $result = mysqli_query($conn,$query);
-	
-					    while($row = mysqli_fetch_array($result)){
+					    while($rules = mysqli_fetch_array($result)){
 	
 						        $title_field = "title";
 						        $content_field = "content";
-						        if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] == 'de'){
+						        if(isset($_SESSION['username']['secure_lang']) && $_SESSION['username']['secure_lang'] == 'de'){
 							        $title_field = "title_de";
 							        $content_field = "content_de";
 						        }
-						        $id = $row['id'];
-						        $title = $row[$title_field];
-						        $content = $row[$content_field];
+						        $id = $rules['id'];
+						        $title = $rules[$title_field];
+						        $content = $rules[$content_field];
 echo "
 								".$title."";
 						}

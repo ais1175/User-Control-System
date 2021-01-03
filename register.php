@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -55,7 +55,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['register'])){
 	}	
 }
 
-site_header_nologged();
+site_header_nologged("".REGISTER."");
 site_navi_nologged();
 site_content_nologged();
 

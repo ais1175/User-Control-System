@@ -4,12 +4,12 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
-// ************************************************************************************// 
+// ************************************************************************************//
 require_once("include/features.php");
 
 secure_url();
@@ -37,17 +37,14 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 		$numRows = mysqli_num_rows($rs);
 	
 		if($numRows  == 1){
-			$row = mysqli_fetch_assoc($rs);
-			if(password_verify($password,$row['password'])){
-				$_SESSION['username']['secure_first'] = $row["id"];
+			$account = mysqli_fetch_assoc($rs);
+			if(password_verify($password,$account['password'])){
+				$_SESSION['username']['secure_first'] = $account["id"];
 				$_SESSION['username']['secure_granted'] = "granted";
-				$_SESSION['username']['secure_staff'] = $row["adminLevel"];
-				$_SESSION['username']['secure_lang'] = $row["language"];
+				$_SESSION['username']['secure_staff'] = $account["adminLevel"];
+				$_SESSION['username']['secure_lang'] = $account["language"];
 				$_SESSION['username']["secure_key"] = sitehash($username);
-				if($result)
-				{
-				// Platzhalter: redir to dashboard.php
-				}
+
 				header("Location:dashboard.php");
 			}else{
 				site_login_password_none_correct();
@@ -59,7 +56,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 	}	
 }
 
-site_header_nologged();
+site_header_nologged("".LOGIN."");
 site_navi_nologged();
 site_content_nologged();
 

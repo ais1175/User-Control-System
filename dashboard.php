@@ -1,12 +1,12 @@
-<?php
+<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -15,9 +15,18 @@ require_once("include/features.php");
 site_secure();
 secure_url();
 
-if (isset($_GET["like_tweet"])) $like_tweet = trim(htmlentities($_GET["like_tweet"]));
-elseif (isset($_POST["like_tweet"])) $like_tweet = trim(htmlentities($_POST["like_tweet"]));
-else $like_tweet = "view";
+if (isset($_GET["like"])) $like = trim(htmlentities($_GET["like"]));
+elseif (isset($_POST["like"])) $like = trim(htmlentities($_POST["like"]));
+else $like = "view";
+
+$limit = 3;  
+if (isset($_GET["site"])) {
+	$site  = $_GET["site"]; 
+}else{ 
+	$site=1;
+};  
+$start_from = ($site-1) * $limit;
+
 
 if(isset($_POST['tweeting'])){
 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -46,26 +55,29 @@ if(isset($_POST['tweeting'])){
 	header("Location:dashboard.php");
 	die();
 }
-
-if(isset($_POST['like_msg'])){
-$like_msg = "SELECT id FROM tweets";
-$likeresult = $conn->query($like_msg);	
-	
-  if ($likeresult->num_rows > 0) {
+$sqlh = "SELECT id, username, msg, liked, posted FROM tweets";
+$resulth = mysqli_query($conn, $sqlh);
+if ($resulth->num_rows > 0) {
   // output data of each row
-	while($row = $likeresult->fetch_assoc()) {
-		if ($like_tweet == "" . $row["id"]. "") {
-			if(isset($_POST['like_msg'])){
-				$sql = "UPDATE tweets SET liked='".$liked."' WHERE id = ".$row['id']."";
-   
-				if (mysqli_query($conn, $sql)) {
-					site_tweetings_liked_done();
+	while($dashboard = $resulth->fetch_assoc()) {
+		if ($like == "" . $dashboard["id"]. "") {		
+			if(isset($_POST['like_tweet'])){
+				$sqlg = "SELECT id, username, msg, liked, posted FROM tweets";
+				$resultg = mysqli_query($conn, $sqlg);
+				$adding1 = "1";
+				$adding2 = $dashboard["liked"];
+				$done = $adding1 + $adding2;
+				if($resultg) {
+					$sql2likedx = "UPDATE tweets SET liked='".$done."' WHERE id = " . $dashboard["id"]. "";
+					$result2likedx = mysqli_query($conn, $sql2likedx);
+					if($result2likedx)
+					{
+						site_tweetings_liked_done();
+					}
 				}
-				mysqli_close($conn);            		
 			}
 		}
 	}
-  }	
 }
 
 if(isset($_POST['tweeting_del'])){
@@ -83,7 +95,7 @@ if(isset($_POST['tweeting_del'])){
 	die();
 }
 
-site_header();
+site_header("".DASHBOARD."");
 site_navi_logged();
 site_content_logged();
 
@@ -103,9 +115,9 @@ echo "
 
 					if ($resultsupport->num_rows > 0) {
 						// output data of each row
-						while($row = $resultsupport->fetch_assoc()) {
+						while($dashboard = $resultsupport->fetch_assoc()) {
 							echo "
-                            <div class='number count-to' data-from='0' data-to='".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."</div>";
+                            <div class='number count-to' data-from='0' data-to='".htmlentities($dashboard['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($dashboard['id'], ENT_QUOTES, 'UTF-8')."</div>";
 						}
 					}					
 
@@ -126,9 +138,9 @@ echo "
 
 					if ($resultusers->num_rows > 0) {
 						// output data of each row
-						while($row = $resultusers->fetch_assoc()) {
+						while($dashboard = $resultusers->fetch_assoc()) {
 							echo "
-                            <div class='number count-to' data-from='0' data-to='".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($row['id'], ENT_QUOTES, 'UTF-8')."</div>";
+                            <div class='number count-to' data-from='0' data-to='".htmlentities($dashboard['id'], ENT_QUOTES, 'UTF-8')."' data-speed='1000' data-fresh-interval='20'>".htmlentities($dashboard['id'], ENT_QUOTES, 'UTF-8')."</div>";
 						}
 					}					
 
@@ -146,16 +158,16 @@ echo"
 					$query = "select * from news_lang";
 					$result = mysqli_query($conn,$query);
 
-					while($row = mysqli_fetch_array($result)){
+					while($dashboard = mysqli_fetch_array($result)){
 						$title_field = "title";
 						$content_field = "content";
-						if(isset($_SESSION['secure_lang']) && $_SESSION['secure_lang'] == 'de'){
+						if(isset($_SESSION['username']['secure_lang']) && $_SESSION['username']['secure_lang'] == 'de'){
 							$title_field = "title_de";
 							$content_field = "content_de";
 						}
-						$id = $row['id'];
-						$title = $row[$title_field];
-						$content = $row[$content_field];
+						$id = $dashboard['id'];
+						$title = $dashboard[$title_field];
+						$content = $dashboard[$content_field];
 						$shortcontent = substr($content, 0, 260)."...";					
 					echo "					
                         <div class='header' id='post_".$id."'>
@@ -188,18 +200,18 @@ echo"
 							$resultx = $conn->query($sqlx);
 							if ($resultx->num_rows > 0) {
 								// output data of each row
-								while($row = $resultx->fetch_assoc()) {
+								while($dashboard = $resultx->fetch_assoc()) {
 							echo"
                                     <div class='title'>
 										<div style='display:none;'>
-											<input required style='box-shadow: 0 0 1px rgba(92,90,90,0.7);' type='text' name='username' class='form-control' value='".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."' placeholder='' value='' maxlength='10' id='border-right6' />
+											<input required style='box-shadow: 0 0 1px rgba(92,90,90,0.7);' type='text' name='username' class='form-control' value='".htmlentities($dashboard['username'], ENT_QUOTES, 'UTF-8')."' placeholder='' value='' maxlength='10' id='border-right6' />
 										</div>
                                     </div>";
 								}
 							}		
 							echo "
                                     <div class='content'>
-                                        <input required style='background:rgba(92,90,90,0.7); box-shadow: 0px 12px 33px 0px rgba(62, 73, 84, 0.08);' type='text' name='msg' class='form-control form-line' placeholder='".DASHBOARDTWITTERNOTE3."' value='' maxlength='220' id='border-right6'/>	
+                                        <textarea required style='background:rgba(92,90,90,0.7); box-shadow: 0px 12px 33px 0px rgba(62, 73, 84, 0.08);' type='text' name='msg' class='form-control form-line' placeholder='".DASHBOARDTWITTERNOTE3."' value='' maxlength='220' id='border-right6'/></textarea>	
                                     </div>
                                     <div class='title'></div><br>
                                     <div class='content'>
@@ -215,43 +227,51 @@ echo"
                             <p class='lead'>
 							<br>";
 
-						$sqlposted = "SELECT id, username, msg, liked, posted FROM tweets";
+						$sqlposted = "SELECT id, username, msg, liked, posted FROM tweets ORDER BY id ASC LIMIT ".$start_from.", ".$limit."";
 						$resultposted = $conn->query($sqlposted);
 
 						if ($resultposted->num_rows > 0) {
 							// output data of each row
-							while($row = $resultposted->fetch_assoc()) {
+							while($dashboard = $resultposted->fetch_assoc()) {
 								echo "
 							<div class='list-group'>
                                 <a href='#' class='list-group-item'>
                                     <h4 class='list-group-item-heading'>
 										<span>
 											<h5 style='float: left'>
-												".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')." - ".htmlentities($row['posted'], ENT_QUOTES, 'UTF-8')."</i>
+												".htmlentities($dashboard['username'], ENT_QUOTES, 'UTF-8')." - ".htmlentities($dashboard['posted'], ENT_QUOTES, 'UTF-8')."
 											</h5>												
 										</span>														
 										<span>
-											<form action='".$_SERVER['PHP_SELF']."?like_tweet=".$row['id']."' method='post' enctype='multipart/form-data'>
-												<button type='like_msg' class='btn btn-primary m-t-5 waves-effect' name='like_msg' style='float: right;'>
-													<span>
-														<h5 style='float: right;'>".htmlentities($row['liked'], ENT_QUOTES, 'UTF-8')."</h5>
-													</span>
-													<i class='material-icons'>thumb_up</i>
-												</button></submit>
+											<form action='".$_SERVER['PHP_SELF']."?like=".htmlentities($dashboard['id'], ENT_QUOTES, 'UTF-8')."' method='post' enctype='multipart/form-data'>
+												<button class='btn btn-primary waves-effect' name='like_tweet' style='float: right;'><div class='demo-google-material-icon'> <i class='material-icons'>person</i> <span class='icon-name'>".htmlentities($dashboard['liked'], ENT_QUOTES, 'UTF-8')."</span> </div></button>
 											</form>
-										</span>								
+										</span>
 									</h4>
 									<br>
                                     <p class='list-group-item-text'>
 										<span>
-											<h5>".htmlentities($row['msg'], ENT_QUOTES, 'UTF-8')."</h5>
+											<h5>".htmlentities($dashboard['msg'], ENT_QUOTES, 'UTF-8')."</h5>
 										</span>
                                     </p>
                                 </a>
                             </div>";
-					}
-				}		
-echo "
+							}
+						}		
+						$result_db = mysqli_query($conn,"SELECT COUNT(id) FROM tweets"); 
+						$tweets_db = mysqli_fetch_row($result_db);  
+						$total_records = $tweets_db[0];  
+						$total_sites = ceil($total_records / $limit); 
+						$siteLink = "
+						<nav>
+							<ul class='pagination'>";  
+						for ($i=1; $i<=$total_sites; $i++) {
+						$siteLink .= "
+								<li class='bg-teal'>
+									<a class='waves-effect' href='".$_SERVER['PHP_SELF']."?site=".$i."'>".$i."</a>
+								</li>";	
+						}
+						echo $siteLink . "
                             </p>
 						</div>
                     </div>					

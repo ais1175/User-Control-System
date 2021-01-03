@@ -4,9 +4,9 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************// 
@@ -195,7 +195,6 @@ define("USERNAME", "Username");
 define("EMAIL", "E-Mail");
 define("PASSWORD", "Passwort");
 define("SUBMIT", "Senden");
-define("LANGUAGE", "Sprache");
 define("NOTE", "<b>Hinweis:</b> Felder mit <span class='pflichtfeld'>*</span> müssen ausgefüllt werden.");
 define("NOTE2", "<b>Hinweis:</b> Der Username sowie der Social Club Name müssen gleich sein.");
 define("INDEXTEXT", "Wir Bringen Das Roleplay Auf Ein Neues Level, Mit Unserer Realistischen Handhabung, Sind Uns Keine Grenzen Gesetzt!");
@@ -212,6 +211,7 @@ define("STAFF_USERCONTROLEMAIL","Spieler E-Mail");
 define("STAFF_USERCONTROLACCOUNTWHITELIST","Spieler Whitelisted");
 define("STAFF_USERCONTROLOPTION","Einstellung");
 define("STAFF_USERCONTROLSAVE","Speichern");
+define("STAFF_USERCONTROLDELETE","Löschen");
 
 // ************************************************************************************//
 // * German Language Section - Footer

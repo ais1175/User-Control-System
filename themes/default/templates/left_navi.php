@@ -4,9 +4,9 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -91,7 +91,7 @@ echo"
                     &copy; ".PROJECTNAME.". All rights reserved.
                 </div>
                 <div class='version'>
-                    <b>UCP Version: </b> 2.1
+                    <b>UCP Version: 2.2</b> with PHP ".phpversion()."
                 </div>
             </div>
         </aside>"; 
@@ -123,7 +123,7 @@ echo "
                     &copy; ".PROJECTNAME.". All rights reserved.
                 </div>
                 <div class='version'>
-                    <b>UCP Version: </b> 2.1
+                    <b>UCP Version: 2.2</b> with PHP ".phpversion()."
                 </div>
             </div>
         </aside>";   

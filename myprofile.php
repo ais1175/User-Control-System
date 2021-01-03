@@ -1,12 +1,12 @@
-﻿<?php
+﻿<?php 
 // ************************************************************************************//
 // * User Control Panel ( UCP )
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.1
+// * Version: 2.2
 // * 
-// * Copyright (c) 2020 DerStr1k3r. All rights reserved.
+// * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
 // * License Typ: GNU GPLv3
 // ************************************************************************************//
@@ -26,9 +26,8 @@ if ($myprofile == "changeuname") {
 		}
 		else
 		{	
-			$username = $socialclubname;
 			$socialclubname = filter_input(INPUT_POST, 'socialclubname', FILTER_SANITIZE_STRING);
-
+			$username = $socialclubname;
 			// The 2nd check to make sure that nothing bad can happen.
 			if (preg_match('/[A-Za-z0-9]+/', $_POST['socialclubname']) == 0) {
 				site_login_username_not_valid();
@@ -179,7 +178,7 @@ if ($myprofile == "changelanguage") {
 	}		
 }
 
-site_header();
+site_header("".USERPROFILECHANGE."");
 site_navi_logged();
 site_content_logged();
 
@@ -196,9 +195,9 @@ echo "
 
 								if ($result->num_rows > 0) {
 									// output data of each row
-									while($row = $result->fetch_assoc()) {
+									while($account = $result->fetch_assoc()) {
 										echo "
-											<img src='".htmlentities($row['userava'], ENT_QUOTES, 'UTF-8')."' alt='User Avatar' />";
+											<img src='".htmlentities($account['userava'], ENT_QUOTES, 'UTF-8')."' alt='User Avatar' />";
 									}	
 								}		
 echo "
@@ -210,9 +209,9 @@ echo "
 
 									if ($result->num_rows > 0) {
 									// output data of each row
-										while($row = $result->fetch_assoc()) {
+										while($account = $result->fetch_assoc()) {
 											echo "
-											".htmlentities($row['username'], ENT_QUOTES, 'UTF-8')."";
+											".htmlentities($account['username'], ENT_QUOTES, 'UTF-8')."";
 										}
 									}
 echo "
@@ -231,7 +230,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 						echo "
                             <ul>
                                 <li>
@@ -240,7 +239,7 @@ echo "
                                         ".PLAYERSOCIALCLUB."
                                     </div>
                                     <div class='content'>
-										".htmlentities($row['socialclubname'], ENT_QUOTES, 'UTF-8')."
+										".htmlentities($account['socialclubname'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -249,7 +248,7 @@ echo "
                                         ".PLAYEREMAIL."
                                     </div>
                                     <div class='content'>
-										".htmlentities($row['email'], ENT_QUOTES, 'UTF-8')."
+										".htmlentities($account['email'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -258,7 +257,7 @@ echo "
                                         ".PLAYERWHITELISTED."
                                     </div>
                                     <div class='content'>
-										".htmlentities($row['betaAcess'], ENT_QUOTES, 'UTF-8')."
+										".htmlentities($account['betaAcess'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>
                                 <li>
@@ -267,7 +266,7 @@ echo "
                                         ".PLAYERSIGNATURE."
                                     </div>
                                     <div class='content'>
-										".htmlentities($row['usersig'], ENT_QUOTES, 'UTF-8')."
+										".htmlentities($account['usersig'], ENT_QUOTES, 'UTF-8')."
                                     </div>
                                 </li>								
                             </ul>";
@@ -404,7 +403,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 echo "						
 					<form action='".$_SERVER['PHP_SELF']."?myprofile=changeuname' method='post' enctype='multipart/form-data'>
                       <tr>
@@ -415,7 +414,7 @@ echo "
 										<i class='now-ui-icons users_single-02'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control' value='" . $row["socialclubname"]. "' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='socialclubname' size='50' maxlength='60' class='form-control' value='" . $account["socialclubname"]. "' required>
 							</div>	
                         </td>					  						
 				      </tr>					  
@@ -458,7 +457,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 echo "						
 					<form action='".$_SERVER['PHP_SELF']."?myprofile=changepass' method='post' enctype='multipart/form-data'>
                       <tr>
@@ -511,7 +510,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 echo "						
 					<form action='".$_SERVER['PHP_SELF']."?myprofile=changemail' method='post' enctype='multipart/form-data'>
                       <tr>					  
@@ -522,7 +521,7 @@ echo "
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>						
-								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control' value='".htmlentities($row['email'], ENT_QUOTES, 'UTF-8')."' required>
+								<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='email' size='50' maxlength='60' class='form-control' value='".htmlentities($account['email'], ENT_QUOTES, 'UTF-8')."' required>
 							</div>	
                         </td>						
 				      </tr>					  
@@ -564,7 +563,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 echo "						
 					<form action='".$_SERVER['PHP_SELF']."?myprofile=changesignote' method='post' enctype='multipart/form-data'>
                       <tr>											  
@@ -575,7 +574,7 @@ echo "
 								  		<i class='now-ui-icons business_badge'></i>
 							  		</div>      
 						  		</div>						
-						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='usersig' size='50' maxlength='160' class='form-control' value='".htmlentities($row['usersig'], ENT_QUOTES, 'UTF-8')."' required>
+						  		<input style='box-shadow: 0 0 1px rgba(0,0,0, .4);' type='text' name='usersig' size='50' maxlength='160' class='form-control' value='".htmlentities($account['usersig'], ENT_QUOTES, 'UTF-8')."' required>
 					  		</div>	
 				  		</td>						
 				      </tr>					  
@@ -617,7 +616,7 @@ echo "
 
 				if ($resultold->num_rows > 0) {
 					// output data of each row
-					while($row = $resultold->fetch_assoc()) {
+					while($account = $resultold->fetch_assoc()) {
 echo "						
                       <tr>											  
 					  	<td>
@@ -639,7 +638,7 @@ echo "
 													<em>".CHANGE_MYPROFILE_AVATARNOTE."</em>
 												</div>
 											</div>
-											<img src='".htmlentities($row['userava'], ENT_QUOTES, 'UTF-8')."' onClick='triggerClick()' id='profileDisplay'>
+											<img src='".htmlentities($account['userava'], ENT_QUOTES, 'UTF-8')."' onClick='triggerClick()' id='profileDisplay'>
 										</span>
 										<input type='file' name='profileImage' onChange='displayImage(this)' id='profileImage' class='form-control' style='display: none;'>
 									</div>
@@ -682,7 +681,7 @@ echo "
 
 				if ($result->num_rows > 0) {
 					// output data of each row
-					while($row = $result->fetch_assoc()) {
+					while($account = $result->fetch_assoc()) {
 echo "						
 					<form action='".$_SERVER['PHP_SELF']."?myprofile=changelanguage' method='post' enctype='multipart/form-data'>
                       <tr>					  
@@ -693,8 +692,8 @@ echo "
 										<i class='now-ui-icons ui-2_settings-90'></i>
 									</div>      
 								</div>						
-								<div class='bootstrap-select form-control'>
-									<select name='language' class='form-control'>
+								<div class='bootstrap-select form-control show-tick'>
+									<select name='language' class='form-control show-tick'>
                                         <option value=''>-- ".CHANGE_MYPROFILE_LANGUAGENOTE." --</option>
                                         <option value='en'>".CHANGE_MYPROFILE_LANGUAGE_SELECT_EN."</option>
                                         <option value='de'>".CHANGE_MYPROFILE_LANGUAGE_SELECT_DE."</option>
