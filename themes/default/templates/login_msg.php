@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -12,7 +12,7 @@
 // ************************************************************************************//
 
 function site_register_done() {
-  site_header_nologged();
+  site_header_nologged("".REGISTER."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -36,7 +36,7 @@ function site_register_done() {
 }
 
 function site_login_notfound_done() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -61,7 +61,7 @@ function site_login_notfound_done() {
 }
 
 function site_register_notfound_done() {
-  site_header_nologged();
+  site_header_nologged("".REGISTER."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -86,7 +86,7 @@ function site_register_notfound_done() {
 }
 
 function site_login_password_none_correct() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -111,7 +111,7 @@ function site_login_password_none_correct() {
 }
 
 function site_login_user_notfound() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -136,7 +136,7 @@ function site_login_user_notfound() {
 }
 
 function site_login_user_no_valid_email() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -161,7 +161,7 @@ function site_login_user_no_valid_email() {
 }
 
 function site_login_username_not_valid() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -186,7 +186,7 @@ function site_login_username_not_valid() {
 }
 
 function site_login_max_pass_long() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -211,7 +211,7 @@ function site_login_max_pass_long() {
 }
 
 function site_login_user_already() {
-  site_header_nologged();
+  site_header_nologged("".LOGIN."");
   site_navi_nologged();
   site_content_nologged();
 		echo "
@@ -236,7 +236,7 @@ function site_login_user_already() {
 }
 
 function site_logout() {	
-  site_header_nologged();
+  site_header_nologged("".HOME_NOLOGGED."");
   setCookie("PHPSESSID", "", 0x7fffffff,  "/");
   session_destroy();
   site_navi_nologged();

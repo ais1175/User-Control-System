@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -22,14 +22,14 @@ function site_header($SITESUBTITLE = "") {
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.2         # -->
+	<!-- #   Powered by User Control Panel Version 2.5         # -->
 	<!-- #   Copyright (c) 2020 - 2021 DerStr1k3r.             # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <title>".SITETITLE." | ".$SITESUBTITLE."</title>
+    <title>".$_SESSION['username']['site_settings_site_name']." | ".$SITESUBTITLE."</title>
     <link rel='icon' href='themes/".SITE_THEMES."/logo.png' type='image/x-icon'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
@@ -40,7 +40,8 @@ function site_header($SITESUBTITLE = "") {
     <link href='themes/".SITE_THEMES."/css/style.css' rel='stylesheet'>
     <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />
 	<link href='themes/".SITE_THEMES."/plugins/waitme/waitMe.css' rel='stylesheet' />
-    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />";
+    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/plugins/light-gallery/css/lightgallery.css' rel='stylesheet'>";
   
   header("X-Frame-Options: sameorigin");
   header("X-XSS-Protection: 1; mode=block");
@@ -73,7 +74,7 @@ function site_header($SITESUBTITLE = "") {
             <div class='navbar-header'>
                 <a href='javascript:void(0);' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-collapse' aria-expanded='false'></a>
                 <a href='javascript:void(0);' class='bars'></a>
-                <a class='navbar-brand' href='dashboard.php'>".SITETITLE."</a>
+                <a class='navbar-brand' href='dashboard.php'>".$_SESSION['username']['site_settings_site_name']."</a>
             </div>
             <div class='collapse navbar-collapse' id='navbar-collapse'>
                 <ul class='nav navbar-nav navbar-right'>
@@ -97,19 +98,20 @@ function site_header_nologged($SITESUBTITLE = "") {
   session_start();
   // starting secure urls  
   secure_url();
+  // starting header section  
   echo "
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- ####################################################### -->
-	<!-- #   Powered by User Control Panel Version 2.2         # -->
+	<!-- #   Powered by User Control Panel Version 2.5         # -->
 	<!-- #   Copyright (c) 2020 - 2021 DerStr1k3r.             # -->
 	<!-- #   All rights reserved.                              # -->
 	<!-- ####################################################### -->
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <title>".SITETITLE." | ".$SITESUBTITLE."</title>
+    <title>".$_SESSION['username']['site_settings_site_name']." | ".$SITESUBTITLE."</title>
     <link rel='icon' href='themes/".SITE_THEMES."/logo.png' type='image/x-icon'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
@@ -121,7 +123,8 @@ function site_header_nologged($SITESUBTITLE = "") {
     <link href='themes/".SITE_THEMES."/css/themes/all-themes.css' rel='stylesheet' />
 	<link href='themes/".SITE_THEMES."/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css' rel='stylesheet' />	
 	<link href='themes/".SITE_THEMES."/plugins/waitme/waitMe.css' rel='stylesheet' />
-    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />";
+    <link href='themes/".SITE_THEMES."/plugins/bootstrap-select/css/bootstrap-select.css' rel='stylesheet' />
+	<link href='themes/".SITE_THEMES."/plugins/light-gallery/css/lightgallery.css' rel='stylesheet'>";
 
   header("X-Frame-Options: sameorigin");
   header("X-XSS-Protection: 1; mode=block");
@@ -154,7 +157,7 @@ function site_header_nologged($SITESUBTITLE = "") {
             <div class='navbar-header'>
                 <a href='javascript:void(0);' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-collapse' aria-expanded='false'></a>
                 <a href='javascript:void(0);' class='bars'></a>
-                <a class='navbar-brand' href='index.php'>".SITETITLE."</a>
+                <a class='navbar-brand' href='index.php'>".$_SESSION['username']['site_settings_site_name']."</a>
             </div>
         </div>
     </nav>";	

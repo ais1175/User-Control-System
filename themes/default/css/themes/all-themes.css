@@ -173,6 +173,7 @@ select.form-control {
 
 textarea.form-control {
   height: auto;
+  color: #a6b0cf;
 }
 
 // Form groups

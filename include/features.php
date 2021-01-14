@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -52,6 +52,48 @@ if(isset($_SESSION['username']['secure_lang'])){
 	include "./themes/".SITE_THEMES."/language/lang_".SITE_LANGUAGE.".php";
 }
 
+// Session Site Settings System
+$sqlusers = "SELECT id, site_dl_section, site_rage_section, site_altv_section, site_fivem_section, site_online, site_name from config WHERE id = 1";
+$resultusers = $conn->query($sqlusers);
+
+if ($resultusers->num_rows > 0) {
+	// output data of each row
+	while($dashboard = $resultusers->fetch_assoc()) {
+		$_SESSION['username']['site_settings_site_online'] = $dashboard["site_online"];
+		$_SESSION['username']['site_settings_site_name'] = $dashboard["site_name"];
+		$_SESSION['username']['site_settings_dl_section'] = $dashboard["site_dl_section"];		  
+		$_SESSION['username']['site_settings_dl_section_ragemp'] = $dashboard["site_rage_section"];
+		$_SESSION['username']['site_settings_dl_section_altv'] = $dashboard["site_altv_section"];
+		$_SESSION['username']['site_settings_dl_section_fivem'] = $dashboard["site_fivem_section"];
+		if(intval($_SESSION['username']['site_settings_site_online']) >= 1) {
+			// Site Online Status = 1 | Online
+		}else{
+		// Site Online Status = 0 | Offline
+			site_header_nologged("".SITECONFIG_ONLINE."");
+			site_navi_nologged();
+			site_content_nologged();
+            echo"
+				<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='card'>
+                        <div class='header'>
+                            <h2>
+                                ".SITECONFIG_ONLINE."
+                            </h2>
+                        </div>
+                        <div class='body'>
+                            <div class='alert alert-success'>
+                                ".SITECONFIG_ONLINENOTE."
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+			site_footer();
+			setCookie("PHPSESSID", "", 0x7fffffff,  "/");
+			session_destroy();	
+			die();		
+		}
+	}
+}
 
 // Logout System
 if(isset($_POST['logout'])){

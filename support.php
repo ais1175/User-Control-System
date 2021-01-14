@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -33,7 +33,7 @@ if ($support == "remoticket") {
 		$result3 = mysqli_query($conn, $sql3);
 		if($result3)
 		{
-			site_header();
+			site_header("".USERSUPPORT."");
 			site_navi_logged();
 			site_content_logged();	
 		echo "
@@ -254,7 +254,8 @@ echo"
                     <div class='card'>				
                         <div class='header'>
                             <h2>
-								<form method='post' action='".$_SERVER['PHP_SELF']."?support=remoticket' enctype='multipart/form-data'>
+								".USERSUPPORT."
+								<form method='post' action='".$_SERVER['PHP_SELF']."?support=remoticket' enctype='multipart/form-data' style='float:right;'>
 									<button type='submit' name='sup_rem' class='btn btn-primary btn-round'><i class='now-ui-icons ui-1_simple-remove'></i> ".SUPPORTDELETE2."</submit>
 								</form>
                             </h2>

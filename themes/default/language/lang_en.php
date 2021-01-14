@@ -34,6 +34,22 @@ define("LOADING","Please wait...");
 define("NEWS","News: ");
 
 // ************************************************************************************//
+// * English Language Section - Main Site Settings 
+// ************************************************************************************//
+define("SITECONFIG_HEADER","Site Settings");
+define("SITECONFIG_HEADERNOTE","Please note that some settings have to be set with 0 or 1!");
+define("SITECONFIG_ONLINE","Site Online Status");
+define("SITECONFIG_ONLINENOTE","Our UCP is currently unavailable!");
+define("SITECONFIG_NAME","Site Name");
+define("SITECONFIG_DOWNLOAD_SECTION","Download Section");
+define("SITECONFIG_RAGEMP","Rage.MP");
+define("SITECONFIG_ALTV","AltV");
+define("SITECONFIG_FIVEM","FiveM");
+define("SITECONFIG_DONE","<strong>Success!</strong> The site settings have been saved successfully!");
+define("SITECONFIG_ERROR","<strong>Error!</strong> The site settings were not saved successfully!");
+
+
+// ************************************************************************************//
 // * English Language Section - Message System 
 // ************************************************************************************//
 define("MSG_1","You should look first <a href='login.php'>login</a>!");

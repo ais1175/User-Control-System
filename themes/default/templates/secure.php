@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -12,8 +12,8 @@
 // ************************************************************************************//
 
 function site_secure() {
-	if(!isset($_SESSION['username']['secure_first']) || $_SESSION['username']['secure_granted'] !== 'granted') {
-		site_header_nologged();
+	if(!isset($_SESSION['username']['secure_first']) || $_SESSION['username']['secure_granted'] !== 'granted' || $_SESSION['username']['site_settings_site_online'] !== '1') {
+		site_header_nologged("".SECURE_SYSTEM."");
 		site_navi_nologged();
 		site_content_nologged();
 		echo "
@@ -40,7 +40,7 @@ function site_secure() {
 
 function site_secure_staff_check() {
 	if(intval($_SESSION['username']['secure_staff']) < 5) {
-		site_header_nologged();
+		site_header_nologged("".SECURE_SYSTEM."");
 		site_navi_nologged();
 		site_content_nologged();
 		echo "

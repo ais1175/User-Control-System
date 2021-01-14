@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -39,6 +39,23 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 		if($numRows  == 1){
 			$account = mysqli_fetch_assoc($rs);
 			if(password_verify($password,$account['password'])){
+				$sqlsession = "SELECT id, site_dl_section, site_rage_section, site_altv_section, site_fivem_section site_online, site_name from config WHERE id = 1";
+				$resultsession = $conn->query($sqlsession);
+
+				if ($resultsession->num_rows > 0) {
+					// output data of each row
+					while($session = $resultsession->fetch_assoc()) {
+						if ($session["site_online"] == "1") {
+							$_SESSION['username']['site_settings_site_online'] = $session["site_online"];
+							$_SESSION['username']['site_settings_site_name'] = $session["site_name"];
+							$_SESSION['username']['site_settings_dl_section'] = $session["site_dl_section"];
+							$_SESSION['username']['site_settings_dl_section_ragemp'] = $session["site_rage_section"];
+							$_SESSION['username']['site_settings_dl_section_altv'] = $session["site_altv_section"];
+							$_SESSION['username']['site_settings_dl_section_fivem'] = $session["site_fivem_section"];
+						}
+					}
+				}
+				
 				$_SESSION['username']['secure_first'] = $account["id"];
 				$_SESSION['username']['secure_granted'] = "granted";
 				$_SESSION['username']['secure_staff'] = $account["adminLevel"];
@@ -59,7 +76,6 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['login'])){
 site_header_nologged("".LOGIN."");
 site_navi_nologged();
 site_content_nologged();
-
 echo "
 			<div class='row clearfix'>
                 <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -40,6 +40,8 @@ function site_footer() {
     <script src='themes/".SITE_THEMES."/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js'></script>
     <script src='themes/".SITE_THEMES."/js/pages/index.js'></script>
     <script src='themes/".SITE_THEMES."/js/avatar.js'></script>
+	<script src='themes/".SITE_THEMES."/plugins/light-gallery/js/lightgallery-all.js'></script>
+	<script src='themes/".SITE_THEMES."/js/pages/medias/image-gallery.js'></script>
     <script src='themes/".SITE_THEMES."/js/demo.js'></script>	
 </body>
 </html>";   

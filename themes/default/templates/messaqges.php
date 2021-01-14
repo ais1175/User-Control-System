@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -34,7 +34,7 @@ function site_userchanged_done() {
 }
 
 function site_support_posted_done() {
-  site_header();
+  site_header("".USERSUPPORT."");
   site_navi_logged();
   site_content_logged();
 		echo "
@@ -60,7 +60,7 @@ function site_support_posted_done() {
 
 // Tweet System MSG done
 function site_tweetings_done() {	
-  site_header();
+  site_header("".DASHBOARD."");
   site_content_logged();
   site_navi_logged();
 		echo "
@@ -85,7 +85,7 @@ function site_tweetings_done() {
 }
 
 function site_tweetings_liked_done() {	
-  site_header();
+  site_header("".DASHBOARD."");
   site_content_logged();
   site_navi_logged();
 		echo "
@@ -110,7 +110,7 @@ function site_tweetings_liked_done() {
 }
 
 function site_myprofile_done_error() {	
-  site_header();
+  site_header("".USERPROFILECHANGE."");
   site_navi_logged();
   site_content_logged();
 		echo "
@@ -137,7 +137,7 @@ function site_myprofile_done_error() {
 }
 
 function site_myprofile_done() {	
-  site_header();
+  site_header("".USERPROFILECHANGE."");
   site_navi_logged();
   site_content_logged();
 		echo "
@@ -338,4 +338,4 @@ function site_faq_not_done() {
   site_footer();
   die();
 }
-
+?>

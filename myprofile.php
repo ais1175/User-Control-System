@@ -4,7 +4,7 @@
 // ************************************************************************************//
 // * Author: DerStr1k3r
 // ************************************************************************************//
-// * Version: 2.2
+// * Version: 2.5
 // * 
 // * Copyright (c) 2020 - 2021 DerStr1k3r. All rights reserved.
 // ************************************************************************************//
@@ -189,15 +189,17 @@ echo "
                     <div class='card profile-card'>
                         <div class='profile-header'>&nbsp;</div>
                         <div class='profile-body'>
-                            <div class='image-area'>";
+                            <div id='aniimated-thumbnials' class='list-unstyled row clearfix image-area'>";
 								$sql = "SELECT userava FROM users WHERE id = ".$_SESSION['username']['secure_first']."";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
 									// output data of each row
 									while($account = $result->fetch_assoc()) {
-										echo "
-											<img src='".htmlentities($account['userava'], ENT_QUOTES, 'UTF-8')."' alt='User Avatar' />";
+									  echo "
+											<a href='".htmlentities($account['userava'], ENT_QUOTES, 'UTF-8')."' data-sub-html='User Avatar'>
+												<img src='".htmlentities($account['userava'], ENT_QUOTES, 'UTF-8')."'>
+											</a>";
 									}	
 								}		
 echo "
