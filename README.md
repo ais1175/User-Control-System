@@ -7,12 +7,11 @@ Please note:
 
 The upload avatar folder needs write access!
  
- 
 Main requirements:
 
 1. MySQL Server
 2. Webserver
-3. Php 8.0.0 or newer
+3. Php 8.x or newer
 
 Features requirements:
 
@@ -22,4 +21,6 @@ Features requirements:
 4. Support System
 5. Profile Changer
 6. Twitter System
-7. and more
+7. Site Settings Feature
+8. CPU Usage Feature
+9. and more
