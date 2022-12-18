@@ -1,6 +1,10 @@
 # User Control System
  User Control System for all Roleplay Projects! Have fun!
  
+ Search support?
+ 
+ Join my discord server: https://discord.gg/xg5mnYUWch
+ 
 Please note:
 
 The upload avatar folder needs write access!
